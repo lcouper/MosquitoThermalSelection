@@ -10,4 +10,4 @@ Following protocols of Yeap et al. 2013, Ameneshewa & Service 1996, and Lyimo & 
 6. Measure the mosquito wing length as the distance from the alula to the wing tip, excluding the wing scales (see image below)
 
 
-/assets/images/WingLengthMeasurement_Example.png
+WingLengthMeasurement_Example.png
