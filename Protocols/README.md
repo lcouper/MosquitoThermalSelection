@@ -30,6 +30,11 @@ Total DNA Input (ng) | 1-9 | 10-24 | 25-49 | 50-99 | 100-500 |
 --- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
 Number of PCR cycles | 12 | 8 | 6 | 5 | 5 | 
 
+
+| Total DNA Input (ng) | Number of PCR cycles | 
+| ------- | --- | 
+| 1-9 | 12| 
+
 ### Tagment Genomic DNA ###
 
 3. Get Bead-linked Transposase (BLT) and Tagmentation Buffer 1 (TB1) to room temperature.
