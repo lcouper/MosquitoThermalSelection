@@ -26,14 +26,13 @@ DNA preparation stage
 
 2. Add water and gDNA to get at least 20ng of DNA in 6ul. More DNA is fine also, but all samples should be similar in concentration because this will impact the number of PCR cycles. [GRK note: I try to just keep samples within the ranges of the table below without trying to get them to be super close in concentration - I haven't verified how good this works yet]
 
-Total DNA Input (ng) | 1-9 | 10-24 | 25-49 | 50-99 | 100-500 | 
---- | --- | --- | --- |--- |--- |--- |--- |--- |--- |--- |---
-Number of PCR cycles | 12 | 8 | 6 | 5 | 5 | 
-
-
 | Total DNA Input (ng) | Number of PCR cycles | 
 | ------- | --- | 
 | 1-9 | 12| 
+| 10-24 | 8| 
+| 25-49 | 6| 
+| 50-99 | 5| 
+| 100-500 | 5| 
 
 ### Tagment Genomic DNA ###
 
