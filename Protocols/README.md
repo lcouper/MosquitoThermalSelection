@@ -1,4 +1,4 @@
-# ** Experimental Protocol **
+#  Experimental Protocol 
 
 Following details outlined in Mitchell et al. (2011) and var Heerwaarden et al. (2012)
 
