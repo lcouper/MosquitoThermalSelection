@@ -1,0 +1,20 @@
+#! /bin/bash
+
+# Script to generate a draft assembly from the Low and Ultralow input CCS reads.
+
+# Note from creator of Flye: “With multiple files, Flye simply combines all reads from these files together. 
+# This is the recommended way to handle multiple libraries from the same sequencing technology.”
+
+
+#SBATCH --job-name=flye
+#SBATCH --time=72:00:00
+#SBATCH --partition=emordeca
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=32
+#SBATCH --mem=600G
+
+ml flye
+
+cd /labs/emordeca/LowInput/4918/ccs.Q20/
+
+flye --pacbio-hifi m64047_211218_171850.ccs.fastq --threads 32 --out-dir /labs/emordeca/LowInput/4918/A.sierrensis.LowInput.flye
