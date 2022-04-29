@@ -25,7 +25,7 @@ module load samtools/0.1.19
 # step 1: Map low and ultralow ccs reads to the draft assembly, then parse with sam tools
 
 minimap2 -t 16 -ax asm20 assembly.fasta  m64047_211218_171850.ccs.fastq m64047_211230_040352.ccs.fastq --secondary=no | 
-samtools sools sort -m 1G -o Ae.sierrensis.aligned.bam -T Ae.sierrensis.ali
+samtools sort -m 1G -o Ae.sierrensis.aligned.bam -T Ae.sierrensis.ali
 
 # step 2: Generate the coverage histogram
 
