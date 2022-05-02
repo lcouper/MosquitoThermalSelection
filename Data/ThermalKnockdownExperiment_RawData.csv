@@ -1,0 +1,305 @@
+Sample,Treatment,Replicate,Sex,Time since eclosed,Exp.Round,Time_Numeric,Status,Mean DNA concentration
+E.001 ,control,E,M,24h,1,48.21666667,Remove,
+E.002,control,E,M,24h,1,51.41666667,Remove,
+E.003,control,E,M,24h,1,44.41666667,Remove,
+E.004,control,E,M,48h,1,57.63333333,Use,5.85
+E.005,control,E,M,48h,1,39.65,Use,2.76
+E.006,control,E,M,48h,1,42.36666667,Use,4.145
+E.007,control,E,F,48h,1,47.21666667,Use,6.15
+E.008,control,E,M,48h,1,44.65,Use,2.36
+E.009,control,E,F,48h,1,41.48333333,Use,4.795
+E.010,control,E,F,48h,1,43.08333333,Use,5.8
+E.011,control,E,F,48h,1,59.4,Use,3.69
+E.012,control,E,F,48h,1,59.95,Use,3.62
+E.013,control,E,M,48h,1,54.96666667,Use,3.96
+E.014,control,E,M,48h,1,NA,Use,3.94
+E.015,control,E,F,48h,1,58.33333333,Use,4.785
+E.016,control,E,M,24h,1,46.3,Remove,
+E.017,control,E,F,48h,1,53.56666667,Remove,
+E.018,control,E,F,48h,1,49.91666667,Use,3.025
+E.019,control,E,F,48h,1,51.56666667,Use,1.86
+E.020,control,E,F,48h,1,47.51666667,Use,3.91
+E.021,control,E,M,48h,1,44.66666667,Use,2.32
+E.022,control,E,F,48h,1,55.93333333,Use,1.475
+E.023,control,E,F,48h,1,57,Use,4.145
+E.024,control,E,F,48h,1,46.88333333,Use,4.24
+E.025,control,E,F,48h,1,58.25,Use,5.2
+E.026,control,E,F,48h,1,45.33333333,Use,1.595
+E.027,control,E,F,48h,1,40.91666667,Use,2.68
+E.028,control,E,F,48h,1,41.1,Use,4.99
+E.029,control,E,F,24h,1,49.31666667,Remove,
+E.030,control,E,M,24h,1,55.33333333,Remove,
+E.031,control,E,F,24h,1,71.55,Remove,
+F.001,control,F,M,48h,1,NA,Remove,
+F.002,control,F,M,48h,1,54.73333333,Use,5.09
+F.003,control,F,M,48h,1,66.1,Use,3.73
+F.004,control,F,M,48h,1,62.66666667,Use,1.895
+F.005,control,F,M,48h,1,66.45,Use,3.565
+F.006,control,F,F,24h,1,47.6,Remove,
+F.007,control,F,M,24h,1,52.38333333,Remove,
+F.008,control,F,M,48h,1,58.93333333,Use,3.65
+F.009,control,F,M,48h,1,55.3,Use,3.94
+F.010,control,F,F,48h,1,61.13333333,Use,5.075
+F.011,control,F,M,48h,1,51.46666667,Use,4.05
+F.012,control,F,M,48h,1,59.05,Use,4.64
+F.013,control,F,M,48h,1,47.36666667,Use,3.545
+F.014,control,F,M,48h,1,49.13333333,Use,2.43
+F.015,control,F,M,48h,1,57.5,Use,3.76
+F.016,control,F,F,48h,1,47.88333333,Use,4.915
+F.017,control,F,M,48h,1,51.73333333,Use,4.36
+F.018,control,F,F,48h,1,54.38333333,Use,2.375
+F.019,control,F,F,48h,1,67.46666667,Use,3.745
+F.020,control,F,M,48h,1,47.61666667,Use,2.32
+F.021,control,F,M,48h,1,54.41666667,Use,1.65
+F.022,control,F,F,48h,1,52.8,Use,2.13
+F.023,control,F,M,48h,1,48.21666667,Use,1.99
+F.024,control,F,M,48h,1,63.33333333,Use,3.085
+F.025,control,F,F,48h,1,49.03333333,Use,2.745
+F.026,control,F,M,48h,1,48.58333333,Use,4.59
+F.027,control,F,M,48h,1,47.61666667,Use,3.405
+F.028,control,F,F,48h,1,54.96666667,Use,2.38
+F.029,control,F,F,48h,1,41.91666667,Use,3.095
+F.030,control,F,F,48h,1,53.73333333,Use,3.82
+F.031,control,F,F,48h,1,43.46666667,Use,6.775
+F.032,control,F,F,48h,1,57.38333333,Use,4.34
+F.033,control,F,F,24h,1,48.63333333,Remove,
+F.034,control,F,F,24h,1,49.91666667,Remove,
+F.035,control,F,F,48h,1,50.65,Use,5.625
+F.036,control,F,F,48h,1,39.66666667,Use,3.755
+F.037,control,F,M,48h,1,44.23333333,Use,4.32
+F.038,control,F,F,48h,1,41.73333333,Use,5.9
+G.001,high temp,G,M,24h,1,45.08333333,Remove,
+G.002,high temp,G,F,24h,1,58.98333333,Remove,
+G.003,high temp,G,F,48h,1,41.85,Use,3.41
+G.004,high temp,G,F,48h,1,52.33333333,Use,3.35
+G.005,high temp,G,F,24h,1,40.83333333,Remove,
+G.006,high temp,G,M,24h,1,46.71666667,Remove,
+G.007,high temp,G,M,48h,1,58.81666667,Use,3.255
+G.008,high temp,G,F,24h,1,45.41666667,Remove,
+G.009,high temp,G,M,24h,1,48.38333333,Remove,
+G.010,high temp,G,M,24h,1,NA,Remove,
+G.011,high temp,G,F,24h,1,43.78333333,Remove,
+G.012,high temp,G,F,24h,1,50.03333333,Remove,
+G.013,high temp,G,F,24h,1,59.1,Remove,
+G.014,high temp,G,F,24h,1,49.03333333,Remove,
+G.015,high temp,G,M,24h,1,56.46666667,Remove,
+G.016,high temp,G,F,48h,1,47.3,Use,4.355
+G.017,high temp,G,F,48h,1,56.25,Use,3.885
+G.018,high temp,G,M,48h,1,53.2,Use,2.99
+G.019,high temp,G,F,48h,1,53.83333333,Use,4.455
+G.020,high temp,G,M,48h,1,43.3,Use,3.96
+H.001,high temp,H,M,24h,1,47.06666667,Remove,
+H.002,high temp,H,F,24h,1,37.83333333,Remove,
+H.003,high temp,H,M,24h,1,40.46666667,Remove,
+H.004,high temp,H,M,24h,1,54.51666667,Remove,
+H.005,high temp,H,F,48h,1,52.56666667,Use,4.845
+H.006,high temp,H,F,48h,1,60.76666667,Use,4.87
+H.007,high temp,H,F,48h,1,58.45,Use,3.735
+H.008,high temp,H,M,48h,1,42.83333333,Use,2.515
+H.009,high temp,H,M,24h,1,39.61666667,Remove,
+H.010,high temp,H,F,48h,1,51.25,Use,3.465
+H.011,high temp,H,F,24h,1,55.06666667,Remove,
+H.012,high temp,H,M,24h,1,44.03333333,Remove,
+H.013,high temp,H,M,24h,1,55.25,Remove,
+H.014,high temp,H,F,24h,1,42.66666667,Remove,
+H.015,high temp,H,F,24h,1,49.4,Remove,
+H.016,high temp,H,F,24h,1,52.18333333,Remove,
+H.017,high temp,H,F,24h,1,58.86666667,Remove,
+H.018,high temp,H,M,24h,1,52.56666667,Remove,
+H.019,high temp,H,M,24h,1,59.35,Remove,
+H.020,high temp,H,M,48h,1,42.01666667,Use,3.45
+H.021,high temp,H,F,48h,1,54.83333333,Use,4.25
+H.022,high temp,H,M,48h,1,42.63333333,Use,3.245
+H.023,high temp,H,F,48h,1,44.56666667,Use,1.98
+H.024,high temp,H,M,24h,1,40.43333333,Remove,
+H.025,high temp,H,F,48h,1,44.75,Use,2.405
+H.026,high temp,H,F,24h,1,42.66666667,Remove,
+H.027,high temp,H,F,24h,1,41.56666667,Remove,
+I.001,control,I,M,48h,2,43.96666667,Use,3.455
+I.002,control,I,M,48h,2,46.31666667,Use,3.335
+I.003,control,I,M,96h,2,38.76666667,Remove,
+I.004,control,I,F,96h,2,46.53333333,Remove,
+I.005,control,I,M,96h,2,49.76666667,Remove,
+J.001,control,J,M,48h,2,58.33333333,Use,3
+J.002,control,J,M,48h,2,48.96666667,Use,3.595
+J.003,control,J,F,48h,2,44.03333333,Use,5.375
+J.004,high temp,J,F,48h,2,34.11666667,Use,3.44
+J.005,control,J,M,48h,2,56.48333333,Remove,
+K.001,high temp,K,F,48h,2,41,Use,3.72
+K.002,high temp,K,M,72h,2,53.43333333,Use,3.775
+K.003,high temp,K,F,72h,2,46.33333333,Remove,
+K.004,high temp,K,F,48h,2,49,Remove,
+L.002,high temp,L,F,48h,2,33.26666667,Remove,
+M.001,control,M,M,48h,3,61.15,Use,3.075
+M.002,control,M,M,48h,3,41.33333333,Use,4.745
+M.003,control,M,M,48h,3,46.66666667,Use,4.225
+M.004,control,M,F,48h,3,67.61666667,Use,10.04
+M.005,control,M,M,48h,3,59.5,Use,5.76
+M.006,control,M,M,48h,3,59.83333333,Use,5.195
+M.007,control,M,F,72h,3,50.81666667,Use,7.66
+M.008,control,M,M,72h,3,58.5,Use,3.96
+M.009,control,M,M,72h,3,51.41666667,Use,6.195
+M.010,control,M,M,72h,3,41.61666667,Use,4.415
+M.011,control,M,M,72h,3,44.95,Use,6.15
+M.012,control,M,M,96h,3,40.11666667,Remove,
+M.013,control,M,M,96h,3,40.11666667,Remove,
+M.014,control,M,M,96h,3,35.28333333,Remove,
+M.015,control,M,M,96h,3,44.58333333,Remove,
+M.016,control,M,M,72h,3,50,Use,3.78
+M.017,control,M,F,72h,3,48.73333333,Use,8.01
+M.018,control,M,M,72h,3,51.71666667,Use,3.37
+M.019,control,M,F,72h,3,48.35,Use,4.12
+M.020,control,M,M,72h,3,39.28333333,Use,1.91
+M.022,control,M,M,72h,3,56.88333333,Use,3.04
+M.023,control,M,F,72h,3,50.5,Use,2.98
+M.024,control,M,M,72h,3,40.2,Use,4.22
+M.025,control,M,F,72h,3,46.93333333,Use,4.64
+M.026,control,M,M,72h,3,55.93333333,Use,2.59
+M.027,control,M,F,72h,3,50.5,Use,4.795
+M.028,control,M,M,72h,3,41.76666667,Use,6.42
+M.029,control,M,F,72h,3,55.45,Use,6.85
+M.030,control,M,M,72h,3,33.38333333,Use,3.415
+M.031,control,M,F,72h,3,45.35,Use,9.985
+M.032,control,M,M,72h,3,41.41666667,Use,4.71
+M.033,control,M,F,72h,3,42.13333333,Use,5.955
+M.034,control,M,F,72h,3,56.8,Use,6.025
+M.035,control,M,F,72h,3,51.58333333,Use,5.49
+M.036,control,M,F,72h,3,50.26666667,Use,11.1
+M.037,control,M,F,72h,3,43.23333333,Use,3.335
+M.038,control,M,F,72h,3,33.53333333,Use,3.345
+M.039,control,M,F,72h,3,44.41666667,Use,3.935
+M.040,control,M,M,72h,3,48.76666667,Use,1.665
+M.041,control,M,F,72h,3,55.71666667,Use,4.35
+N.001,control,N,M,48h,3,43.8,Use,4.41
+N.002,control,N,M,48h,3,45.61666667,Use,5.425
+N.003,control,N,M,48h,3,50.83333333,Use,4.775
+N.004,control,N,F,48h,3,45.05,Use,10.7
+N.005,control,N,M,48h,3,61.53333333,Use,7.035
+N.006,control,N,F,48h,3,50.36666667,Use,10.75
+N.007,control,N,M,48h,3,45.85,Use,4.815
+N.008,control,N,M,72h,3,48.13333333,Use,4.3
+N.009,control,N,M,72h,3,41.36666667,Use,5.825
+N.010,control,N,M,72h,3,52.48333333,Use,5.52
+N.011,control,N,M,72h,3,50.2,Use,4.595
+N.012,control,N,M,72h,3,51.36666667,Use,6.2
+N.013,control,N,M,72h,3,47.46666667,Use,4.805
+N.014,control,N,M,96h,3,39.5,Remove,
+N.015,control,N,M,96h,3,38.71666667,Remove,
+N.016,control,N,M,96h,3,38.33333333,Remove,
+N.017,control,N,M,96h,3,40.8,Remove,
+N.018,control,N,M,72h,3,39.93333333,Use,3.295
+N.019,control,N,F,72h,3,52.66666667,Use,6.98
+N.020,control,N,M,72h,3,49.85,Use,3.705
+N.021,control,N,F,72h,3,46.1,Use,6.94
+N.022,control,N,M,72h,3,43.98333333,Use,3.57
+N.023,control,N,F,72h,3,32.7,Use,4.9
+N.024,control,N,M,72h,3,52.83333333,Use,4.02
+N.025,control,N,F,72h,3,39,Use,5.94
+N.026,control,N,M,72h,3,37.53333333,Use,2.695
+N.027,control,N,F,72h,3,54.26666667,Use,6.255
+N.028,control,N,M,72h,3,55.01666667,Use,4.25
+N.029,control,N,F,72h,3,53.76666667,Use,7.21
+N.030,control,N,M,72h,3,59.48333333,Use,4.39
+N.032,control,N,M,72h,3,52.03333333,Use,1.85
+N.033,control,N,F,72h,3,44.33333333,Use,6.395
+N.034,control,N,M,72h,3,44.63333333,Use,3.705
+N.035,control,N,F,72h,3,36.88333333,Use,7.655
+N.036,control,N,M,72h,3,63.55,Use,3.615
+N.037,control,N,F,72h,3,39.53333333,Use,7.005
+N.038,control,N,M,72h,3,47.93333333,Use,4.89
+N.039,control,N,F,72h,3,39.3,Use,11.25
+N.040,control,N,F,72h,3,42.8,Use,10.85
+N.041,control,N,F,72h,3,47.5,Use,9.53
+N.042,control,N,M,72h,3,57.3,Use,2.87
+N.043,control,N,F,72h,3,45.3,Use,3.975
+N.044,control,N,F,72h,3,45.88333333,Use,3.275
+N.045,control,N,F,72h,3,44.53333333,Use,4.935
+O.001,high temp,O,M,48h,3,54.43333333,Use,4.155
+O.002,high temp,O,M,48h,3,59.41666667,Use,5.025
+O.003,control,O,M,48h,3,59.1,Use,4.625
+O.004,high temp,O,M,48h,3,54.6,Use,4.555
+O.005,high temp,O,M,48h,3,49.53333333,Use,3.45
+O.006,high temp,O,M,72h,3,61.76666667,Use,3.945
+O.007,high temp,O,M,72h,3,46.21666667,Use,4.62
+O.008,high temp,O,M,72h,3,57.03333333,Use,4.65
+O.009,high temp,O,M,72h,3,40.41666667,Use,4.105
+O.010,high temp,O,M,72h,3,40.98333333,Use,3.775
+O.011,high temp,O,M,72h,3,58.58333333,Use,3.54
+O.012,high temp,O,M,72h,3,43.41666667,Use,4.775
+O.013,high temp,O,F,72h,3,41.45,Use,9.87
+O.014,high temp,O,M,72h,3,39.21666667,Use,4.48
+O.015,high temp,O,F,72h,3,50.5,Use,6.515
+O.016,high temp,O,M,72h,3,47.23333333,Use,4.3
+O.017,high temp,O,F,72h,3,43.5,Use,6.07
+O.018,high temp,O,M,72h,3,41.5,Use,1.515
+O.019,high temp,O,M,72h,3,42.01666667,Use,1.605
+O.020,high temp,O,F,72h,3,42.9,Use,3.82
+O.022,high temp,O,F,72h,3,51.25,Use,5.77
+O.023,high temp,O,M,72h,3,50.86666667,Use,1.795
+O.024,high temp,O,F,72h,3,42.78333333,Use,8.04
+O.025,high temp,O,M,72h,3,59.38333333,Use,3.975
+O.026,high temp,O,F,72h,3,49.63333333,Use,5.56
+O.027,high temp,O,M,72h,3,40.61666667,Use,4.185
+O.028,high temp,O,F,72h,3,44,Use,6.15
+O.029,high temp,O,M,72h,3,42.7,Remove,
+O.030,high temp,O,F,72h,3,53.01666667,Use,6.195
+O.031,high temp,O,M,72h,3,38,Use,2.795
+O.032,high temp,O,F,72h,3,47.76666667,Use,4.91
+O.033,high temp,O,M,72h,3,38.4,Use,2.785
+O.034,high temp,O,F,72h,3,53.46666667,Use,4.92
+O.035,high temp,O,M,72h,3,47.13333333,Use,4.35
+O.036,high temp,O,F,72h,3,48.65,Use,1.855
+O.037,high temp,O,M,72h,3,49.75,Use,3.415
+O.038,high temp,O,F,72h,3,38.43333333,Use,3.575
+O.039,high temp,O,F,72h,3,36.95,Use,4.75
+O.040,high temp,O,F,72h,3,49.8,Use,3.285
+O.041,high temp,O,F,72h,3,63.5,Use,2.9
+P.001,high temp,I,M,48h,3,43.93333333,Use,2.81
+P.002,high temp,P,M,48h,3,49.48333333,Use,3.585
+P.003,high temp,P,M,72h,3,44.96666667,Use,2.85
+P.004,high temp,P,M,48h,3,63.58333333,Use,4.395
+P.005,high temp,P,M,72h,3,52.83333333,Use,4.025
+P.006,high temp,I,M,72h,3,47.5,Use,4.335
+P.007,high temp,P,M,72h,3,51.98333333,Use,5.715
+P.008,high temp,P,M,72h,3,54.75,Use,4.985
+P.009,high temp,P,F,48h,3,44.01666667,Use,5.52
+P.010,high temp,P,M,48h,3,41.6,Use,4.675
+P.011,high temp,P,F,48h,3,43.4,Use,6.715
+P.012,high temp,P,F,48h,3,51.5,Use,6.28
+P.013,high temp,P,F,48h,3,41.38333333,Use,6.705
+P.014,high temp,P,F,72h,3,42.46666667,Use,5.185
+P.015,high temp,P,M,72h,3,62.36666667,Use,4.85
+P.016,high temp,P,M,72h,3,45.7,Use,4.26
+P.017,high temp,P,M,72h,3,41.51666667,Use,5.995
+P.018,high temp,P,M,72h,3,52.06666667,Use,3.835
+P.019,high temp,P,M,72h,3,64.81666667,Use,4.365
+P.020,high temp,P,M,72h,3,50.01666667,Use,6.175
+P.021,high temp,P,F,72h,3,41.98333333,Use,8.855
+P.022,high temp,P,M,72h,3,45.03333333,Use,4.98
+P.023,high temp,P,F,72h,3,36.28333333,Use,6.24
+P.024,high temp,P,M,72h,3,41.06666667,Use,3.215
+P.025,high temp,P,F,72h,3,44.28333333,Use,3.685
+P.026,high temp,P,M,72h,3,35.23333333,Use,4.54
+P.027,high temp,P,F,72h,3,49.11666667,Use,6.145
+P.028,high temp,P,M,72h,3,30.53333333,Use,3.91
+P.029,high temp,P,F,72h,3,38.35,Use,7.03
+P.030,high temp,P,M,72h,3,25.4,Use,3.215
+P.031,high temp,P,F,72h,3,39.95,Use,5
+P.032,high temp,P,M,72h,3,45.36666667,Use,3.685
+P.033,high temp,P,F,72h,3,49.4,Use,4.43
+P.034,high temp,P,M,72h,3,47.33333333,Use,2.035
+P.035,high temp,P,F,72h,3,32.01666667,Use,4.59
+P.036,high temp,P,M,72h,3,58,Use,2.405
+P.037,high temp,P,F,72h,3,36.38333333,Use,4.37
+P.038,high temp,P,M,72h,3,47.78333333,Use,2.755
+P.039,high temp,P,F,72h,3,47.05,Use,3.62
+P.040,high temp,P,F,72h,3,59.81666667,Use,3.105
+P.041,high temp,P,F,72h,3,34.9,Use,2.325
+P.042,high temp,P,F,72h,3,51.58333333,Use,4.16
+P.044,high temp,P,F,72h,3,40.95,Use,3.125
+P.045,high temp,P,F,72h,3,39.28333333,Use,2.655
+P.046,high temp,P,M,72h,3,21.81666667,Use,1.3455
+P.047,high temp,P,F,72h,3,19.78333333,Use,2.245
+P.048,high temp,P,F,72h,3,33.05,Use,4.115
+P.049,high temp,P,F,72h,3,42.28333333,Use,3.665
+P.050,high temp,P,F,72h,3,20.86666667,Use,1.78
