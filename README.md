@@ -1,12 +1,18 @@
 # ThermalSelectionExperiment
  
- ## Project Status ##
- 
- ### Reference genome assembly ###
- 
-Issue with high duplication in assembly (Busco duplication >90%)
- Running purge_haplotigs to identify and purge_haplotigs
- But only finding one peak in coverage histgoram so unsure what to set as the cutoffs. Tried: -l 1 -m 25 -h 195
- 
- Simultaneously trying to run BUSCO on just the UL assembly to see if duplication here is lower
+## Working docs 
 
+Manuscript draft: https://drive.google.com/drive/u/1/folders/1g-_LA01rpV9OrvfMQL3urrLkHcudJ0I-   
+
+## Current Status 
+
+Finalizing Illumina sequencing plan
+Final decontamination steps on reference gemome
+
+## Next steps 
+
+- Meet with committee to discuss Illumina sequencing strategy
+- Nanodrop samples
+- Library prep with Mark
+- BLAST to remove contigs not associated with BUSCO in related phyla
+- Run NCBI screen and remove flagged sequences 
