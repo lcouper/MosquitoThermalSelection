@@ -21,7 +21,7 @@ For both libraries, SMRT sequencing was performed on a Sequel II System with a 2
 # Computational 
 
 A draft genome assembly was generated using Flye, using the low and ultra low input CCS (circular consensus sequence) (see /scripts/FlyeAssembly) 
-Genome completeness was assessed using BUSCO, and haplotigs were identified and removed using purge_haplotigs (see /scripts/BUSCO and /scripts/purge_haplotigs)
+Genome completeness was assessed using BUSCO. Haplotigs were identified and removed using purge_haplotigs following the developer guidelines, including the optinal clipping step (see /scripts/BUSCO and /scripts/purge_haplotigs)
 
 
 
