@@ -1,4 +1,4 @@
-# ThermalSelectionExperiment
+# Thermal Selection Experiment
  
 ## Working docs 
 
