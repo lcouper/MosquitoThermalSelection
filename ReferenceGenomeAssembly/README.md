@@ -1,4 +1,24 @@
-# Overview of Library Prep, Sequencing, and Computational Methods
+# *Aedes sierrensis* reference genome assembly
+
+## Working docs
+    
+Methods manuscript draft: https://docs.google.com/document/d/1DryxlIHWSJ2ejzk8wqc4ki9C4e-DL1Wp0dsQgqWaTvw/edit   
+Analysis-specific docs: https://drive.google.com/drive/u/1/folders/1OJvleOux_FxsG_lPCnj9CfUMh3DjfLTv   
+
+
+## Currently working on
+
+Further decontamination steps on haplotig-purged genome (SCG: labs/emordeca/LowAndULsubreads/Aesierrensis2.clip.fasta)    
+
+## Next to do 
+
+- BLAST to remove contigs not associated with bacterial, fungal, or protozoan origin
+- NCBI contamination screen --> remove flagged sequences 
+
+
+
+
+### Overview of Library Prep, Sequencing, and Computational Methods 
 
 # Library Prep
 
