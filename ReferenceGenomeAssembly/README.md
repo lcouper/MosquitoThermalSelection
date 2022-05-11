@@ -18,9 +18,9 @@ Further decontamination steps on haplotig-purged genome (SCG: labs/emordeca/LowA
 
 
 
-### Overview of Library Prep, Sequencing, and Computational Methods 
+## Overview of Library Prep, Sequencing, and Computational Methods 
 
-# Library Prep
+### Library Prep
 
 A single adult female Ae. sierrensis collected from Corvallis, Oregon was used for this assembly. 
 DNA extraction, library prep and sequencing were conducted at the Oregon Genomics and Cell Characterization Core Facility. 
@@ -31,14 +31,14 @@ Extracted DNA was used in library preparations - one following the SMRTbell Expr
 
 Subsequent steps consisted of single-stranded overhangs, DNA damage repair, A-tailing, adaptor ligation. The low input library was then size-selected with BluePippin to omit <5kb fragments, followed by AMP purification. The ultra-low library was size-selected to omit <8kb fragments, followed by ProNex purification. Final library concentrations for the low input and ultra-low input libraries were 43.8 ng/µL and 86.8 ng/µL, respectively, and final library sizes were 14,378 bp and 11,133 bp. 
 
-# Sequencing 
+### Sequencing 
 
 Libraries were each annealed to a sequencing primer V5 bound to a Sequel II DNA polymerase using a Sequel II Binding Kit 2.2. 
 The low library was loaded onto a 8M SMRT Cell at on-plate concentration of 200 pM using diffusion loading. 
 The ultra low library was loaded onto a 8M SMRT Cell at an on-plate concentration of  150 pM using adaptive loading. 
 For both libraries, SMRT sequencing was performed on a Sequel II System with a 2 hour pre-extension time and 30 hour movie collection time.
 
-# Computational 
+### Computational 
 
 A draft genome assembly was generated using Flye, using the low and ultra low input CCS (circular consensus sequence) (see /scripts/FlyeAssembly) 
 Genome completeness was assessed using BUSCO. Haplotigs were identified and removed using purge_haplotigs following the developer guidelines, including the optinal clipping step (see /scripts/BUSCO and /scripts/purge_haplotigs)
