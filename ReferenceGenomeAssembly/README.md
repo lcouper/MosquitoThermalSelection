@@ -40,8 +40,6 @@ For both libraries, SMRT sequencing was performed on a Sequel II System with a 2
 
 ### Computational 
 
-A draft genome assembly was generated using Flye, using the low and ultra low input CCS (circular consensus sequence) (see /scripts/FlyeAssembly) 
-Genome completeness was assessed using BUSCO. Haplotigs were identified and removed using purge_haplotigs following the developer guidelines, including the optinal clipping step (see /scripts/BUSCO and /scripts/purge_haplotigs)
-
+A draft genome assembly was generated using Hifiasm with default parameters, which includes a haplotig purging step. We used the low and ultra low HiFi reads as inputs. Genome completeness was assessed using BUSCO. Chromosome-level scaffolding was performed using RagTag with the Aedes aegypti Aaeg L5 genome. 
 
 
