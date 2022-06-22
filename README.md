@@ -9,13 +9,11 @@ Mosquito body size measurement doc: https://docs.google.com/document/d/1VY7UwTbh
 
 ## Current Status 
 
-Finalizing Illumina sequencing plan
-Final decontamination steps on reference gemome
+- have reference genome assembled via HiFiasm (thanks to Tris Dodge)
 
 ## Next steps 
 
-- Meet with committee to discuss Illumina sequencing strategy
-- Nanodrop samples
-- Library prep with Mark
-- BLAST to remove contigs not associated with BUSCO in related phyla
-- Run NCBI screen and remove flagged sequences 
+- finish DNA cleanups
+- re-Qubit all samples
+- library prep
+- submit for sequencing
