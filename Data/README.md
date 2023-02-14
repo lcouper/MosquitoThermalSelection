@@ -1,7 +1,7 @@
 # Data Files Used in Analysis #
 
 ### 1. Thermal knockdown results. ### 
-File name: ThermalKnockdownExperiment_RawData.csv <br/>
+File names: ThermalKnockdownResults_AllSamples.csv, ThermalKnockdownResults_SequencedSamplesOnly.csv <br/>
 Methods details: /Protocols/ThermalKnockdownProtocol_README.md <br/>
 Scripts used for analysis:
 
