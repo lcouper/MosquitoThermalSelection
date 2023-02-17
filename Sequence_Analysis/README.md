@@ -29,7 +29,6 @@ Script: alignscaffast.sbatch
 Script: samtobam.sbatch
 
 #### 7. Sort bam file by coordinates using samtools
-<span style="color:orange;">Word up</span>  
 Script: sortbam.sbatch
 
 #### 8. Obtain summary stats about bam file 
