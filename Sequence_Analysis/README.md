@@ -40,3 +40,22 @@ samtools flagstat results/bam/P-050_scaffast.aligned.sorted.bam > results/bam/P-
 #### 9. Mark and remove duplicates using picard
 Note picard.jar was downloaded from [the Broad Institute](https://broadinstitute.github.io/picard/)
 Script: markdups.sbatch
+
+#### 10. Index de-duplicated bam files using samtools
+Script: indexbam.sbatch
+
+#### 11. Compute depth at each position of sample
+Script: computedepth.sbatch
+This creates a txt file where the second and third columns are the position and coverage, respectively.  
+To calculate the mean depth from this file 
+```
+awk 'BEGIN { total = 0; count = 0 } { total += $3; count += 1; } END { avg = total / count; print avg} ' results/bam/P-050_aligned_sorted_depth.txt
+```
+
+OR USE coverage_bcf.sbatch (determine which is better once this script finishes running)
+
+#### 12. Compute alignment statistics using bamtools
+Script: alignstats.sbatch
+
+#### 13. Detect single nucleotide variants (SNVs) using bcftools
+
