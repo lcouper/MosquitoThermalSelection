@@ -29,7 +29,7 @@ Script: alignscaffast.sbatch
 Script: samtobam.sbatch
 
 #### 7. Sort bam file by coordinates using samtools
-Script: sortbam.sbatch
+<span style="color:orange;">Word up</span>Script: sortbam.sbatch
 
 #### 8. Obtain summary stats about bam file 
 Includes % mapped
@@ -38,5 +38,5 @@ samtools flagstat results/bam/P-050_scaffast.aligned.sorted.bam > results/bam/P-
 ```
 
 #### 9. Mark and remove duplicates using picard
-Note picard.jar was downlaoded from [the Broad Institute](https://broadinstitute.github.io/picard/)
+Note picard.jar was downloaded from [the Broad Institute](https://broadinstitute.github.io/picard/)
 Script: markdups.sbatch
