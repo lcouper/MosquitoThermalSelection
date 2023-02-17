@@ -6,6 +6,13 @@ Included 470 .fastq.gz files (1 forward, 1 reverse for each of 235 samples)
 #### 2. Filter adapter and trim low quality reads using trimmomatic
 Trimmomatic V 0.39 (Bolger et al. 2014)  
 Script: trim.sbatch
+Code snippet: 
+```
+java -jar trimmomatic.jar PE E-014_S10_L001_R1_001.fastq.gz E-014_S10_L001_R2_001.fastq.gz \
+E-014_S10_L001_R1_001.trim.fastq.gz E-014_S10_L001_R1_001un.trim.fastq.gz \
+E-014_S10_L001_R2_001.trim.fastq.gz E-014_S10_L001_R2_001un.trim.fastq.gz \
+ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 MINLEN:35 SLIDINGWINDOW:4:15
+```
 
 #### 3. Perform quality check on samples using fastqc
 Script: [ NA ]
