@@ -31,7 +31,7 @@ module load bwa
 bwa index ref_genome/asierrensis.scaffolded.fasta
 ```
 #### 5. Align sample reads to reference genome using bwa
-Note: With computational resources noted in script, 1 samples took ~5 hours to run   
+Note: With computational resources noted in script, 1 sample took ~5 hours to run   
 This produes a .sam file -- a tab-delimited text file containing information for each individual read and its alignment to the genome.   
 *Script: alignreads.sbatch*  
 Relevant code snippet for single sample:
