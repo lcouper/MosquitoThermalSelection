@@ -42,40 +42,60 @@ trimmed_fastq/E-014_S10_L001_R1_001.trim.fastq trimmed_fastq/E-014_S10_L001_R3_0
 
 #### 6. Compress .sam to .bam using samtools
 .bam is the compressed binary version of .sam, and enables for more efficient processing
-Script: samtobam.sbatch
+Script: samtobam.sbatch   
 Relevant code snippet for single sample:
 ```
 samtools view -S -b results/sam/E-014.aligned.sam -o results/bam/E-014.aligned.bam
 ```
 
 #### 7. Sort bam file by coordinates using samtools
-Script: sortbam.sbatch
+Script: sortbam.sbatch    
+Relevant code snippet for single sample:
+```
+samtools sort -o results/bam/E-014.aligned.sorted.bam results/bam/E-014.aligned.bam
+```
 
 #### 8. Obtain summary stats about bam file 
-Includes % mapped
+Includes % mapped    
+Relevant code snippet for single sample:
 ```
-samtools flagstat results/bam/P-050_scaffast.aligned.sorted.bam > results/bam/P-050_scaffast.aligned.sorted.bam.stats.txt
+samtools flagstat results/bam/E-014.aligned.sorted.bam > results/bam/E-014.aligned.sorted.bam.stats.txt
 ```
 
 #### 9. Mark and remove duplicates using picard
-Note picard.jar was downloaded from [the Broad Institute](https://broadinstitute.github.io/picard/)
+Note: picard.jar was downloaded from [the Broad Institute](https://broadinstitute.github.io/picard/)
 Script: markdups.sbatch
+Relevant code snippet for single sample:
+```
+java -jar picard.jar MarkDuplicates \
+REMOVE_DUPLICATES=TRUE \
+I=results/bam/E-014.aligned.sorted.bam \
+O=results/bam/E-014.aligned.sorted.deduped.bam \
+M=results/bam/E-014_marked_dup_metrics.txt
+```
 
 #### 10. Index de-duplicated bam files using samtools
-Script: indexbam.sbatch
+Script: indexbam.sbatch  
+Relevant code snippet for single sample:
+```
+samtools index -b results/bam/E-014.aligned.sorted.deduped.bam
+```
 
 #### 11. Compute depth at each position of sample
 Script: computedepth.sbatch
 This creates a txt file where the second and third columns are the position and coverage, respectively.  
-To calculate the mean depth from this file 
+To calculate the mean depth from this file:
 ```
 awk 'BEGIN { total = 0; count = 0 } { total += $3; count += 1; } END { avg = total / count; print avg} ' results/bam/P-050_aligned_sorted_depth.txt
 ```
 
-OR USE coverage_bcf.sbatch (determine which is better once this script finishes running)
-
 #### 12. Compute alignment statistics using bamtools
-Script: alignstats.sbatch
+Note: calculates statistics including total reads, mapped reads, % failed QC, % duplicates, % paired-end reads, % singletons   
+Script: alignstats.sbatch  
+Relevant code snippet for single sample:
+```
+bamtools stats -in results/bam/E-014.aligned.sorted.deduped.bam > results/bam/E-014_aligned_sorted_AlignStats.txt
+```
 
 #### 13. Detect single nucleotide variants (SNVs) using bcftools
 
