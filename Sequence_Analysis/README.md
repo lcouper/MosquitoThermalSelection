@@ -37,7 +37,7 @@ This produes a .sam file -- a tab-delimited text file containing information for
 Relevant code snippet for single sample:
 ```
 bwa mem -t 12 ref_genome/asierrensis.scaffolded.fasta \
-trimmed_fastq/E-014_S10_L001_R1_001.trim.fastq trimmed_fastq/E-014_S10_L001_R3_001.trim.fastq > results/sam/E-014.aligned.sam
+trimmed_fastq/E-014_S10_L001_R1_001.trim.fastq trimmed_fastq/E-014_S10_L001_R2_001.trim.fastq > results/sam/E-014.aligned.sam
 ```
 
 #### 6. Compress .sam to .bam using samtools
