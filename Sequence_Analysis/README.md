@@ -5,7 +5,7 @@ Included 470 .fastq.gz files (1 forward, 1 reverse for each of 235 samples)
 
 #### 2. Filter adapter and trim low quality reads using trimmomatic
 Trimmomatic V 0.39 (Bolger et al. 2014)  
-Script: trim.sbatch   
+*Script: trim.sbatch* 
 Relevant code snippet for single sample: 
 ```
 java -jar trimmomatic.jar PE E-014_S10_L001_R1_001.fastq.gz E-014_S10_L001_R2_001.fastq.gz \
@@ -15,7 +15,7 @@ ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 MINLEN:35 SLIDINGWINDOW:
 ```
 
 #### 3. Perform quality check on samples using fastqc
-Script: fastqc.sbatch
+*Script: fastqc.sbatch*
 Relevant code snippet for single sample:
 ```
 fastqc trimmed_fastqc/*.fastq*
@@ -33,7 +33,7 @@ bwa index ref_genome/asierrensis.scaffolded.fasta
 #### 5. Align sample reads to reference genome using bwa
 Note: With computational resources noted in script, 1 samples took ~5 hours to run   
 This produes a .sam file -- a tab-delimited text file containing information for each individual read and its alignment to the genome.   
-Script: alignreads.sbatch   
+*Script: alignreads.sbatch*  
 Relevant code snippet for single sample:
 ```
 bwa mem -t 12 ref_genome/asierrensis.scaffolded.fasta \
@@ -42,14 +42,14 @@ trimmed_fastq/E-014_S10_L001_R1_001.trim.fastq trimmed_fastq/E-014_S10_L001_R3_0
 
 #### 6. Compress .sam to .bam using samtools
 .bam is the compressed binary version of .sam, and enables for more efficient processing
-Script: samtobam.sbatch   
+*Script: samtobam.sbatch*  
 Relevant code snippet for single sample:
 ```
 samtools view -S -b results/sam/E-014.aligned.sam -o results/bam/E-014.aligned.bam
 ```
 
 #### 7. Sort bam file by coordinates using samtools
-Script: sortbam.sbatch    
+*Script: sortbam.sbatch*   
 Relevant code snippet for single sample:
 ```
 samtools sort -o results/bam/E-014.aligned.sorted.bam results/bam/E-014.aligned.bam
@@ -64,7 +64,7 @@ samtools flagstat results/bam/E-014.aligned.sorted.bam > results/bam/E-014.align
 
 #### 9. Mark and remove duplicates using picard
 Note: picard.jar was downloaded from [the Broad Institute](https://broadinstitute.github.io/picard/)
-Script: markdups.sbatch
+*Script: markdups.sbatch*
 Relevant code snippet for single sample:
 ```
 java -jar picard.jar MarkDuplicates \
@@ -75,14 +75,14 @@ M=results/bam/E-014_marked_dup_metrics.txt
 ```
 
 #### 10. Index de-duplicated bam files using samtools
-Script: indexbam.sbatch  
+*Script: indexbam.sbatch*
 Relevant code snippet for single sample:
 ```
 samtools index -b results/bam/E-014.aligned.sorted.deduped.bam
 ```
 
 #### 11. Compute depth at each position of sample
-Script: computedepth.sbatch    
+*Script: computedepth.sbatch*   
 This creates a txt file where the second and third columns are the position and coverage, respectively.   
 To calculate the mean depth from this file:
 ```
@@ -91,7 +91,7 @@ awk 'BEGIN { total = 0; count = 0 } { total += $3; count += 1; } END { avg = tot
 
 #### 12. Compute alignment statistics using bamtools
 Note: calculates statistics including total reads, mapped reads, % failed QC, % duplicates, % paired-end reads, % singletons   
-Script: alignstats.sbatch  
+*Script: alignstats.sbatch* 
 Relevant code snippet for single sample:
 ```
 bamtools stats -in results/bam/E-014.aligned.sorted.deduped.bam > results/bam/E-014_aligned_sorted_AlignStats.txt
