@@ -15,7 +15,7 @@ ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 MINLEN:35 SLIDINGWINDOW:
 ```
 
 #### 3. Perform quality check on samples using fastqc
-*Script: fastqc.sbatch*
+*Script: fastqc.sbatch*    
 Relevant code snippet for single sample:
 ```
 fastqc trimmed_fastqc/*.fastq*
