@@ -6,7 +6,7 @@ Included 470 .fastq.gz files (1 forward, 1 reverse for each of 235 samples)
 #### 2. Filter adapter and trim low quality reads using trimmomatic
 Trimmomatic V 0.39 (Bolger et al. 2014)  
 Script: trim.sbatch   
-Relevant code snippet (for single sample): 
+Relevant code snippet for single sample: 
 ```
 java -jar trimmomatic.jar PE E-014_S10_L001_R1_001.fastq.gz E-014_S10_L001_R2_001.fastq.gz \
 E-014_S10_L001_R1_001.trim.fastq.gz E-014_S10_L001_R1_001un.trim.fastq.gz \
@@ -16,7 +16,7 @@ ILLUMINACLIP:TruSeq3-PE.fa:2:30:10 LEADING:3 TRAILING:3 MINLEN:35 SLIDINGWINDOW:
 
 #### 3. Perform quality check on samples using fastqc
 Script: fastqc.sbatch
-Relevant code snippet (for single sample):
+Relevant code snippet for single sample:
 ```
 fastqc trimmed_fastqc/*.fastq*
 ```
@@ -26,18 +26,27 @@ Note: only need to do this once
 Uses scaffolded *Ae. sierrensis* reference genome generated using Aedes aegypti AaegL5 genome and program RagTag (Alonge et al. 2022)   
 Code below run on Stanford SCG Genomics Cluster  
 ```
-gunzip ref_genome/asierrensis.V1.asm.bp.p_ctg.fasta_ragtag.scaffold.fasta.gz
+gunzip ref_genome/asierrensis.scaffolded.fasta.gz
 module load bwa
-bwa index ref_genome/asierrensis.V1.asm.bp.p_ctg.fasta_ragtag.scaffold.fasta
+bwa index ref_genome/asierrensis.scaffolded.fasta
 ```
 #### 5. Align sample reads to reference genome using bwa
 Note: With computational resources noted in script, 1 samples took ~5 hours to run   
-This produes a .sam file -- a tab-delimited text file containing information for each individual read and its alignment to the genome
-Script: alignscaffast.sbatch
+This produes a .sam file -- a tab-delimited text file containing information for each individual read and its alignment to the genome.   
+Script: alignreads.sbatch
+Relevant code snippet for single sample:
+```
+bwa mem -t 12 ref_genome/asierrensis.scaffolded.fasta \
+trimmed_fastq/E-014_S10_L001_R1_001.trim.fastq trimmed_fastq/E-014_S10_L001_R3_001.trim.fastq > results/sam/E-014.aligned.sam
+```
 
 #### 6. Compress .sam to .bam using samtools
 .bam is the compressed binary version of .sam, and enables for more efficient processing
 Script: samtobam.sbatch
+Relevant code snippet for single sample:
+```
+samtools view -S -b results/sam/E-014.aligned.sam -o results/bam/E-014.aligned.bam
+```
 
 #### 7. Sort bam file by coordinates using samtools
 Script: sortbam.sbatch
