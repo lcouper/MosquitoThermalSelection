@@ -75,7 +75,7 @@ M=results/bam/E-014_marked_dup_metrics.txt
 ```
 
 #### 10. Index de-duplicated bam files using samtools
-*Script: indexbam.sbatch*
+*Script: indexbam.sbatch*   
 Relevant code snippet for single sample:
 ```
 samtools index -b results/bam/E-014.aligned.sorted.deduped.bam
