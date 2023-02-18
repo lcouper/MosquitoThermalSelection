@@ -33,7 +33,7 @@ bwa index ref_genome/asierrensis.scaffolded.fasta
 #### 5. Align sample reads to reference genome using bwa
 Note: With computational resources noted in script, 1 samples took ~5 hours to run   
 This produes a .sam file -- a tab-delimited text file containing information for each individual read and its alignment to the genome.   
-Script: alignreads.sbatch
+Script: alignreads.sbatch   
 Relevant code snippet for single sample:
 ```
 bwa mem -t 12 ref_genome/asierrensis.scaffolded.fasta \
@@ -82,8 +82,8 @@ samtools index -b results/bam/E-014.aligned.sorted.deduped.bam
 ```
 
 #### 11. Compute depth at each position of sample
-Script: computedepth.sbatch
-This creates a txt file where the second and third columns are the position and coverage, respectively.  
+Script: computedepth.sbatch    
+This creates a txt file where the second and third columns are the position and coverage, respectively.   
 To calculate the mean depth from this file:
 ```
 awk 'BEGIN { total = 0; count = 0 } { total += $3; count += 1; } END { avg = total / count; print avg} ' results/bam/P-050_aligned_sorted_depth.txt
