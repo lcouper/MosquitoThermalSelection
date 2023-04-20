@@ -42,7 +42,7 @@ trimmed_fastq/E-014_S10_L001_R1_001.trim.fastq trimmed_fastq/E-014_S10_L001_R2_0
 
 #### 6. Compress .sam to .bam using samtools
 .bam is the compressed binary version of .sam, and enables for more efficient processing
-*Script: samtobam.sbatch*  
+*Script: samtobam2.sbatch*  
 Relevant code snippet for single sample:
 ```
 samtools view -S -b results/sam/E-014.aligned.sam -o results/bam/E-014.aligned.bam
