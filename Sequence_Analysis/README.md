@@ -98,4 +98,10 @@ bamtools stats -in results/bam/E-014.aligned.sorted.deduped.bam > results/bam/E-
 ```
 
 #### 13. Detect single nucleotide variants (SNVs) using bcftools
+```
+bcftools mpileup --threads 12 -f /labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/asierrensis.scaffolded.fasta -q 20 -Q 20 *.bam \
+| bcftools call --threads 12 -mv -Oz -o VCFFILE
+```
+
+
 
