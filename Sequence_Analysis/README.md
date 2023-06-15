@@ -103,6 +103,10 @@ Note: All .bam files are taken in at once, and variants are called across all. G
 bcftools mpileup --threads 12 -f /labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/asierrensis.scaffolded.fasta -q 20 -Q 20 *.bam \
 | bcftools call --threads 12 -mv -Oz -o VCFFILE
 ```
-
+#### 14. Filter SNVs using vcftools
+Discard all SNVs with QUAL < 30, Minor Allele Frequency of 0.05, Minimum Depth of 10x, and a Maximum Variant Missing of 0.75.
+```
+vcftools --gzvcf VCFFILE --maf 0.05 --minQ 30 --min-meanDP 10 --max-missing 0.75 --recode --recode-INFO-all --out subset1.vcf
+```
 
 
