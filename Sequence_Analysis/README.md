@@ -108,7 +108,7 @@ bcftools mpileup --threads 12 -f /labs/emordeca/ThermalSelectionExpSeqFiles/ref_
 Discard all SNVs with QUAL < 30, Minor Allele Frequency of 0.05, Minimum Depth of 10x, and a Maximum Variant Missing of 0.75.
 Note: when the minimum depth of 10x parameter was including (i.e., --min-meanDP 10), no sites were retained. Therefore this parameter was not included in the filtering process.
 ```
-vcftools --gzvcf VCFFILE --maf 0.05 --minQ 30 --max-missing 0.75 --recode --recode-INFO-all --out subset1.vcf
+vcftools --gzvcf VCFFILE --maf 0.05 --minQ 30 --max-missing 0.75 --minDP 10 --recode --recode-INFO-all --out subset1.vcf
 ```
 
 #### 15. Concatenate vcf files generated from sample subsets
