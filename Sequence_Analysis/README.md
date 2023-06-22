@@ -113,7 +113,14 @@ Note: when the minimum depth of 10x parameter was including (i.e., --min-meanDP 
 vcftools --gzvcf VCFFILE --maf 0.05 --minQ 30 --max-missing 0.75 --minDP 10 --recode --recode-INFO-all --out subset1.vcf
 ```
 
-#### 15. Zip
+#### 15.bgzip files
+*Script: bgzip.sbatch*
+```module load tabix
+cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_vcffiles
+for i in *.recode.vcf;do
+bgzip $i
+done
+```
 
 #### 15. Concatenate vcf files generated from sample subsets
 Note: It is import to *concatenate*, not merge these files to avoid later errors
