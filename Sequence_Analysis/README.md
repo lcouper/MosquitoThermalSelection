@@ -99,6 +99,7 @@ bamtools stats -in results/bam/E-014.aligned.sorted.deduped.bam > results/bam/E-
 
 #### 13. Detect single nucleotide variants (SNVs) using bcftools
 Note: This process takes too long to perform on all .bam files at once. Therefore, this script was run on subsets of ~20 samples at a time. Then the resulting VCFFILEs were concatenated (see step 15)
+*Script: callvariantsSx.sbatch* 
 ```
 bcftools mpileup --threads 12 -f /labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/asierrensis.scaffolded.fasta -q 20 -Q 20 *.bam \
 | bcftools call --threads 12 -mv -Oz -o VCFFILE
@@ -107,9 +108,12 @@ bcftools mpileup --threads 12 -f /labs/emordeca/ThermalSelectionExpSeqFiles/ref_
 #### 14. Filter SNVs using vcftools
 Discard all SNVs with QUAL < 30, Minor Allele Frequency of 0.05, Minimum Depth of 10x, and a Maximum Variant Missing of 0.75.
 Note: when the minimum depth of 10x parameter was including (i.e., --min-meanDP 10), no sites were retained. Therefore this parameter was not included in the filtering process.
+*Script: filterSNPs.sbatch* 
 ```
 vcftools --gzvcf VCFFILE --maf 0.05 --minQ 30 --max-missing 0.75 --minDP 10 --recode --recode-INFO-all --out subset1.vcf
 ```
+
+#### 15. Zip
 
 #### 15. Concatenate vcf files generated from sample subsets
 Note: It is import to *concatenate*, not merge these files to avoid later errors
