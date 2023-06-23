@@ -131,11 +131,17 @@ tabix $i
 done
 ```
 
-#### 17. Concatenate vcf files generated from sample subsets
-Note: It is import to *concatenate*, not merge these files to avoid later errors
-*Script: concat.sbatch*
+#### 17. Merge vcf files generated from sample subsets
+Note: I originaly tried to *concatenate*, these files using bcftools (*Script: concat.sbatch*) but got an error message saying 'Checking the headers and starting positions of 13 files
+Different number of samples in subset11.recode.vcf.gz. Perhaps "bcftools merge" is what you are looking for?'
+Now I am instead using bcftools to *merge* these files together (which may give errors later...)
+*Script: bcfmerge.sbatch*
 ```
-bcftools concat *.recode.vcf.gz -o Variants_All_Samples.vcf
+cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_vcffiles
+
+bcftools merge subset1.recode.vcf.gz subset2.recode.vcf.gz subset3.recode.vcf.gz subset4.recode.vcf.gz subset5.recode.vcf.gz subset6.recode.vcf.gz;
+subset7.recode.vcf.gz subset8.recode.vcf.gz subset9.recode.vcf.gz subset10.recode.vcf.gz subset11.recode.vcf.gz subset12.recode.vcf.gz;
+subset13.recode.vcf.gz > AllSamples_VCF.vcf
 ```
 
 
