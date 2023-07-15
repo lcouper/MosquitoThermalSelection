@@ -182,5 +182,11 @@ Obtain allele frequencies for samples using vcftools
 cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_vcffiles
 vcftools --vcf Samples1thru13_VCF_sorted.vcf --freq --out AllSamplesVariants
 ```
+#### 22. Generate allele frequency table for output to R
+*Script: af_table.sbatch*
+```
+cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_vcffiles
+bcftools query -f '%CHROM\t%POS\t%AF\n' Samples1thru13_VCF_sorted.vcf > AllSamples_AFTable.csv
+```
 
 
