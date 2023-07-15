@@ -143,6 +143,12 @@ subset13.recode.vcf.gz > Samples1thru13_VCF.vcf
 ```
 
 ### 18. Generate summary stats of the merged vcf
+Obtain allele frequencies for samples using vcftools
+*Script: vcf_summarystats.sbatch*
+```
+cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_vcffiles
+vcftools --vcf Samples1thru13_VCF.vcf --freq --out AllSamplesVariants
+```
 
 
 
