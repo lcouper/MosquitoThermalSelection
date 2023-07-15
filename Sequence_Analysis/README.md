@@ -149,7 +149,30 @@ Obtain allele frequencies for samples using vcftools
 cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_vcffiles
 vcftools --vcf Samples1thru13_VCF.vcf --freq --out AllSamplesVariants
 ```
+#### 19. Create a dictionary for reference genome using picard tools
+*Script: createdictionary.sbatch*
+```
+module load java
 
+cd /labs/emordeca/ThermalSelectionExpSeqFiles/
 
+java -jar picard.jar CreateSequenceDictionary \
+-R ref_genome/asierrensis.scaffolded.fasta \
+-O ref_genome/asierrensis.dict
+```
+
+#### 20. Sort VCF according to reference genome dictionary
+*Script: sortvcf.sbatch*
+```
+module load bwa
+module load java
+
+cd /labs/emordeca/ThermalSelectionExpSeqFiles/
+
+java -jar picard.jar SortVcf \
+-I /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_vcffiles/Samples1thru13_VCF.vcf \
+-O /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_vcffiles/Samples1thru13_VCF_sorted.vcf \
+-SD /labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/asierrensis.dict
+```
 
 
