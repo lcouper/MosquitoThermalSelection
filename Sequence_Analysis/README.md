@@ -175,4 +175,12 @@ java -jar picard.jar SortVcf \
 -SD /labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/asierrensis.dict
 ```
 
+#### 21. Generate summary stats of the merged, sorted vcf
+Obtain allele frequencies for samples using vcftools
+*Script: vcf_summarystats_sorted.sbatch*
+```
+cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_vcffiles
+vcftools --vcf Samples1thru13_VCF_sorted.vcf --freq --out AllSamplesVariants
+```
+
 
