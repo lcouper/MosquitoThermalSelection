@@ -185,7 +185,7 @@ vcftools --vcf Samples1thru13_VCF_sorted.vcf --freq --out AllSamplesVariants
 #### 22. Generate AF from AC and AN 
 Generate allele frequencies from allele counts and allele numbers using bcftools plug-in
 ```
-bcftools +fill-tags Samples1thru13_VCF_Sorted.vcf  -- -t AF
+bcftools +fill-tags Samples1thru13_VCF_sorted.vcf -o AllSamples_Sorted_WithAF.vcf -- -t AF
 ```
 
 #### 23. Generate allele frequency table for output to R
