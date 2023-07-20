@@ -186,10 +186,22 @@ Generate allele frequencies from allele counts and allele numbers using bcftools
 bcftools +fill-tags Samples1thru13_VCF_sorted.vcf -o AllSamples_Sorted_WithAF.vcf -- -t AF
 ```
 
-#### 23. Generate allele frequency table for output to R
-*Script: af_table.sbatch*
+#### 23. Generate and output the genotype matrix using GATK
+*Script: genotype_table_gatk.sbatch*
 ```
-bcftools query -f '%CHROM\t%POS\t%AF\n' Samples1thru13_VCF_sorted.vcf > AllSamples_AFTable.csv
+module load bwa
+module load legacy/.base
+module load legacy/scg4
+module load java/8u66
+module load gatk/4.0.10.0
+
+cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_vcffiles
+
+gatk VariantsToTable \
+     -V AllSamples_Sorted_WithAF.vcf \
+        --split-multi-allelic TRUE \
+     -F CHROM -F POS -F REF -F ALT -F AF -F AD -GF GT -GF PL \
+     -O output.table
 ```
 
 
