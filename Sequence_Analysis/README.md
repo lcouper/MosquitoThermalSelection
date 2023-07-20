@@ -1,3 +1,4 @@
+
 # Sequence Analysis Workflow 
 
 #### 1. Obtained raw reads from Stanford Genomic Sequencing Center   
@@ -118,15 +119,13 @@ done
 *Script: indexvcf.sbatch*
 ```module load tabix
 cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/Unfiltered_VCFs_FromSubsets
-for i in *.vcf.gz;do
+for i in *.gz;do
 tabix $i
 done
 ```
 
 
-
-
-#### 14. Merge vcf files generated from sample subsets
+#### 16. Merge vcf files generated from sample subsets
 Note: merging, rather than concatenating is appropriate here since the vcf subsets were from different samples, not different portions of the genome.
 *Script: bcfmergeAll.sbatch*
 ```
@@ -134,49 +133,7 @@ cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/Unfiltere
 bcftools merge Unfiltered_VCF_* > Unfiltered_VCF_All.vcf
 ```
 
-
-
-
-
-
-
-
-# Redoing from here
-
-#### 14. Filter SNVs using vcftools
-Discard all SNVs with QUAL < 30, Minor Allele Frequency of 0.05, Minimum Depth of 10x, and a Maximum Variant Missing of 0.75.
-Note: when the minimum depth of 10x parameter was including (i.e., --min-meanDP 10), no sites were retained. Therefore this parameter was not included in the filtering process.
-*Script: filterSNPs.sbatch* 
-```
-vcftools --gzvcf VCFFILE --maf 0.05 --minQ 30 --max-missing 0.75 --minDP 10 --recode --recode-INFO-all --out subset1.vcf
-```
-
-#### 15. bgzip files
-*Script: bgzip.sbatch*
-```module load tabix
-cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_vcffiles
-for i in *.recode.vcf;do
-bgzip $i
-done
-```
-
-#### 16. Generate index for all vcf files
-*Script: indexvcf.sbatch*
-```module load tabix
-cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_vcffiles
-for i in *.vcf.gz;do
-tabix $i
-done
-```
-
-#### 18. Filter merged file based on maf and minDP
-Note: merging process shifted allele frequencies, so need to re-filter. 
-*Script: filterSNPs2.sbatch*
-```
-vcftools --vcf AllSamples_Sorted_WithAF.vcf --maf 0.05 --minDP 10 --recode --recode-INFO-all --out AllSamples_FinalSorted.vcf
-```
-
-#### 19. Create a dictionary for reference genome using picard tools
+#### 17. Create a dictionary for reference genome using picard tools
 *Script: createdictionary.sbatch*
 ```
 module load java
@@ -188,7 +145,7 @@ java -jar picard.jar CreateSequenceDictionary \
 -O ref_genome/asierrensis.dict
 ```
 
-#### 20. Sort VCF according to reference genome dictionary
+#### 18. Sort VCF according to reference genome dictionary
 *Script: sortvcf.sbatch*
 ```
 module load bwa
@@ -202,38 +159,23 @@ java -jar picard.jar SortVcf \
 -SD /labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/asierrensis.dict
 ```
 
-#### 21. Generate summary stats of the merged, sorted vcf
-Obtain allele frequencies for samples using vcftools
-*Script: vcf_summarystats_sorted.sbatch*
+#### 19. Filter SNVs using vcftools
+Discard all SNVs with QUAL < 30, Minor Allele Frequency of 0.05, Minimum Depth of 10x, and a Maximum Variant Missing of 0.75.
+*Script: filterSNPs.sbatch* 
 ```
-vcftools --vcf Samples1thru13_VCF_sorted.vcf --freq --out AllSamplesVariants
-```
-
-#### 22. Generate AF from AC and AN 
-Generate allele frequencies from allele counts and allele numbers using bcftools plug-in
-```
-bcftools +fill-tags Samples1thru13_VCF_sorted.vcf -o AllSamples_Sorted_WithAF.vcf -- -t AF
+vcftools --gzvcf VCFFILE --maf 0.05 --minQ 30 --max-missing 0.75 --minDP 10 --recode --recode-INFO-all --out subset1.vcf
 ```
 
-#### 23. Generate and output the genotype matrix using GATK
-Note: Use GATK’s VariantsToTable function to create a tab-delimited text file. Each row is a SNP, each column is a sample. https://gatk.broadinstitute.org/hc/en-us/articles/360036711531-VariantsToTable  
+#### 20. Generate genotype matrix using vcftools
+https://vcftools.sourceforge.net/man_latest.html
+Look at —012 
 
+#### 21. Remove mutli-allelic sites 
+bcftools view --max-alleles 2 --exclude-types indels input.vcf.gz
+https://www.biostars.org/p/141156/
 
-*Script: genotype_table_gatk.sbatch*
-```
-module load bwa
-module load legacy/.base
-module load legacy/scg4
-module load java/8u66
-module load gatk/4.0.10.0
+## See how many SNPs are maintained.
 
-cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_vcffiles
-
-gatk VariantsToTable \
-     -V AllSamples_Sorted_WithAF.vcf \
-        --split-multi-allelic TRUE \
-     -F CHROM -F POS -F REF -F ALT -F AF -F AD -GF GT -GF PL \
-     -O output.table
-```
+## At this point: follow-up with Mark. Create summary table of replicate / sample numbers 
 
 
