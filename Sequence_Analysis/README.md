@@ -105,6 +105,44 @@ bcftools mpileup --threads 12 -f /labs/emordeca/ThermalSelectionExpSeqFiles/ref_
 | bcftools call --threads 12 -mv -Oz -o VCFFILE
 ```
 
+#### 14. bgzip files
+*Script: bgzip.sbatch*
+```module load tabix
+cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/Unfiltered_VCFs_FromSubsets
+for i in Unfiltered_*;do
+bgzip $i
+done
+```
+
+#### 15. Generate index for all vcf files
+*Script: indexvcf.sbatch*
+```module load tabix
+cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/Unfiltered_VCFs_FromSubsets
+for i in *.vcf.gz;do
+tabix $i
+done
+```
+
+
+
+
+#### 14. Merge vcf files generated from sample subsets
+Note: merging, rather than concatenating is appropriate here since the vcf subsets were from different samples, not different portions of the genome.
+*Script: bcfmergeAll.sbatch*
+```
+cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/Unfiltered_VCFs_FromSubsets
+bcftools merge Unfiltered_VCF_* > Unfiltered_VCF_All.vcf
+```
+
+
+
+
+
+
+
+
+# Redoing from here
+
 #### 14. Filter SNVs using vcftools
 Discard all SNVs with QUAL < 30, Minor Allele Frequency of 0.05, Minimum Depth of 10x, and a Maximum Variant Missing of 0.75.
 Note: when the minimum depth of 10x parameter was including (i.e., --min-meanDP 10), no sites were retained. Therefore this parameter was not included in the filtering process.
@@ -129,15 +167,6 @@ cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_
 for i in *.vcf.gz;do
 tabix $i
 done
-```
-
-#### 17. Merge vcf files generated from sample subsets
-Note: merging, rather than concatenating is appropriate here since the vcf subsets were from different samples, not different portions of the genome.
-*Script: bcfmergeAll.sbatch*
-```
-bcftools merge subset1.recode.vcf.gz subset2.recode.vcf.gz subset3.recode.vcf.gz subset4.recode.vcf.gz subset5.recode.vcf.gz subset6.recode.vcf.gz;
-subset7.recode.vcf.gz subset8.recode.vcf.gz subset9.recode.vcf.gz subset10.recode.vcf.gz subset11.recode.vcf.gz subset12.recode.vcf.gz;
-subset13.recode.vcf.gz > Samples1thru13_VCF.vcf
 ```
 
 #### 18. Filter merged file based on maf and minDP
