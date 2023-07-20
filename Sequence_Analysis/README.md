@@ -135,8 +135,6 @@ done
 Note: merging, rather than concatenating is appropriate here since the vcf subsets were from different samples, not different portions of the genome.
 *Script: bcfmergeAll.sbatch*
 ```
-cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_vcffiles
-
 bcftools merge subset1.recode.vcf.gz subset2.recode.vcf.gz subset3.recode.vcf.gz subset4.recode.vcf.gz subset5.recode.vcf.gz subset6.recode.vcf.gz;
 subset7.recode.vcf.gz subset8.recode.vcf.gz subset9.recode.vcf.gz subset10.recode.vcf.gz subset11.recode.vcf.gz subset12.recode.vcf.gz;
 subset13.recode.vcf.gz > Samples1thru13_VCF.vcf
@@ -146,7 +144,6 @@ subset13.recode.vcf.gz > Samples1thru13_VCF.vcf
 Obtain allele frequencies for samples using vcftools
 *Script: vcf_summarystats.sbatch*
 ```
-cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_vcffiles
 vcftools --vcf Samples1thru13_VCF.vcf --freq --out AllSamplesVariants
 ```
 #### 19. Create a dictionary for reference genome using picard tools
@@ -179,7 +176,6 @@ java -jar picard.jar SortVcf \
 Obtain allele frequencies for samples using vcftools
 *Script: vcf_summarystats_sorted.sbatch*
 ```
-cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_vcffiles
 vcftools --vcf Samples1thru13_VCF_sorted.vcf --freq --out AllSamplesVariants
 ```
 #### 22. Generate AF from AC and AN 
@@ -191,7 +187,6 @@ bcftools +fill-tags Samples1thru13_VCF_sorted.vcf -o AllSamples_Sorted_WithAF.vc
 #### 23. Generate allele frequency table for output to R
 *Script: af_table.sbatch*
 ```
-cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_vcffiles
 bcftools query -f '%CHROM\t%POS\t%AF\n' Samples1thru13_VCF_sorted.vcf > AllSamples_AFTable.csv
 ```
 
