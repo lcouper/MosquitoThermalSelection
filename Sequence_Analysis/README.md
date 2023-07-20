@@ -179,6 +179,7 @@ Obtain allele frequencies for samples using vcftools
 ```
 vcftools --vcf Samples1thru13_VCF_sorted.vcf --freq --out AllSamplesVariants
 ```
+
 #### 22. Generate AF from AC and AN 
 Generate allele frequencies from allele counts and allele numbers using bcftools plug-in
 ```
