@@ -140,12 +140,13 @@ subset7.recode.vcf.gz subset8.recode.vcf.gz subset9.recode.vcf.gz subset10.recod
 subset13.recode.vcf.gz > Samples1thru13_VCF.vcf
 ```
 
-#### 18. Generate summary stats of the merged vcf
-Obtain allele frequencies for samples using vcftools
-*Script: vcf_summarystats.sbatch*
+#### 18. Filter merged file based on maf and minDP
+Note: merging process shifted allele frequencies, so need to re-filter. 
+*Script: filterSNPs2.sbatch*
 ```
-vcftools --vcf Samples1thru13_VCF.vcf --freq --out AllSamplesVariants
+vcftools --vcf AllSamples_Sorted_WithAF.vcf --maf 0.05 --minDP 10 --recode --recode-INFO-all --out AllSamples_FinalSorted.vcf
 ```
+
 #### 19. Create a dictionary for reference genome using picard tools
 *Script: createdictionary.sbatch*
 ```
