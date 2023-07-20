@@ -187,6 +187,9 @@ bcftools +fill-tags Samples1thru13_VCF_sorted.vcf -o AllSamples_Sorted_WithAF.vc
 ```
 
 #### 23. Generate and output the genotype matrix using GATK
+Note: Use GATK’s VariantsToTable function to create a tab-delimited text file. Each row is a SNP, each column is a sample. https://gatk.broadinstitute.org/hc/en-us/articles/360036711531-VariantsToTable  
+
+
 *Script: genotype_table_gatk.sbatch*
 ```
 module load bwa
