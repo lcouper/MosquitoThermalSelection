@@ -1,4 +1,3 @@
-
 # Sequence Analysis Workflow 
 
 #### 1. Obtained raw reads from Stanford Genomic Sequencing Center   
@@ -106,26 +105,28 @@ bcftools mpileup --threads 12 -f /labs/emordeca/ThermalSelectionExpSeqFiles/ref_
 | bcftools call --threads 12 -mv -Oz -o VCFFILE
 ```
 
-#### 14. bgzip files
+#### 14. First pass filter SNVs using vcftools
+For each subset, discard all SNVs with QUAL < 30
+*Script: filterSNPs.sbatch* 
+```
+vcftools --gzvcf VCFFILE --minQ 30 --recode --recode-INFO-all --out subset1.vcf
+```
+
+#### 15. bgzip files
 *Script: bgzip.sbatch*
 ```module load tabix
-cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/Unfiltered_VCFs_FromSubsets
-for i in Unfiltered_*;do
-bgzip $i
-done
+cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/subset1
+bgzip *.vcf
 ```
 
-#### 15. Generate index for all vcf files
+#### 16. Generate index for all vcf files
 *Script: indexvcf.sbatch*
 ```module load tabix
-cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/Unfiltered_VCFs_FromSubsets
-for i in *.gz;do
-tabix $i
-done
+cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/subset1
+tabix *.vcf
 ```
 
-
-#### 16. Merge vcf files generated from sample subsets
+#### 17. Merge vcf files generated from sample subsets
 Note: merging, rather than concatenating is appropriate here since the vcf subsets were from different samples, not different portions of the genome.
 *Script: bcfmergeAll.sbatch*
 ```
