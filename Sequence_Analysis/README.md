@@ -160,12 +160,13 @@ java -jar picard.jar SortVcf \
 -SD /labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/asierrensis.dict
 ```
 
-#### 19. Filter SNVs using vcftools
+#### 20. Filter SNVs using vcftools
 Discard all SNVs with QUAL < 30, Minor Allele Frequency of 0.05, Minimum Depth of 10x, and a Maximum Variant Missing of 0.75.
 *Script: filterSNPs_round2.sbatch* 
 ```
 vcftools --vcf Unfiltered_VCF_All_sorted.vcf --maf 0.05 --minQ 30 --max-missing 0.75 --minDP 10 --recode --recode-INFO-all --out Filtered_VCF_All_sorted.vcf
 ```
+*After filtering, kept 29450895 out of a possible 139539046 Sites*
 
 #### 20. Generate genotype matrix using vcftools
 https://vcftools.sourceforge.net/man_latest.html
