@@ -130,11 +130,11 @@ tabix *.vcf
 Note: merging, rather than concatenating is appropriate here since the vcf subsets were from different samples, not different portions of the genome.
 *Script: bcfmergeAll.sbatch*
 ```
-cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/Unfiltered_VCFs_FromSubsets
-bcftools merge Unfiltered_VCF_* > Unfiltered_VCF_All.vcf
+cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/initialfilter_vcffiles/
+bcftools merge *.vcf.gz > Unfiltered_VCF_All.vcf
 ```
 
-#### 17. Create a dictionary for reference genome using picard tools
+#### 18. Create a dictionary for reference genome using picard tools
 *Script: createdictionary.sbatch*
 ```
 module load java
@@ -146,7 +146,7 @@ java -jar picard.jar CreateSequenceDictionary \
 -O ref_genome/asierrensis.dict
 ```
 
-#### 18. Sort VCF according to reference genome dictionary
+#### 19. Sort VCF according to reference genome dictionary
 *Script: sortvcf.sbatch*
 ```
 module load bwa
@@ -155,8 +155,8 @@ module load java
 cd /labs/emordeca/ThermalSelectionExpSeqFiles/
 
 java -jar picard.jar SortVcf \
--I /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_vcffiles/Samples1thru13_VCF.vcf \
--O /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_vcffiles/Samples1thru13_VCF_sorted.vcf \
+-I /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/initialfilter_vcffiles/Unfiltered_VCF_All.vcf \
+-O /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/initialfilter_vcffiles/Unfiltered_VCF_All_sorted.vcf \
 -SD /labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/asierrensis.dict
 ```
 
