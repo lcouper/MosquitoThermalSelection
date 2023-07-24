@@ -180,6 +180,9 @@ Note, this outputs 3 files: ‘.012’ contains the genotypes of each individual
 vcftools --012 --vcf Filtered_VCF_All_sorted_indexed_bialleliconly.vcf --out output_geno.vcf
 ```
 
-
-
+#### 23. Count number of biallelic sites 
+```
+wc -l output_geno.vcf.012.pos
+```
+27151271 biallelic sites
 
