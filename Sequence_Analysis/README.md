@@ -174,11 +174,12 @@ Keep only bi-allelic sites for downstream analysis
 bcftools view -m2 -M2 -v snps Filtered_VCF_All_sorted_indexed.vcf > Filtered_VCF_All_sorted_indexed_bialleliconly.vcf
 ```
 
-
 #### 22. Generate genotype matrix using vcftools
-https://vcftools.sourceforge.net/man_latest.html
-Look at —012 
+Note, this outputs 3 files: ‘.012’ contains the genotypes of each individual on a separate line (with 0, 1, 2 denoting the number of non-reference alleles at the site), ‘.ind’ lists the individuals included in the main file, ‘.pos’ details the site location included in the main file. 
+```
+vcftools --012 --vcf Filtered_VCF_All_sorted_indexed_bialleliconly.vcf --out output_geno.vcf
+```
 
-## At this point: follow-up with Mark. Create summary table of replicate / sample numbers 
+
 
 
