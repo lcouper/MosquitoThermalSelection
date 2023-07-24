@@ -168,15 +168,16 @@ vcftools --vcf Unfiltered_VCF_All_sorted.vcf --maf 0.05 --minQ 30 --max-missing 
 ```
 *After filtering, kept 29450895 out of a possible 139539046 Sites*
 
-#### 20. Generate genotype matrix using vcftools
+#### 21. Remove mutli-allelic sites 
+Keep only bi-allelic sites for downstream analysis
+```
+bcftools view -m2 -M2 -v snps Filtered_VCF_All_sorted_indexed.vcf > Filtered_VCF_All_sorted_indexed_bialleliconly.vcf
+```
+
+
+#### 22. Generate genotype matrix using vcftools
 https://vcftools.sourceforge.net/man_latest.html
 Look at —012 
-
-#### 21. Remove mutli-allelic sites 
-bcftools view --max-alleles 2 --exclude-types indels input.vcf.gz
-https://www.biostars.org/p/141156/
-
-## See how many SNPs are maintained.
 
 ## At this point: follow-up with Mark. Create summary table of replicate / sample numbers 
 
