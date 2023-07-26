@@ -186,5 +186,5 @@ vcftools --012 --vcf Filtered_VCF_All_sorted_indexed_bialleliconly.vcf --out out
 ```
 wc -l output_geno.vcf.012.pos
 ```
-27151271 biallelic sites
+26723150 biallelic sites
 
