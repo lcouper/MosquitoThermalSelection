@@ -166,16 +166,18 @@ Discard all SNVs with QUAL < 30, Minor Allele Frequency of 0.05, Minimum Depth o
 ```
 vcftools --vcf Unfiltered_VCF_All_sorted.vcf --maf 0.05 --minQ 30 --max-missing 0.75 --minDP 10 --recode --recode-INFO-all --out Filtered_VCF_All_sorted.vcf
 ```
-*After filtering, kept 29450895 out of a possible 139539046 Sites*
+*After filtering, kept 28989448 out of a possible 140426729 Sites*
 
 #### 21. Remove mutli-allelic sites 
 Keep only bi-allelic sites for downstream analysis
+*Script: biallelic_only.sbatch*
 ```
 bcftools view -m2 -M2 -v snps Filtered_VCF_All_sorted_indexed.vcf > Filtered_VCF_All_sorted_indexed_bialleliconly.vcf
 ```
 
 #### 22. Generate genotype matrix using vcftools
 Note, this outputs 3 files: ‘.012’ contains the genotypes of each individual on a separate line (with 0, 1, 2 denoting the number of non-reference alleles at the site), ‘.ind’ lists the individuals included in the main file, ‘.pos’ details the site location included in the main file. 
+*Script: genotype_matrix.sbatch*
 ```
 vcftools --012 --vcf Filtered_VCF_All_sorted_indexed_bialleliconly.vcf --out output_geno.vcf
 ```
