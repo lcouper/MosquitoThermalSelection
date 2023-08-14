@@ -79,19 +79,19 @@ colnames(datasub)[outliers]
 However it requires the q-value package, which I can not seem to install for the life of me
 Will try doing this on new laptop next week*
 
-## 4. LFMM anaysis to detect SNPs associated with longer knockdown times 
+## 4. Detect SNPs associated with longer knockdown times 
 
 Goal = identify SNPs associated with longer knockdown time (i.e., greater heat tolerance) *within* a given treatment, while also controlling for variation in sex and body size
 i.e.:
 
 ![Screen Shot 2023-08-14 at 3 31 48 PM](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/8a296d4a-e41a-475e-ae14-84dae1df4bd8)
 
-*I'm not sure of the proper way to do this. My attempt so far is below (but I don’t think this is correct)*
+*I'm not sure of the proper way to do this. My attempt so far, using LFMM, is below (but I don’t think this is correct)*
 
 ```
 # LFMM analysis to detect SNPs associated with longer KD time
 
-# tutorial from here: https://cran.r-project.org/web/packages/lfmm/vignettes/lfmm.html
+# following tutorial from here: https://cran.r-project.org/web/packages/lfmm/vignettes/lfmm.html
 library(lfmm)
 library(scales)
 library(dplyr)
