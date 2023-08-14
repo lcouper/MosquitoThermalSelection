@@ -14,9 +14,9 @@ screetest <- pcadapt(input=pcadata,K=20) # K = # of principal components to reta
 plot(screetest,option="screeplot") # Looks like ~5 is the correct number to retian
 x = pcadapt(input= pcadata, K=5)
 ```
-<p align="center">
+
 ![Screeplot](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/ec6cc449-75e7-40a5-8d54-63c513fef785)
-  </p>   
+
   
 
 
