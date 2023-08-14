@@ -118,7 +118,7 @@ colnames(datasub)[outliers2]
 ```
 Next, I would identify if there are any overlaps in SNPs identified by LFMM and the outlier SNPs between treatment and control (no overlap so far, using data subset)
 
-Manhattan-ish plot, visualizing significant SNPs in this model
+Manhattan-ish plot, visualizing SNP significance from this model
 ```
 plot(-log10(pvalues), pch = 19, cex = .8, 
      xlab = "SNP", ylab = "-Log P", col = "grey")
