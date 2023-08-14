@@ -1,3 +1,4 @@
-## Analysis of sequence data occuring after genotype matrix was generated 
+## Downstream sequence analysis
+*Pertains to analysis performed in R, after genotype matrix was created*
 
 1. Center 
