@@ -15,7 +15,6 @@ plot(screetest,option="screeplot") # Looks like ~5 is the correct number to reti
 x = pcadapt(input= pcadata, K=5)
 ```
 <p align="center">
-  <img width="700">
 ![Screeplot](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/ec6cc449-75e7-40a5-8d54-63c513fef785)
   </p>   
   
