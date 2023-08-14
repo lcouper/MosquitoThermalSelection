@@ -67,8 +67,13 @@ plot(x,option="manhattan") + theme_bw()
 Adjust p-values for multiple testing
 ```
 padjusted = p.adjust(x$pvalues, method = "fdr")
-outliers = which(padjusted < 0.01) 
-# Here, identified 6 significant SNPs at alpha = 0.01
+```
+Identify outliers
+```
+outliers = which(padjusted < 0.01)
+```
+Here, identified 6 significant SNPs at alpha = 0.01
+```
 colnames(datasub)[outliers]
 [1] "V1038779" "V167436"  "V457915"  "V1096118" "V69628"   "V460604"
 ```
