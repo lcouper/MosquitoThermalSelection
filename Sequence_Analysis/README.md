@@ -170,7 +170,7 @@ vcftools --vcf Unfiltered_VCF_All_sorted.vcf --maf 0.05 --minQ 30 --max-missing 
 
 #### 21. Remove mutli-allelic sites 
 Keep only bi-allelic sites for downstream analysis
-*Script: biallelic_only.sbatch*
+*Script: biallelic_only_0.98.sbatch*
 ```
 bcftools view -m2 -M2 -v snps Filtered_VCF_All_sorted_indexed.vcf > Filtered_VCF_All_sorted_0.98_bialleliconly.vcf
 ```
