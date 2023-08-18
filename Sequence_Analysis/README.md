@@ -183,3 +183,9 @@ Note, this outputs 3 files: ‘.012’ contains the genotypes of each individual
 vcftools --012 --vcf Filtered_VCF_All_sorted_indexed_bialleliconly.vcf --out output_geno.vcf
 ```
 
+#### 23. Calculate Fst between control and heat-selected groups 
+Note: 'population 1' = control, 'population 2' = heat-selected
+*Script: Fst_calc.sbatch*
+```
+vcftools --vcf Filtered_VCF_All_sorted_0.98_bialleliconly.vcf --weir-fst-pop population_1.txt --weir-fst-pop population_2.txt --out pop1_vs_pop2
+```
