@@ -88,7 +88,8 @@ Fstdata = read.delim("Fst_estimates_VCFtools/Fst_estimates_controlvsheat_vcftool
 colnames(Fstdata) = c("Chrom", "SNP", "WeirFst")
 hist(Fstdata$WeirFst)
 ```
-![Fstplot](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/e82b0727-a32f-4612-ba63-63b4ead7b967)
+![Fstvaldist](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/9a670d8d-f6f8-4f8b-a4ae-40b644f8bed2)
+
 
 Detect outliers as those exceeding 99.9th% percentile.  
 Note: following methods here: https://speciationgenomics.github.io/per_site_Fst/
