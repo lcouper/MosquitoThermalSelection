@@ -112,7 +112,6 @@ hist(fst$FST, breaks = 50)
 
 ![Fstdist_method2](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/2327fa5f-fc2c-43bc-96b2-8e8de6a49d60)
 
-**Note differences in Fst distribution when using these two methods**
 
 Identify statistical outliers using Chi-Squared distribution
 
