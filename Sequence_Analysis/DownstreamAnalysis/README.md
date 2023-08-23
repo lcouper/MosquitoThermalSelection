@@ -113,13 +113,6 @@ hist(fst$FST, breaks = 50)
 ![Fstdist_method2](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/2327fa5f-fc2c-43bc-96b2-8e8de6a49d60)
 
 
-Identify statistical outliers using Chi-Squared distribution
-
-```
-# Estimate Fst using OutFLANK
-fst = MakeDiploidFSTMat(datasub, locusNames = 1:ncol(datasub), popNames = data$Treatment)
-hist(fst$FST, breaks = 50, xlab = "Fst", ylab = "", main = "Fst value distribution: Method 2")
-```
 ![Fstdist_method2](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/0c1df2cd-57be-4d56-8273-c3297fb3564c)
 
 
