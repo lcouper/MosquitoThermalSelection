@@ -90,7 +90,7 @@ hist(Fstdata$WeirFst)
 ```
 ![Fstplot](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/e82b0727-a32f-4612-ba63-63b4ead7b967)
 
-Detect outliers as those exceeding 99.9th% percentile
+Detect outliers as those exceeding 99.9th% percentile.  
 Note: following methods here: https://speciationgenomics.github.io/per_site_Fst/
 
 ```
