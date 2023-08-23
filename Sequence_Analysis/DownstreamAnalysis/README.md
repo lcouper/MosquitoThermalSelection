@@ -80,8 +80,11 @@ colnames(datasub)[outliers]
 
 ## 3. Use Fst to detect outliers
 
-Note: We are using the Fst values generated through vcftools (see step 23 of Seqeuence Analysis)
-This includes all SNPs (not just the subset)
+Note: This includes all SNPs (not just the subset)
+
+### Method 1: Using Fst values generated through vcftools 
+
+See step 23 of Seqeuence Analysis for vcftools Fst call
 
 ```
 Fstdata = read.delim("Fst_estimates_VCFtools/Fst_estimates_controlvsheat_vcftools.txt")
@@ -89,7 +92,6 @@ colnames(Fstdata) = c("Chrom", "SNP", "WeirFst")
 hist(Fstdata$WeirFst)
 ```
 ![Fstvaldist](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/9a670d8d-f6f8-4f8b-a4ae-40b644f8bed2)
-
 
 Detect outliers as those exceeding 99.9th% percentile.  
 Note: following methods here: https://speciationgenomics.github.io/per_site_Fst/
@@ -100,6 +102,10 @@ fst <- Fstdata %>% mutate(outlier = ifelse(Fstdata$WeirFst > my_threshold, "outl
 length(which(fst$outlier == "outlier")) # identifies 1204 SNPs
 ```
 ![Fstplot_man](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/bfe65f29-6724-44a1-80f1-3bc636e654cc)
+
+### Method 2: Using OutFLANK R package 
+
+
 
 
 
