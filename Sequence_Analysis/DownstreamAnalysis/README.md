@@ -112,10 +112,6 @@ hist(fst$FST, breaks = 50)
 
 ![Fstdist_method2](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/2327fa5f-fc2c-43bc-96b2-8e8de6a49d60)
 
-
-![Fstdist_method2](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/0c1df2cd-57be-4d56-8273-c3297fb3564c)
-
-
 Identify statistical outliers based on chi-squared distribution
 ```
 out1 <- OutFLANK(fst,NumberOfSamples = 2) # NumberOfSamples = number of populations
