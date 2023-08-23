@@ -80,7 +80,7 @@ colnames(datasub)[outliers]
 
 ## 3. Use Fst to detect outliers
 
-Note: This includes all SNPs (not just the subset)
+Note: Method 1 currently includes all SNPs, while method 2 uses only the 100 SNPs in the data subset so they are not directly comparable. Perhaps use both approaches in final analysis and retain SNPs identified through both methods?
 
 ### Method 1: Using Fst values generated through vcftools 
 
@@ -115,6 +115,42 @@ hist(fst$FST, breaks = 50)
 **Note differences in Fst distribution when using these two methods**
 
 Identify statistical outliers using Chi-Squared distribution
+
+```
+# Estimate Fst using OutFLANK
+fst = MakeDiploidFSTMat(datasub, locusNames = 1:ncol(datasub), popNames = data$Treatment)
+hist(fst$FST, breaks = 50, xlab = "Fst", ylab = "", main = "Fst value distribution: Method 2")
+```
+![Fstdist_method2](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/0c1df2cd-57be-4d56-8273-c3297fb3564c)
+
+
+Identify statistical outliers based on chi-squared distribution
+```
+out1 <- OutFLANK(fst,NumberOfSamples = 2) # NumberOfSamples = number of populations
+hist(out1$results$pvaluesRightTail) # Note: with this datasubset, pvalues are not uniformly distributed
+# Plot observed Fst distribution with chi-squared fit
+OutFLANKResultsPlotter(out1, withOutliers = TRUE,
+                       NoCorr = TRUE, Hmin = 0.1, binwidth = 0.001, Zoom =
+                       FALSE, RightZoomFraction = 0.05, titletext = NULL)
+```
+![Rplot_fst](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/8b85d612-3f5c-4fa1-b2eb-bf51dfba6b5f)
+
+```
+# Find statistical outliers
+P1 <- pOutlierFinderChiSqNoCorr(fst,Fstbar=OF$FSTNoCorrbar,
+      dfInferred=OF$dfInferred,qthreshold=0.05,Hmin=0.1)
+
+# Which have q-values < 0.05
+outliers <- which(P1$OutlierFlag==TRUE)
+colnames(datasub)[outliers] # identified one SNP: V200615
+
+# Create manhattan plot with outlier SNPs
+plot(P1$LocusName,P1$FST,xlab="SNP Position",ylab="FST",col=rgb(0,0,0,alpha=0.3), 
+     pch = 16)
+points(P1$LocusName[outliers],P1$FST[outliers],col="red", pch = 16)
+```
+
+![Rplot_Fstoutiler](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/ab4e819a-52be-490a-8658-43f3e2962af0)
 
 
 
