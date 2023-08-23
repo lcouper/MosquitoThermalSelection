@@ -104,51 +104,23 @@ length(which(fst$outlier == "outlier")) # identifies 1204 SNPs
 
 ## 4. Detect SNPs associated with longer knockdown times 
 
-Goal = identify SNPs associated with longer knockdown time (i.e., greater heat tolerance) *within* a given treatment, while also controlling for variation in sex and body size
-i.e.:
-
-![Screen Shot 2023-08-14 at 3 31 48 PM](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/8a296d4a-e41a-475e-ae14-84dae1df4bd8)
-
-*I'm not sure of the proper way to do this. My attempt so far, using LFMM, is below (but I don’t think this is correct)*
+Identifies SNPs associated with longer knockdown time (i.e., greater heat tolerance) while controlling for treatment group and sex
 
 ```
-# LFMM analysis to detect SNPs associated with longer KD time
+# Combine relevant metadata and genotype matrix into dataframe
+df = cbind(metadata[,c(8,2,4)], datasub)
+df$Treatment = as.factor(df$Treatment)
+df$Sex = as.factor(df$Sex)
 
-# following tutorial from here: https://cran.r-project.org/web/packages/lfmm/vignettes/lfmm.html
-library(lfmm)
-library(scales)
-library(dplyr)
+# Run model KD time ~ genotype matrix + Treatment + Sex (not using body size for now) 
+model = lm(Kdtime ~ ., data = df)
 
-# create genotype and phenotype matrices
-Y2 = datasub
-X2kd_unscaled = data$Kdtime
-X2kd = as.numeric(scale(X2kd_unscaled, center = TRUE, scale = TRUE))
-X2treat = as.numeric(recode(data$Treatment,  "control" = '1',"high temp" = '2'))
-X2sex = as.numeric(recode(data$Sex,  "M" = '1',"F" = '2'))
-X2 = cbind.data.frame(X2kd, X2treat, X2sex)
+# Pull out p-values and adjust for multiple testing
+pvals = as.numeric(summary(model)$coefficients[,4])
+# padjusted = p.adjust(pvals, method = "fdr") # This appears to be over-correcting
+outliers = which(pvals < 0.05) 
 
-# Set up LFMM model
-mod.lfmm <- lfmm_ridge(Y = Y2,  X = X2, K = 5) 
-
-# Identify significant SNPs (Unsure if I'm doing this correctly)
-pv <- lfmm_test(Y = Y2, X = X2,  lfmm = mod.lfmm, calibrate = "gif")
-# Pulls out p-values associated for SNP - KDtime associations
-pvaluesKD <- pv[["calibrated.pvalue"]][,1]
-outliers2 = which(pvaluesKD < 0.01)
-# Here, identified 2 SNPs:
-colnames(datasub)[outliers2]
-# [1] "V3439"   "V794831"
+# Pull out ID of the SNP outliers
+colnames(df)[outliers] # in this example: "V790007" "V254278" "V790890" "V248541" "V489649"
 ```
-Next, I would identify if there are any overlaps in SNPs identified by LFMM and the outlier SNPs between treatment and control (no overlap so far, using data subset)
-
-Manhattan-ish plot, visualizing SNP significance from this model
-```
-plot(-log10(pvalues), pch = 19, cex = .8, 
-     xlab = "SNP", ylab = "-Log P", col = "grey")
-```
-![Rplot143](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/cf82afcd-9ac2-4406-a7e2-250ee6e83ccf)
-
-
-
-
 
