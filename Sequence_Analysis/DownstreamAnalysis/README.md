@@ -80,6 +80,26 @@ colnames(datasub)[outliers]
 
 ## 3. Use Fst to detect outliers
 
+Note: We are using the Fst values generated through vcftools (see step 23 of Seqeuence Analysis)
+This includes all SNPs (not just the subset)
+
+```
+Fstdata = read.delim("Fst_estimates_VCFtools/Fst_estimates_controlvsheat_vcftools.txt")
+colnames(Fstdata) = c("Chrom", "SNP", "WeirFst")
+hist(Fstdata$WeirFst)
+```
+![Fstplot](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/e82b0727-a32f-4612-ba63-63b4ead7b967)
+
+Detect outliers as those exceeding 99.9th% percentile
+Note: following methods here: https://speciationgenomics.github.io/per_site_Fst/
+
+```
+my_threshold <- quantile(Fstdata$WeirFst, 0.999, na.rm = T)
+fst <- Fstdata %>% mutate(outlier = ifelse(Fstdata$WeirFst > my_threshold, "outlier", "background"))
+length(which(fst$outlier == "outlier")) # identifies 1204 SNPs
+```
+![Fstplot_man](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/bfe65f29-6724-44a1-80f1-3bc636e654cc)
+
 
 
 ## 4. Detect SNPs associated with longer knockdown times 
