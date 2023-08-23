@@ -78,11 +78,9 @@ colnames(datasub)[outliers]
 [1] "V1038779" "V167436"  "V457915"  "V1096118" "V69628"   "V460604"
 ```
 
-## 3. Ideally: Use Fst to detect outliers
+## 3. Use Fst to detect outliers
 
-*The OutFLANK package appears to be the common method for estimating Fst for outlier detection
-However it requires the q-value package, which I can not seem to install for the life of me
-Will try doing this on new laptop next week*
+
 
 ## 4. Detect SNPs associated with longer knockdown times 
 
