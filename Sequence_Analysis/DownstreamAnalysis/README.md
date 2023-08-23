@@ -157,7 +157,6 @@ points(P1$LocusName[outliers],P1$FST[outliers],col="red", pch = 16)
 ## 4. Detect SNPs associated with longer knockdown times 
 
 Identifies SNPs associated with longer knockdown time (i.e., greater heat tolerance) while controlling for treatment group and sex
-
 ```
 # Combine relevant metadata and genotype matrix into dataframe
 df = cbind(metadata[,c(8,2,4)], datasub)
