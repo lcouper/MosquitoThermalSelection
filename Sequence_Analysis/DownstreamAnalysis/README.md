@@ -105,7 +105,16 @@ length(which(fst$outlier == "outlier")) # identifies 1204 SNPs
 
 ### Method 2: Using OutFLANK R package 
 
+```
+fst = MakeDiploidFSTMat(datasub, locusNames = 1:ncol(datasub), popNames = data$Treatment)
+hist(fst$FST, breaks = 50)
+```
 
+![Fstdist_method2](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/2327fa5f-fc2c-43bc-96b2-8e8de6a49d60)
+
+**Note differences in Fst distribution when using these two methods**
+
+Identify statistical outliers using Chi-Squared distribution
 
 
 
