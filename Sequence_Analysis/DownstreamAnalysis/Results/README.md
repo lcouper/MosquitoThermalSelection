@@ -3,7 +3,7 @@
 ## 1. PCA showing overall genomic differences between treatment groups
 
 #### 1a. Scree plot 
-Shows the cumulative proportion of variance explained by PC axes
+Shows the cumulative proportion of variance explained by PC axes   
 **Note the majority of variation is NOT explained in first 10 axes**
 
 ![Rplot01](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/1b7bca27-35ab-4e21-9b55-7da657531834)
