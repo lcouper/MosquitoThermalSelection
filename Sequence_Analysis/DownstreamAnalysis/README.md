@@ -1,6 +1,6 @@
 # Downstream sequence analysis
-*Pertains to analysis performed in R, after genotype matrix was created*
-*The results shown here pertain to analysis of a **100 SNP subset** of the genotype matrix*
+*Pertains to analysis performed in R, after genotype matrix was created*  
+*The analysis/figures shown here pertain to analysis of a **100 SNP subset** of the genotype matrix*
 
 ## 1. Visualize overall differences between treatment groups using PCA 
 
