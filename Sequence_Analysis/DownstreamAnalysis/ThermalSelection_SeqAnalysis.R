@@ -67,7 +67,8 @@ plot(x,option="scores", pop=ExpRound,
      col = c("#A50026", "#F99858", "#364B9A")) + theme_bw() + ggtitle(label = NULL)
 
 
-#### 2. Detect outlier SNPs using pcadapt #### 
+#### 2. Detect outlier SNPs between heat and control group #####
+#### 2a. Method 1: pcadapt #### 
 
 # Note this uses the df 'x' created in step 1
 
@@ -83,26 +84,43 @@ outliers = which(padjusted < 0.01)
 colnames(datasub)[outliers]
 
 
-#### 3. Use Fst to find outliers #####
+#### 2b. Method 2: Use Fst to find outliers #####
 
-# Note: Fst were calculated in vcftools 
-Fstdata = read.delim("Fst_estimates_VCFtools/Fst_estimates_controlvsheat_vcftools.txt")
-colnames(Fstdata) = c("Chrom", "SNP", "WeirFst")
-hist(Fstdata$WeirFst, xlab = "Weir Fst", ylab = "", 
-     main = "Fst value distribution")
+### see code on new lab laptop for how to do this!!
 
-# Identify the mean Fst
-summary(Fstdata$WeirFst)
-meanFst = as.numeric(summary(Fstdata$WeirFst)[4])
+#### 2c. Method 3: Use AF differences #####
 
-# detect outliers as those exceeding 99th%
-# following methods here: https://speciationgenomics.github.io/per_site_Fst/
+dfaf = cbind(metadata$Treatment, datasub)
+colnames(dfaf)[1] = "Treatment"
+dfaf$Treatment = as.factor(dfaf$Treatment)
+rownames(dfaf) = metadata$Sample
 
-my_threshold <- quantile(Fstdata$WeirFst, 0.999, na.rm = T)
-fst <- Fstdata %>% mutate(outlier = ifelse(Fstdata$WeirFst > my_threshold, "outlier", "background"))
-length(which(fst$outlier == "outlier")) # 1024 outliers detected
+control = dfaf[dfaf$Treatment == "control",-1]
+heat = dfaf[dfaf$Treatment == "high temp",-1]
 
-ggplot(fst, aes(SNP, WeirFst, colour = outlier)) + geom_point()
+af_control = colSums(control)/ (2*nrow(control))
+af_heat = colSums(heat)/ (2*nrow(heat))
+
+af_table = cbind.data.frame(af_control, af_heat)
+colnames(af_table) = c("control", "heat")
+af_table$diff = af_table$heat - af_table$control
+
+# Identify outliers 
+threshold = quantile(af_table$diff, 0.99, na.rm = T) # Adjust this later
+af_outliers =  af_table %>% mutate(outlier = ifelse(af_table$diff > threshold, "outlier", "background"))
+which(af_outliers$outlier == "outlier") # 1 outlier detected: "V183021"
+
+# Reshape and plot
+aft = cbind(rownames(af_table), af_table[,-3])
+colnames(aft)[1] = c("SNP")
+aft2 = aft %>% pivot_longer(-SNP, names_to = "treatment", values_to = "af") 
+
+ggplot(aft2,aes(x=treatment,y=af)) +
+    geom_point() + 
+   geom_line(aes(x = treatment, y = af, group = SNP))
+
+
+
 
 
 #### 4. Use lm to identify genotypic predictors of KD time #####
@@ -117,13 +135,18 @@ model = lm(Kdtime ~ ., data = df)
 
 # Pull out p-values and adjust for multiple testing
 pvals = as.numeric(summary(model)$coefficients[,4])
-
-# padjusted = p.adjust(pvals, method = "fdr") # This appears to be over-correcting
-outliers = which(pvals < 0.05) 
+padj = p.adjust(pvals, method = "fdr") 
+outliers = which(padj < 0.05) 
 
 # Pull out ID of the SNP outliers
-colnames(df)[outliers] # in this example: "V790007" "V254278" "V790890" "V248541" "V489649"
+colnames(df)[outliers] # in this example: none
 
+# Second model excluding the Treatment and Sex predictors
+df2 = cbind(metadata$Kdtime, datasub)
+model2 = lm(df2$`metadata$Kdtime` ~ ., data = df2)
+pvals2 = as.numeric(summary(model2)$coefficients[,4])
+padj2 = p.adjust(pvals2, method = "fdr") 
+outliers2 = which(padj2 < 0.05) 
 
-
+colnames(df2)[outliers2] # still no significant SNPs identified in subset
 
