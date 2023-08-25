@@ -28,8 +28,7 @@ This method detected 56 outlier SNPs based on Fst, at a q < 0.01 threshold.
 ## 3. Examine allele frequency differences between control and heat-selected group
 First, calculated frequency of alternative allele for each SNP separately for control and heat-selected.
 Next, calculated difference in allele frequency between these groups 
-Identified SNPs with allele frequency differences in 99.99th percentile 
-These SNPs are shown below in red. All others are shown in group
+Identified SNPs with allele frequency differences in 99.99th percentile (n = 119)
 
 ### SNPs with greatest *increases* (red) or *decreases* (blue) in frequency between control and heat-selected
 ![af_diff](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/f3bb94ca-29a6-4f30-955e-728b61d07837)
