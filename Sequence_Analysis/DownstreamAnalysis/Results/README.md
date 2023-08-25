@@ -33,4 +33,7 @@ Identified SNPs with allele frequency differences in 99.99th percentile (n = 119
 ### SNPs with greatest *increases* (red) or *decreases* (blue) in frequency between control and heat-selected
 ![af_diff](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/f3bb94ca-29a6-4f30-955e-728b61d07837)
 
-  
+### Visualize difference in af for SNPs identified as outliers through Fst 
+![af_outlierFstSNPs](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/5577dd82-41d4-4326-9fb6-6e35b560d4cd)
+
+
