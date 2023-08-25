@@ -16,3 +16,18 @@ Shows the cumulative proportion of variance explained by PC axes
 
 #### 1c. By experimental round 1-3
 ![Rplot03](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/00fc1b11-f8ae-4001-8cef-564fa6aace2c)
+
+## 2. Outlier SNPs
+
+### Detect outliers using Fst 
+*Note: Fst estimates and outlier detection done using the OutFLANK R package**
+
+Detected 56 outlier SNPs based on Fst, at a q < 0.01 threshold.
+
+##### Manhattan plot showing SNP outliers based on Fst 
+*Note: outlier SNPs colored below in red. Outlier threshold: q < 0.01*
+
+![ManhattanPlot_FstOutlier](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/9c4af6a7-7f79-45f4-b986-4f3725edcce6)
+
+
+  
