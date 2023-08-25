@@ -117,7 +117,7 @@ plot(P1$LocusName,P1$FST,xlab="SNP Position",ylab="FST",col=rgb(0,0,0,alpha=0.3)
 points(P1$LocusName[outliers],P1$FST[outliers],col="red", pch = 16)
 
 
-##### Subset. 2c. Method 3: Model af differences ####
+##### Subset. 2c. Method 3: Model af differences (note: update this part with Mark) ####
 
 # Using genotype matrix, calculate allele frequencies for each SNP and treatment
 dfaf = cbind(metadata$Treatment, datasub)
@@ -132,92 +132,77 @@ heat = dfaf[dfaf$Treatment == "high temp",-1]
 # calculate af
 af_control = colSums(control)/ (2*nrow(control))
 af_heat = colSums(heat)/ (2*nrow(heat))
-
-# combine and reshape for model
-af_table = cbind.data.frame(af_control, af_heat)
-colnames(af_table) = c("control", "heat")
-af_table$SNP = rownames(af_table)
-afl = melt(af_table)
-colnames(afl) = c("SNP","treatment", "af")
-afmod = glm(af ~ treatment, data = afl, family = quasibinomial(link = "logit"))
-summary(afmod)
-
-
 
 
 ##### Subset. 2d. Plot AF differences #####
 
 # Using genotype matrix, calculate allele frequencies for each SNP and treatment
-dfaf = cbind(metadata$Treatment, datasub)
-colnames(dfaf)[1] = "Treatment"
-dfaf$Treatment = as.factor(dfaf$Treatment)
-rownames(dfaf) = metadata$Sample
+dfafs = cbind(metadata$Treatment, datasub)
+colnames(dfafs)[1] = "Treatment"
+dfafs$Treatment = as.factor(dfafs$Treatment)
+rownames(dfafs) = metadata$Sample
 
 # Separate control and heat-selected treatments
-control = dfaf[dfaf$Treatment == "control",-1]
-heat = dfaf[dfaf$Treatment == "high temp",-1]
+controls = dfafs[dfafs$Treatment == "control",-1]
+heats = dfafs[dfafs$Treatment == "high temp",-1]
 
 # calculate af
-af_control = colSums(control)/ (2*nrow(control))
-af_heat = colSums(heat)/ (2*nrow(heat))
+afs_control = colSums(controls)/ (2*nrow(controls))
+afs_heat = colSums(heats)/ (2*nrow(heats))
 
 # combine and calculate differences
-af_table = cbind.data.frame(af_control, af_heat)
-colnames(af_table) = c("control", "heat")
-af_table$diff = af_table$heat - af_table$control
+afs_table = cbind.data.frame(afs_control, afs_heat)
+colnames(afs_table) = c("control", "heat")
+afs_table$diff = afs_table$heat - afs_table$control
 
 # Identify outliers (i.e. SNPs with significant diff frequencies between control and heat)
-threshold = quantile(af_table$diff, 0.99, na.rm = T) # Adjust this later
-af_outliers =  af_table %>% mutate(outlier = ifelse(af_table$diff > threshold, "outlier", "background"))
-rownames(af_table)[which(af_outliers$outlier == "outlier")] # 1 outlier detected: "V183021"
+thresholds = quantile(afs_table$diff, 0.99, na.rm = T) # Adjust this later
+afs_outliers =  afs_table %>% mutate(outlier = ifelse(afs_table$diff > thresholds, "outlier", "background"))
+rownames(afs_table)[which(afs_outliers$outlier == "outlier")] # 1 outlier detected: "V183021"
 
 # Reshape and plot
-aft = cbind(rownames(af_table), af_outliers[,-3])
-colnames(aft)[1] = c("SNP")
-aft2 = aft %>% pivot_longer(-c(SNP, outlier), names_to = "treatment", values_to = "af") 
+afts = cbind(rownames(afs_table), afs_outliers[,-3])
+colnames(afts)[1] = c("SNP")
+afts2 = afts %>% pivot_longer(-c(SNP, outlier), names_to = "treatment", values_to = "af") 
 
-ggplot(aft2,aes(x=treatment,y=af)) + theme_bw() +
+ggplot(afts2,aes(x=treatment,y=af)) + theme_bw() +
    geom_point(aes(x = treatment, y = af, group = SNP, col = outlier)) + 
   scale_fill_manual(values = c("grey80", "red")) + 
    geom_line(aes(x = treatment, y = af, group = SNP, col = outlier)) +
   scale_color_manual(values = c("grey80", "red"))
 
 
-
-
-
 ##### Subset. 3. Use lm to identify genotypic predictors of KD time #####
 
 # Combine relevant metadata and genotype matrix into dataframe
-df = cbind(metadata[,c(8,2,4)], datasub)
-df$Treatment = as.factor(df$Treatment)
-df$Sex = as.factor(df$Sex)
+dfs = cbind(metadata[,c(8,2,4)], datasub)
+dfs$Treatment = as.factor(dfs$Treatment)
+dfs$Sex = as.factor(dfs$Sex)
 
 # Model KD time ~ genotype matrix + Treatment + Sex (not using body size for now) 
-model = lm(Kdtime ~ ., data = df)
+models = lm(Kdtime ~ ., data = dfs)
 
 # Pull out p-values and adjust for multiple testing
-pvals = as.numeric(summary(model)$coefficients[,4])
-padj = p.adjust(pvals, method = "fdr") 
-outliers = which(padj < 0.05) 
+pvalsS = as.numeric(summary(models)$coefficients[,4])
+padjS = p.adjust(pvalsS, method = "fdr") 
+outliersS = which(padjS < 0.05) 
 
 # Pull out ID of the SNP outliers
-colnames(df)[outliers] # in this example: none
+colnames(dfs)[outliersS] # in this example: none
 
 # Second model excluding the Treatment and Sex predictors
-df2 = cbind(metadata$Kdtime, datasub)
-model2 = lm(df2$`metadata$Kdtime` ~ ., data = df2)
-pvals2 = as.numeric(summary(model2)$coefficients[,4])
-padj2 = p.adjust(pvals2, method = "fdr") 
-outliers2 = which(padj2 < 0.05) 
+dfs2 = cbind(metadata$Kdtime, datasub)
+models2 = lm(dfs2$`metadata$Kdtime` ~ ., data = dfs2)
+pvalsS2 = as.numeric(summary(models2)$coefficients[,4])
+padjS2 = p.adjust(pvalsS2, method = "fdr") 
+outliersS2 = which(padjS2 < 0.05) 
 
-colnames(df2)[outliers2] # still no significant SNPs identified in subset
+colnames(dfs2)[outliersS2] # still no significant SNPs identified in subset
 
 
 
 
 #### Conduct above analysis on full dataset ####
-
 #### Full. Load data files ####
 
 datafull = fread("GenotypeMatrix/GenotypeMatrix.txt", header = FALSE)[,-1] # First row is sample number
@@ -272,42 +257,20 @@ plot(x,option="scores", pop=ExpRound,
 # first ~10-20 PC axes, suggests pcadapt method not appropriate for 
 # detecting SNP diffs between treatment and control
 
-##### Full 2b. Method 2: Use Fst to find outliers #####
+##### Full. 2b. Method 2: Use Fst to find outliers #####
 
 # Note: The call below was run in stages to avoid vector memory exhausted errors. 
 # (This does not impact Fst estimates)
 # fst = MakeDiploidFSTMat(datafull, locusNames = 1:ncol(datafull), popNames = metadata$Treatment)
+# e.g of subset: fst1 = MakeDiploidFSTMat(datafull[,1:100000], locusNames = 1:100000, popNames = metadata$Treatment)
 # resulting Fst calculations were combined and output as dataframe
 # which can be loaded here to skip this step in the future
 
+fstall = fread("fstall.csv", header = T)
 
-fst1 = MakeDiploidFSTMat(datafull[,1:100000], locusNames = 1:100000, popNames = metadata$Treatment)
-fst2 = MakeDiploidFSTMat(datafull[,100001:200000], locusNames = 100001:200000, popNames = metadata$Treatment)
-fst3 = MakeDiploidFSTMat(datafull[,200001:300000], locusNames = 200001:300000, popNames = metadata$Treatment)
-fst4 = MakeDiploidFSTMat(datafull[,300001:400000], locusNames = 300001:400000, popNames = metadata$Treatment)
-fst5 = MakeDiploidFSTMat(datafull[,400001:500000], locusNames = 400001:500000, popNames = metadata$Treatment)
-fst6 = MakeDiploidFSTMat(datafull[,500001:600000], locusNames = 500001:600000, popNames = metadata$Treatment)
-fst7 = MakeDiploidFSTMat(datafull[,600001:700000], locusNames = 600001:700000, popNames = metadata$Treatment)
-fst8 = MakeDiploidFSTMat(datafull[,700001:800000], locusNames = 700001:800000, popNames = metadata$Treatment)
-fst9 = MakeDiploidFSTMat(datafull[,800001:900000], locusNames = 800001:900000, popNames = metadata$Treatment)
-fst10 = MakeDiploidFSTMat(datafull[,900001:1000000], locusNames = 900001:1000000, popNames = metadata$Treatment)
-fst11 = MakeDiploidFSTMat(datafull[,1000001:1100000], locusNames = 1000001:1100000, popNames = metadata$Treatment)
-fst12 = MakeDiploidFSTMat(datafull[,1100001:ncol(datafull)], locusNames = 1100001:ncol(datafull), popNames = metadata$Treatment)
+hist(fstall$FST, breaks = 50, xlab = "Fst", ylab = "", main = "Fst value distribution")
 
-
-fstall = rbind(fst1, fst2, fst3, fst4, fst5, fst6, fst7, fst8, fst9, fst10, fst11, fst12)
-write.csv(fstall, "~/Downloads/fstall.csv")
-
-
-
-
-
-
-
-
-hist(fst$FST, breaks = 50, xlab = "Fst", ylab = "", main = "Fst value distribution: Method 2")
-
-out1 <- OutFLANK(fst,NumberOfSamples = 2) # NumberOfSamples = number of populations
+out1 <- OutFLANK(fstall,NumberOfSamples = 2) # NumberOfSamples = number of populations
 hist(out1$results$pvaluesRightTail) # Not uniformly distributed
 
 # Plot observed Fst distribution with chi-squared fit
@@ -316,16 +279,112 @@ OutFLANKResultsPlotter(out1, withOutliers = TRUE,
                          FALSE, RightZoomFraction = 0.05, titletext = NULL)
 
 # Find statistical outliers
-P1 <- pOutlierFinderChiSqNoCorr(fst,Fstbar=out1$FSTNoCorrbar,
-                                dfInferred=out1$dfInferred,qthreshold=0.05,Hmin=0.1)
+P1 <- pOutlierFinderChiSqNoCorr(fstall,Fstbar=out1$FSTNoCorrbar,
+                                dfInferred=out1$dfInferred,qthreshold=0.01,Hmin=0.1)
 # Which have q-values < 0.05
 outliers <- which(P1$OutlierFlag==TRUE)
-colnames(datasub)[outliers] # identified one SNP: V200615
+length(outliers) # identified 56 SNP outliers based on Fst and q < 0.01
+OutlierSNPs = colnames(datafull)[outlierIndex] 
 
 # Manhattan plot with outlier SNPs
-plot(P1$LocusName,P1$FST,xlab="SNP Position",ylab="FST",col=rgb(0,0,0,alpha=0.3), 
-     pch = 16)
+plot(P1$LocusName,P1$FST,xlab="SNP Position",ylab="FST",col=rgb(0,0,0,alpha=0.2), pch = 16)
 points(P1$LocusName[outliers],P1$FST[outliers],col="red", pch = 16)
 
 
+
+
+##### Full. 2d. Identify SNPs with largest AF differences ####
+
+# Using genotype matrix, calculate allele frequencies for each SNP and treatment
+dfaf = cbind(metadata$Treatment, datafull)
+colnames(dfaf)[1] = "Treatment"
+dfaf$Treatment = as.factor(dfaf$Treatment)
+rownames(dfaf) = metadata$Sample
+
+# Separate control and heat-selected treatments
+control = dfaf[dfaf$Treatment == "control",-1]
+heat = dfaf[dfaf$Treatment == "high temp",-1]
+
+# calculate af
+af_control = colSums(control)/ (2*nrow(control))
+af_heat = colSums(heat)/ (2*nrow(heat))
+
+# combine and calculate differences
+af_table = cbind.data.frame(af_control, af_heat)
+colnames(af_table) = c("control", "heat")
+af_table$diff = af_table$heat - af_table$control
+
+# Identify outliers (i.e. SNPs with significant diff frequencies between control and heat)
+threshold = quantile(abs(af_table$diff), 0.9999, na.rm = T) # Adjust this later
+af_outlier =  af_table %>% mutate(outlier = ifelse(abs(af_table$diff) > threshold, "outlier", "background"))
+length(which(af_outlier$outlier == "outlier")) # identifies 119 SNPs in the top 99.99th percentile
+outliers2 = rownames(af_table)[which(af_outlier$outlier == "outlier")]
+
+# Reshape and plot
+aft = cbind(colnames(dfaf)[-1], af_outlier)
+colnames(aft)[1] = c("SNP")
+aft2 = aft %>% pivot_longer(-c(SNP, outlier, diff), names_to = "treatment", values_to = "af") 
+# Add column indicating if af increased (red) or decreased (blue) from contorl to heat-selected 
+aft2$incdec = as.factor(as.numeric(aft2$diff >= 0))
+
+# Keep only outliers
+aft2o = aft2[aft2$outlier == "outlier",]
+
+# Plot
+ggplot(aft2o,aes(x=treatment,y=af)) + theme_bw() + 
+  geom_point(aes(x = treatment, y = af, group = SNP, col = incdec)) + 
+  scale_fill_manual(values = c(alpha("darkblue", 0.6), "darkred")) + 
+  geom_line(aes(x = treatment, y = af, group = SNP, col = incdec)) +
+  scale_color_manual(values = c(alpha("darkblue", 0.6), "darkred")) +
+  ylab("allele frequency") + 
+  theme(legend.position = "none", axis.title = element_text(size = 14),
+        axis.text = element_text(size = 14))
+
+##### Full. 2e. Plot AF differences of outlier SNPs identified through Fst ####
+
+# Note: aft2 dataframe created above
+# Pull out SNPs from this df identified as outliers based on Fsf
+# Names of SNPs stored in OutlierSNPs (created in 2d)
+
+afOut = aft2[aft2$SNP %in% OutlierSNPs , ]
+
+ggplot(afOut, aes(x=treatment,y=af)) + theme_bw() + 
+  geom_point(aes(x = treatment, y = af, group = SNP, col = incdec)) + 
+  scale_fill_manual(values = c(alpha("darkblue", 0.6), "darkred")) + 
+  geom_line(aes(x = treatment, y = af, group = SNP, col = incdec)) +
+  scale_color_manual(values = c(alpha("darkblue", 0.6), "darkred")) +
+  ylab("allele frequency") + 
+  theme(legend.position = "none", axis.title = element_text(size = 14),
+        axis.text = element_text(size = 14))
+
+##### Full. 3. Use lm to identify genotypic predictors of KD time (troubleshoot with Mark) #####
+
+# Combine relevant metadata and genotype matrix into dataframe
+df = cbind(metadata[,c(8,2,4)], datafull)
+colnames(df) = c("Kdtime", "Treatment", "Sex", colnames(datafull))
+df$Treatment = as.factor(df$Treatment)
+df$Sex = as.factor(df$Sex)
+
+dftest = df[,-c(1000:1204990)]
+# Model KD time ~ genotype matrix + Treatment + Sex (not using body size for now) 
+model = lm(Kdtime ~ ., data = dftest)
+
+# Pull out p-values and adjust for multiple testing
+pvals = as.numeric(summary(model)$coefficients[,4])
+padj = p.adjust(pvals, method = "bh") 
+outliers = which(padj < 0.01) 
+
+# Pull out ID of the SNP outliers
+colnames(df)[outliers] # 
+
+# Second model excluding the Treatment and Sex predictors
+df2 = cbind(metadata$Kdtime, datafull)
+model2 = lm(df2$`metadata$Kdtime` ~ ., data = df2)
+pvals2 = as.numeric(summary(model2)$coefficients[,4])
+padj2 = p.adjust(pvals2, method = "fdr") 
+outliers2 = which(padj2 < 0.05) 
+
+colnames(df2)[outliers2] 
+
+#### Full. 4. Compare SNPs identified through Step 2b, 2d, and 3 ####
 
