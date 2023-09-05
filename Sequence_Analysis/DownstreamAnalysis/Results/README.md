@@ -26,14 +26,14 @@ This method detected 56 outlier SNPs based on Fst, at a q < 0.01 threshold.
 ![ManhattanPlot_FstOutlier](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/9c4af6a7-7f79-45f4-b986-4f3725edcce6)
 
 ## 3. Examine allele frequency differences between control and heat-selected group
-First, calculated frequency of alternative allele for each SNP separately for control and heat-selected.
-Next, calculated difference in allele frequency between these groups 
-Identified SNPs with allele frequency differences in 99.99th percentile (n = 119)
+First, calculated frequency of alternative allele for each SNP separately for control and heat-selected.  
+Next, calculated difference in allele frequency between these groups.   
+Then, identified SNPs with allele frequency differences in 99.99th percentile (n = 119)
 
 ### SNPs with greatest *increases* (red) or *decreases* (blue) in frequency between control and heat-selected
 ![af_diff](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/f3bb94ca-29a6-4f30-955e-728b61d07837)
 
-### Visualize difference in af for SNPs identified as outliers through Fst 
+### Visualize difference in allele frequency for SNPs identified as outliers through Fst 
 ![af_outlierFstSNPs](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/5577dd82-41d4-4326-9fb6-6e35b560d4cd)
 
 
