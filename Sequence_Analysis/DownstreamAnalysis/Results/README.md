@@ -17,7 +17,12 @@ Shows the cumulative proportion of variance explained by PC axes
 #### 1c. By experimental round 1-3
 ![Rplot03](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/00fc1b11-f8ae-4001-8cef-564fa6aace2c)
 
-## 2. Detect outlier SNPs using Fst
+## 2. Detect outlier SNPs using various methods
+
+### 2a. Detect using PCadapt
+*Note: not doing this approach since most variation not explained in first ~ 10 axes
+
+### 2b. Detect outlier SNPs using Fst
 *Note: Fst estimates and outlier detection done using the OutFLANK R package**
 This method detected 56 outlier SNPs based on Fst, at a q < 0.01 threshold.
 
