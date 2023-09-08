@@ -46,6 +46,7 @@ model = glm(y ~ df$Treatment, family = "binomial") # where y = (0,2), (1,1), or 
 ![Rplot06](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/79fc35eb-0c04-4693-9dfc-e9431adf0c07)
 
 
+#### No SNPs were identified as significant/outliers via both methods
 
 ## 3. Examine allele frequency differences between control and heat-selected group
 First, calculated frequency of alternative allele for each SNP separately for control and heat-selected.  
