@@ -9,7 +9,11 @@ Shows the cumulative proportion of variance explained by PC axes
 ![Rplot01](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/1b7bca27-35ab-4e21-9b55-7da657531834)
 
 #### 1a. Control vs heat-selected group
+##### Principal components 1 & 2
 ![Rplot](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/43c324de-412e-48a6-9365-4482694b3d96)
+
+##### Principal components 3&4
+![PC3and4](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/f60182b2-0530-496e-90fc-2ee3cb6a2d89)
 
 #### 1b. Female vs male mosquitoes
 ![Rplot02](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/a23e1fdc-d3b3-4930-8f3e-6b4100d71c52)
