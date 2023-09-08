@@ -34,6 +34,13 @@ This method detected 56 outlier SNPs based on Fst, at a q < 0.01 threshold.
 *Note: outlier SNPs colored below in red. Outlier threshold: q < 0.01*
 ![ManhattanPlot_FstOutlier](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/9c4af6a7-7f79-45f4-b986-4f3725edcce6)
 
+### 2c. Use glm to identify SNPs with significant treatment effects
+*i.e.* 
+```
+model = glm(y ~ df$Treatment, family = "binomial") # where y = (0,2), (1,1), or (2,0)
+```
+
+
 ## 3. Examine allele frequency differences between control and heat-selected group
 First, calculated frequency of alternative allele for each SNP separately for control and heat-selected.  
 Next, calculated difference in allele frequency between these groups.   
