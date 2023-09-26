@@ -42,12 +42,11 @@ This method detected 56 outlier SNPs based on Fst, at a q < 0.01 threshold.
 model = glm(y ~ df$Treatment, family = "binomial") # where y = (0,2), (1,1), or (2,0)
 ```
 *Note: Typical p-value adjustment methods were overly stringent (i.e. 0 SNPs were maintained at p < 0.05 after correction, given number of tests. Instead, used un-adjusted p-values and considered alpha of 0.0001 when identifying outlier SNPs (shown in red on plot below)*
-This method identified 73 SNPs
 
 ![Rplot06](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/79fc35eb-0c04-4693-9dfc-e9431adf0c07)
 
+**This method identified 73 outlier SNPs. These appear to cluster around similar areas of the genome as with the Fst approach, but No SNPs were identified as significant/outliers via both methods**
 
-#### No SNPs were identified as significant/outliers via both methods
 
 ## 3. Examine allele frequency differences between control and heat-selected group
 First, calculated frequency of alternative allele for each SNP separately for control and heat-selected.  
