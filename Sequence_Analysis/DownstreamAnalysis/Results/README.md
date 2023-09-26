@@ -51,12 +51,20 @@ model = glm(y ~ df$Treatment, family = "binomial") # where y = (0,2), (1,1), or 
 ## 3. Examine allele frequency differences between control and heat-selected group
 First, calculated frequency of alternative allele for each SNP separately for control and heat-selected.  
 Next, calculated difference in allele frequency between these groups.   
-Then, identified SNPs with allele frequency differences in 99.99th percentile (n = 119)
 
-### SNPs with greatest *increases* (red) or *decreases* (blue) in frequency between control and heat-selected
-![af_diff](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/f3bb94ca-29a6-4f30-955e-728b61d07837)
+### Visualize difference in allele frequency for SNPs identified as outliers through Fst or glm approaches above
+![FstGlmOutlierSNPs](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/47318857-8fd3-4ef7-a9a5-7d14d16749de)
 
-### Visualize difference in allele frequency for SNPs identified as outliers through Fst 
-![af_outlierFstSNPs](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/5577dd82-41d4-4326-9fb6-6e35b560d4cd)
+### 3b. For each outlier SNP, compare AF differences relative to matched controls
+To generate matched controls: 
+1. Identify SNPs within 1000 bp of focal SNP
+2. Keep those within 5% of starting (control) frequency as focal SNP
+3. From this list, take random sample of 7 SNPs
+4. Caculate af differences (i.e. between control and heat-treated group) for these 7 SNPs
+5. Compare af differences between focal SNP and matched controls
 
+#### Visualize difference in AF for focal SNPs relative to matched controls
+Here, pointed indicate focal SNPs with larger (red) or smaller (blue) AF differences than their matched controls
+
+![AFrelativeDiff](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/b24caa4f-820b-438c-bc3f-8d859dbcd8a3)
 
