@@ -164,7 +164,7 @@ java -jar picard.jar SortVcf \
 Discard all SNVs with QUAL < 30, Minor Allele Frequency of 0.05, Minimum Depth of 10x, and a Maximum Variant Missing of 0.98.
 *Script: filterSNPs_round2.sbatch* 
 ```
-vcftools --vcf Unfiltered_VCF_All_sorted.vcf --maf 0.05 --minQ 30 --max-missing 0.98 --minDP 10 --recode --recode-INFO-all --out Filtered_VCF_All_sorted.vcf
+vcftools --vcf Unfiltered_VCF_All_sorted.vcf --maf 0.05 --minQ 40 --max-missing 0.999 --minDP 10 --recode --recode-INFO-all --out Filtered_VCF_All_sorted.vcf
 ```
 *After filtering, kept 1,312,730 out of a possible 140426729 Sites*
 
