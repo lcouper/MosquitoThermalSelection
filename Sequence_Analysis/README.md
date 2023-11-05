@@ -179,7 +179,7 @@ bcftools view -m2 -M2 -v snps Filtered_VCF_All_sorted_indexed.vcf > Filtered_VCF
 
 #### 22. Generate genotype matrix using vcftools
 Note, this outputs 3 files: ‘.012’ contains the genotypes of each individual on a separate line (with 0, 1, 2 denoting the number of non-reference alleles at the site), ‘.ind’ lists the individuals included in the main file, ‘.pos’ details the site location included in the main file. 
-*Script: genotype_matrix3.sbatch*
+*Script: genotype_matrix.sbatch*
 ```
 vcftools --012 --vcf Filtered_VCF_All_sorted_indexed_bialleliconly.vcf --out output_geno.vcf
 ```
