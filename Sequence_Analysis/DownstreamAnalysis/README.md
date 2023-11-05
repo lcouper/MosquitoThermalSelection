@@ -25,9 +25,7 @@ Sex = data$Sex
 ExpRound = data$Exp.Round
 
 ```
-
-![Screeplot](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/ec6cc449-75e7-40a5-8d54-63c513fef785n)
-
+![ScreePlot](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/af20a5f6-8ae3-4ab0-b7c4-396d8b8b2d42)
   
 
 ### PCA: Heat-selected vs control 
