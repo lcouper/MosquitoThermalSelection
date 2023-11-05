@@ -161,24 +161,25 @@ java -jar picard.jar SortVcf \
 ```
 
 #### 20. Filter SNVs using vcftools
-Discard all SNVs with QUAL < 30, Minor Allele Frequency of 0.05, Minimum Depth of 10x, and a Maximum Variant Missing of 0.98.
-*Script: filterSNPs_round2.sbatch* 
+Discard all SNVs with QUAL < 30, Minor Allele Frequency of 0.05, Minimum Depth of 10x, and a Maximum Variant Missing of 0.995.
+Note - also removing 4 individuals with sequencing errors (E-05, E-06, E-07, E-09)
+*Script: filterSNPs_round2_0.995.sbatch* 
 ```
-vcftools --vcf Unfiltered_VCF_All_sorted.vcf --maf 0.05 --minQ 40 --max-missing 0.999 --minDP 10 --recode --recode-INFO-all --out Filtered_VCF_All_sorted.vcf
+vcftools --vcf Unfiltered_VCF_All_sorted.vcf --maf 0.05 --minQ 40 --max-missing 0.995 --minDP 10 --remove Removes.txt --recode --recode-INFO-all --out Filtered_VCF_All_sorted.vcf
 ```
-*After filtering, kept 1,312,730 out of a possible 140426729 Sites*
+*After filtering, kept 4,290,185 out of a possible 140426729 Sites*
 
 #### 21. Remove mutli-allelic sites 
 Keep only bi-allelic sites for downstream analysis
-*Script: biallelic_only_0.98.sbatch*
+*Script: biallelic_only_0.995.sbatch*
 ```
-bcftools view -m2 -M2 -v snps Filtered_VCF_All_sorted_indexed.vcf > Filtered_VCF_All_sorted_0.98_bialleliconly.vcf
+bcftools view -m2 -M2 -v snps Filtered_VCF_All_sorted_indexed.vcf > Filtered_VCF_All_sorted_0.995_bialleliconly.vcf
 ```
-*Number of biallelic sites: 1,204,987*
+*Number of biallelic sites: 3,940,578*
 
 #### 22. Generate genotype matrix using vcftools
 Note, this outputs 3 files: ‘.012’ contains the genotypes of each individual on a separate line (with 0, 1, 2 denoting the number of non-reference alleles at the site), ‘.ind’ lists the individuals included in the main file, ‘.pos’ details the site location included in the main file. 
-*Script: genotype_matrix.sbatch*
+*Script: genotype_matrix3.sbatch*
 ```
 vcftools --012 --vcf Filtered_VCF_All_sorted_indexed_bialleliconly.vcf --out output_geno.vcf
 ```
