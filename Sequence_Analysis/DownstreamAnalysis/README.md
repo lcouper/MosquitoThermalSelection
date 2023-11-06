@@ -13,7 +13,7 @@ datasubMS = scale(datasubM, center = TRUE, scale = TRUE)
 pcadata = read.pcadapt(t(datasubMS)) 
 screetest <- pcadapt(input=pcadata,K=20) # K = # of principal components to retain
 plot(screetest,option="screeplot") # Looks like ~5 is the correct number to retian
-x = pcadapt(input= pcadata, K=5)
+pcobj = pcadapt(input= pcadata, K=5)
 
 # Import file with metadata
 data = read.csv("FullAlignment&ExperimentStats.csv", header = T)
@@ -29,21 +29,21 @@ ExpRound = data$Exp.Round
 
 ### PCA: Heat-selected vs control 
 ```
-plot(x,option="scores", pop=Treatment, 
+plot(pcobj,option="scores", pop=Treatment, 
      col = c("#00AFBB",  "#FC4E07")) + theme_bw() + ggtitle(label = NULL)
 ```
 ![PC_controlHightemp](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/2400bd1b-fd4e-4406-8d09-398543ed5489)
 
 ### PCA: Female vs Male
 ```
-plot(x,option="scores", pop=Sex, 
+plot(pcobj,option="scores", pop=Sex, 
      col = c("#00AFBB",  "#FC4E07")) + theme_bw() + ggtitle(label = NULL)
 ```
 ![PC_malefemale](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/dc5818f5-fe25-4ac1-9a8e-5a27d9daac54)
 
 ### PCA: Experimental Round (1-3)
 ```
-plot(x,option="scores", pop=ExpRound, 
+plot(pcobj,option="scores", pop=ExpRound, 
      col = c("#00AFBB",  "#FC4E07")) + theme_bw() + ggtitle(label = NULL)
 ```
 ![PC_expround](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/14771264-4411-4865-a168-da3fc019bcfe)
@@ -55,21 +55,21 @@ Manhattan plot to visualize potentially important SNPs
 ```
 plot(x,option="manhattan") + theme_bw()
 ```
-![Rplot142](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/a71373a3-812e-4a26-96af-031a80046e56)
+![manhattan](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/a4de6047-7f4d-4e9b-9a55-f641087909cb)
 
 
 Adjust p-values for multiple testing
 ```
-padjusted = p.adjust(x$pvalues, method = "fdr")
+padjusted = p.adjust(pcobj$pvalues, method = "fdr")
 ```
 Identify outliers
 ```
 outliers = which(padjusted < 0.01)
 ```
-Here, identified 6 significant SNPs at alpha = 0.01
+Here, identified 8 significant SNPs at alpha = 0.01
 ```
 colnames(datasub)[outliers]
-[1] "V1038779" "V167436"  "V457915"  "V1096118" "V69628"   "V460604"
+[1] "V622304"  "V2681962" "V1942801" "V1238265" "V2338596" "V2386972" "V3379779" "V3220287"
 ```
 
 ## 3. Use Fst to detect outliers
