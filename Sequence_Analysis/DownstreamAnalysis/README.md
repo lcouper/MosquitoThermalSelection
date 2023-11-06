@@ -103,8 +103,7 @@ length(which(fst$outlier == "outlier")) # identifies 1204 SNPs
 fst = MakeDiploidFSTMat(datasub, locusNames = 1:ncol(datasub), popNames = data$Treatment)
 hist(fst$FST, breaks = 50)
 ```
-
-![Fstdist_method2](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/2327fa5f-fc2c-43bc-96b2-8e8de6a49d60)
+![Fst_valeMethod2](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/acd94b94-22cc-4930-9897-6dcb90c681c1)
 
 Identify statistical outliers based on chi-squared distribution
 ```
@@ -115,7 +114,7 @@ OutFLANKResultsPlotter(out1, withOutliers = TRUE,
                        NoCorr = TRUE, Hmin = 0.1, binwidth = 0.001, Zoom =
                        FALSE, RightZoomFraction = 0.05, titletext = NULL)
 ```
-![Rplot_fst](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/8b85d612-3f5c-4fa1-b2eb-bf51dfba6b5f)
+![Fst_wocorre](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/0c74f16d-8d94-44c0-8ba9-e14fcead91bf)
 
 ```
 # Find statistical outliers
@@ -124,7 +123,7 @@ P1 <- pOutlierFinderChiSqNoCorr(fst,Fstbar=OF$FSTNoCorrbar,
 
 # Which have q-values < 0.05
 outliers <- which(P1$OutlierFlag==TRUE)
-colnames(datasub)[outliers] # identified one SNP: V200615
+colnames(datasub)[outliers] # no outiler SNPs in the data subset
 
 # Create manhattan plot with outlier SNPs
 plot(P1$LocusName,P1$FST,xlab="SNP Position",ylab="FST",col=rgb(0,0,0,alpha=0.3), 
@@ -132,7 +131,7 @@ plot(P1$LocusName,P1$FST,xlab="SNP Position",ylab="FST",col=rgb(0,0,0,alpha=0.3)
 points(P1$LocusName[outliers],P1$FST[outliers],col="red", pch = 16)
 ```
 
-![Rplot_Fstoutiler](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/ab4e819a-52be-490a-8658-43f3e2962af0)
+![ManhattanFst](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/83ca9e64-6aaf-4885-844c-39e5d738c1cd)
 
 
 
