@@ -48,15 +48,16 @@ plot(pcobj,option="scores", pop=ExpRound,
 ```
 ![PC_expround](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/14771264-4411-4865-a168-da3fc019bcfe)
 
-## 2. Detect outlier SNPs
+
+## 2. Detect outlier SNPs using various methods
+
+### 2a. Detect using PCadapt
 
 Manhattan plot to visualize potentially important SNPs 
-
 ```
 plot(x,option="manhattan") + theme_bw()
 ```
 ![manhattan](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/a4de6047-7f4d-4e9b-9a55-f641087909cb)
-
 
 Adjust p-values for multiple testing
 ```
@@ -71,6 +72,11 @@ Here, identified 8 significant SNPs at alpha = 0.01
 colnames(datasub)[outliers]
 [1] "V622304"  "V2681962" "V1942801" "V1238265" "V2338596" "V2386972" "V3379779" "V3220287"
 ```
+
+### 2b. Detect outlier SNPs using Fst
+*Note: Fst estimates and outlier detection done using the OutFLANK R package**
+This method detected 56 outlier SNPs based on Fst, at a q < 0.01 threshold.
+
 
 ## 3. Use Fst to detect outliers
 
