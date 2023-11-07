@@ -73,37 +73,7 @@ colnames(datasub)[outliers]
 [1] "V622304"  "V2681962" "V1942801" "V1238265" "V2338596" "V2386972" "V3379779" "V3220287"
 ```
 
-### 2b. Detect outlier SNPs using Fst
-*Note: Fst estimates and outlier detection done using the OutFLANK R package**
-This method detected 56 outlier SNPs based on Fst, at a q < 0.01 threshold.
-
-
-## 3. Use Fst to detect outliers
-
-Note: Method 1 currently includes all SNPs, while method 2 uses only the 100 SNPs in the data subset so they are not directly comparable. Perhaps use both approaches in final analysis and retain SNPs identified through both methods?
-
-### Method 1: Using Fst values generated through vcftools 
-
-See step 23 of Seqeuence Analysis for vcftools Fst call
-
-```
-Fstdata = read.delim("Fst_estimates_VCFtools/Fst_estimates_controlvsheat_vcftools.txt")
-colnames(Fstdata) = c("Chrom", "SNP", "WeirFst")
-hist(Fstdata$WeirFst)
-```
-![Fstvaldist](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/9a670d8d-f6f8-4f8b-a4ae-40b644f8bed2)
-
-Detect outliers as those exceeding 99.9th% percentile.  
-Note: following methods here: https://speciationgenomics.github.io/per_site_Fst/
-
-```
-my_threshold <- quantile(Fstdata$WeirFst, 0.999, na.rm = T)
-fst <- Fstdata %>% mutate(outlier = ifelse(Fstdata$WeirFst > my_threshold, "outlier", "background"))
-length(which(fst$outlier == "outlier")) # identifies 1204 SNPs
-```
-![Fstplot_man](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/bfe65f29-6724-44a1-80f1-3bc636e654cc)
-
-### Method 2: Using OutFLANK R package 
+### 2b. Detect using Fst and OutFlankR
 
 ```
 fst = MakeDiploidFSTMat(datasub, locusNames = 1:ncol(datasub), popNames = data$Treatment)
@@ -138,6 +108,8 @@ points(P1$LocusName[outliers],P1$FST[outliers],col="red", pch = 16)
 ```
 
 ![ManhattanFst](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/83ca9e64-6aaf-4885-844c-39e5d738c1cd)
+
+
 
 
 
