@@ -111,26 +111,5 @@ points(P1$LocusName[outliers],P1$FST[outliers],col="red", pch = 16)
 
 
 
-
-
-## 4. Detect SNPs associated with longer knockdown times 
-
-Identifies SNPs associated with longer knockdown time (i.e., greater heat tolerance) while controlling for treatment group and sex
-```
-# Combine relevant metadata and genotype matrix into dataframe
-df = cbind(metadata[,c(8,2,4)], datasub)
-df$Treatment = as.factor(df$Treatment)
-df$Sex = as.factor(df$Sex)
-
-# Run model KD time ~ genotype matrix + Treatment + Sex (not using body size for now) 
-model = lm(Kdtime ~ ., data = df)
-
-# Pull out p-values and adjust for multiple testing
-pvals = as.numeric(summary(model)$coefficients[,4])
-# padjusted = p.adjust(pvals, method = "fdr") # This appears to be over-correcting
-outliers = which(pvals < 0.05) 
-
-# Pull out ID of the SNP outliers
-colnames(df)[outliers] # in this example: "V790007" "V254278" "V790890" "V248541" "V489649"
 ```
 
