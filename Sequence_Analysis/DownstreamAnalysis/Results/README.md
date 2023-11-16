@@ -6,20 +6,21 @@
 Shows the cumulative proportion of variance explained by PC axes   
 **Note the majority of variation is NOT explained in first 10 axes**
 
-![Fulldataset_Scree](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/d78d99ec-f47d-4255-9b81-66585ea4a8d9)
+![ScreePlot_Final](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/d5873555-3542-4799-93de-c0e27663c020)
+
 
 #### 1a. Control vs heat-selected group
 ##### Principal components 1 & 2
-![PCA_full_ControlTreat_Axes1 2](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/892d99a4-92c5-4d5b-b232-0bc1e606c1f8)
+![PCA_ControlHeat](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/249a4008-684d-4bef-8d6b-00366d133ec5)
 
 ##### Principal components 3&4
-![PCA_ControlTreat_Axes3 4](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/1c4c7ec7-8a98-4106-8cad-2185d09c017e)
+![PCA_3 4](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/3b2f71a5-4a5d-4349-a994-eb2944c2bd8b)
 
 #### 1b. Female vs male mosquitoes
-![PCA_Full_MF](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/38605260-2de0-4c1e-8744-e9d6a1f48b84)
+![PCA_MF](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/c3592e83-4801-41f0-966b-7472ea8a1de4)
 
 #### 1c. By experimental round 1-3
-![PCAfull_ExpRound](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/65243073-22f1-45a8-85db-ebd018606f61)
+![PCA_ExpRound](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/9cedeea1-8858-4683-b982-06a3ba0868b4)
 
 ## 2. Detect outlier SNPs using various methods
 
