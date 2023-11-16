@@ -58,7 +58,7 @@ Manhattan plot to visualize potentially important SNPs
 ```
 plot(x,option="manhattan") + theme_bw()
 ```
-![manhattan](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/a4de6047-7f4d-4e9b-9a55-f641087909cb)
+![Manhattan_Subset](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/39fd363b-7eca-4062-b621-c3361ab20d33)
 
 Adjust p-values for multiple testing
 ```
@@ -68,10 +68,10 @@ Identify outliers
 ```
 outliers = which(padjusted < 0.01)
 ```
-Here, identified 8 significant SNPs at alpha = 0.01
+Here, identified 17 significant SNPs at alpha = 0.01
 ```
 colnames(datasub)[outliers]
-[1] "V622304"  "V2681962" "V1942801" "V1238265" "V2338596" "V2386972" "V3379779" "V3220287"
+[1] "X3_RagTag_317222084" "X2_RagTag_285266406" "X2_RagTag_358523747" "X2_RagTag_254025183" "X1_RagTag_226675236" "X3_RagTag_152027826" "X2_RagTag_283502580" "X1_RagTag_49700296"  "X3_RagTag_108965707" "X2_RagTag_295529825" "X3_RagTag_94856485"  "X3_RagTag_157997951" "X2_RagTag_1920050"   "X2_RagTag_21477677"  "X2_RagTag_309792817" "X3_RagTag_140211440" "X3_RagTag_98148127" 
 ```
 
 ### 2b. Detect using Fst and OutFlankR
