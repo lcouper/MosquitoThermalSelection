@@ -32,21 +32,22 @@ ExpRound = data$Exp.Round
 plot(pcobj,option="scores", pop=Treatment, 
      col = c("#00AFBB",  "#FC4E07")) + theme_bw() + ggtitle(label = NULL)
 ```
-![PC_controlHightemp](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/2400bd1b-fd4e-4406-8d09-398543ed5489)
+![PCA_ControlTreat_Subset](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/5292cc8c-7920-45ab-909b-ef5009d1fdcc)
 
 ### PCA: Female vs Male
 ```
 plot(pcobj,option="scores", pop=Sex, 
      col = c("#00AFBB",  "#FC4E07")) + theme_bw() + ggtitle(label = NULL)
 ```
-![PC_malefemale](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/dc5818f5-fe25-4ac1-9a8e-5a27d9daac54)
+![PCA_MF_Subset](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/127393b8-ae36-4f80-bd0e-96be28eca1da)
+
 
 ### PCA: Experimental Round (1-3)
 ```
 plot(pcobj,option="scores", pop=ExpRound, 
      col = c("#00AFBB",  "#FC4E07")) + theme_bw() + ggtitle(label = NULL)
 ```
-![PC_expround](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/14771264-4411-4865-a168-da3fc019bcfe)
+![PCA_ExpRound_Subset](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/c45bf7f7-0344-46e5-ae0a-722123421d7b)
 
 
 ## 2. Detect outlier SNPs using various methods
