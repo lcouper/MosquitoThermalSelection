@@ -42,5 +42,13 @@ This method detected 1,850 outlier SNPs based on Fst, at a q < 0.01 threshold.
 ```
 model = glm(y ~ df$Treatment, family = "binomial") # where y = (0,2), (1,1), or (2,0)
 ```
-*Note: Typical p-value adjustment methods were overly stringent (i.e. 0 SNPs were maintained at p < 0.05 after correction, given number of tests. Instead, used un-adjusted p-values and considered alpha of 0.0001 when identifying outlier SNPs (shown in red on plot below)*
+Note: then comparing these observed p-values to distribution of permuated pvals
+
+### 2d. Use glm to identify SNPs significantly associated with knockdown time
+*i.e.* 
+```
+model = glm(y ~ df$KDtime + df$Sex, family = "binomial") # where y = (0,2), (1,1), or (2,0)
+```
+Note: sex added to model as there were clear differences between Males and Females (e.g., due to body size)
+
 
