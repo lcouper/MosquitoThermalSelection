@@ -29,12 +29,12 @@ Shows the cumulative proportion of variance explained by PC axes
 
 ### 2b. Detect outlier SNPs using Fst
 *Note: Fst estimates and outlier detection done using the OutFLANK R package**
-This method detected 1,850 outlier SNPs based on Fst, at a q < 0.01 threshold.
+This method detected 11,446 outlier SNPs based on Fst, a q <0.05 threshold (and 1,850 with q < 0.01).
 
 ### Manhattan plot showing SNP outliers based on Fst 
 *Note: outlier SNPs colored below in red. Outlier threshold: q < 0.01*
 
-![FstOutliers_OutFLANK](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/a275db80-cdf9-4294-a358-f1bbc8394aa9)
+![Fst_Outliers_OutFLANK_q0 05](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/24d7631c-4f2a-4658-b1b7-7bd44b7ab372)
 
 
 ### 2c. Use glm to identify SNPs with significant treatment effects
