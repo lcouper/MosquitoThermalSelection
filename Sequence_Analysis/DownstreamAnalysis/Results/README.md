@@ -36,19 +36,27 @@ This method detected 11,446 outlier SNPs based on Fst, a q <0.05 threshold (and 
 
 ![OutFLANK_Fst_Outliers_q0 05andFst0 05](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/745f9d15-8cb2-4a39-8745-94a91ac3a3e7)
 
+## 3. Examine allele frequency differences between control and heat-selected group
+Step 1: calculated frequency of alternative allele for each SNP separately for control and heat-selected.  
+Step 2: calculated difference in allele frequency between these groups.   
+Step 3: generated matched controls for each SNP:
+To generate matched controls: 
+- Identify SNPs within 1000 bp of focal SNP
+- Keep those within 5% of starting (control) frequency as focal SNP
+- From this list, take random sample of 7 SNPs
+- Caculate af differences (i.e. between control and heat-treated group) for these 7 SNPs
+- Compare af differences between focal SNP and matched controls
+Step 4: Compare AF differences relative to matched controls
 
-### 2c. Use glm to identify SNPs with significant treatment effects
-*i.e.* 
-```
-model = glm(y ~ df$Treatment, family = "binomial") # where y = (0,2), (1,1), or (2,0)
-```
-Note: then comparing these observed p-values to distribution of permuated pvals
+#### Visualize difference in AF for focal SNPs relative to matched controls
 
-### 2d. Use glm to identify SNPs significantly associated with knockdown time
-*i.e.* 
-```
-model = glm(y ~ df$KDtime + df$Sex, family = "binomial") # where y = (0,2), (1,1), or (2,0)
-```
-Note: sex added to model as there were clear differences between Males and Females (e.g., due to body size)
+Here, points indicate focal SNPs with larger (red) or smaller (blue) AF differences than their matched controls
+
+![AFdifference_relativetoMatchedControls](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/405c2641-eebf-45d7-ab5d-4554c81e8b8a)
+
+Pull out and visualize SNPs with largest (95th quantile) AF differences relative to their matched control
+
+![AFdifferences_95thquartile](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/1830ad8d-6b6f-4dd9-b52b-8a01704a174d)
+
 
 
