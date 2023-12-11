@@ -46,6 +46,7 @@ To generate matched controls:
 - From this list, take random sample of 7 SNPs
 - Caculate af differences (i.e. between control and heat-treated group) for these 7 SNPs
 - Compare af differences between focal SNP and matched controls   
+
 Step 4: Compare AF differences relative to matched controls
 
 #### Visualize difference in AF for focal SNPs relative to matched controls
