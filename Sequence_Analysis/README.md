@@ -190,3 +190,14 @@ Note: 'population 1' = control, 'population 2' = heat-selected
 ```
 vcftools --vcf Filtered_VCF_All_sorted_0.98_bialleliconly.vcf --weir-fst-pop population_1.txt --weir-fst-pop population_2.txt --out pop1_vs_pop2
 ```
+
+##### 24. Create files for use in plink 
+Followed guidance from: https://www.biostars.org/p/109690/ 
+As our genome involves many scaffolds, we first need to create our own chromosome mapping file. Do so, by running:
+```
+bcftools view -H Filtered_VCF_All_sorted_0.995_bialleliconly.vcf | cut -f 1 | uniq | awk '{print $0"\t"$0}' > filename.chrom-map.txt
+```
+Then, make mapping file by running:
+```
+vcftools --vcf Filtered_VCF_All_sorted_0.98_bialleliconly.vcf --plink --chrom-map filename.chrom-map.txt --out myplink
+```
