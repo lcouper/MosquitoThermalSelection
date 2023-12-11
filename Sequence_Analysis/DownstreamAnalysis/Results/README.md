@@ -34,7 +34,7 @@ This method detected 11,446 outlier SNPs based on Fst, a q <0.05 threshold (and 
 ### Manhattan plot showing SNP outliers based on Fst 
 *Note: outlier SNPs colored below in red. Outlier threshold: q < 0.01*
 
-![Fst_Outliers_OutFLANK_q0 05](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/24d7631c-4f2a-4658-b1b7-7bd44b7ab372)
+![OutFLANK_Fst_Outliers_q0 05andFst0 05](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/745f9d15-8cb2-4a39-8745-94a91ac3a3e7)
 
 
 ### 2c. Use glm to identify SNPs with significant treatment effects
