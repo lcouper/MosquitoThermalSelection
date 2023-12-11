@@ -51,12 +51,13 @@ Step 4: Compare AF differences relative to matched controls
 
 #### Visualize difference in AF for focal SNPs relative to matched controls
 
-Here, points indicate focal SNPs with larger (red) or smaller (blue) AF differences than their matched controls
-
+###### Plot 1. Here, points indicate focal SNPs with larger (red) or smaller (blue) AF differences than their matched controls
 ![AFdifference_relativetoMatchedControls](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/405c2641-eebf-45d7-ab5d-4554c81e8b8a)
 
-Pull out and visualize SNPs with largest (95th quantile) AF differences relative to their matched control
+###### Plot 2. Density plot of AF shfits in focal SNPs vs their matched controls
+![DensityPlotOfAFshift](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/0cd1aaaf-bd94-461c-8634-6358e89b06cb)
 
+###### Plot 3. Visualize AF shifts in SNPs with largest (95th quantile) differences relative to their matched control
 ![AFdifferences_95thquartile](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/1830ad8d-6b6f-4dd9-b52b-8a01704a174d)
 
 
