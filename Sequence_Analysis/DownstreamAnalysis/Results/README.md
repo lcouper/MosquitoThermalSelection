@@ -24,19 +24,19 @@ Shows the cumulative proportion of variance explained by PC axes
 
 ## 2. Detect outlier SNPs using various methods
 
-### 2a. Detect using PCadapt
+### Method 1: PCadapt
 *Note: not doing this approach since most variation not explained in first ~ 10 axes
 
-### 2b. Detect outlier SNPs using Fst
+### Method 2: Detect outlier SNPs using Fst
 *Note: Fst estimates and outlier detection done using the OutFLANK R package**
 This method detected 11,446 outlier SNPs based on Fst, a q <0.05 threshold (and 1,850 with q < 0.01).
 
-### Manhattan plot showing SNP outliers based on Fst 
+#### Manhattan plot showing SNP outliers based on Fst 
 *Note: outlier SNPs colored below in red. Outlier threshold: q < 0.01*
 
 ![OutFLANK_Fst_Outliers_q0 05andFst0 05](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/745f9d15-8cb2-4a39-8745-94a91ac3a3e7)
 
-## 3. Examine allele frequency differences between control and heat-selected group
+#### Examine allele frequency differences between control and heat-selected group
 Step 1: calculated frequency of alternative allele for each SNP separately for control and heat-selected.  
 Step 2: calculated difference in allele frequency between these groups.   
 Step 3: generated matched controls for each SNP:
@@ -59,6 +59,11 @@ Step 4: Compare AF differences relative to matched controls
 
 **Plot 3. Visualize AF shifts in SNPs with largest (95th quantile) differences relative to their matched control**
 ![AFdifferences_95thquartile](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/1830ad8d-6b6f-4dd9-b52b-8a01704a174d)
+
+
+### Method 3: GLM using plink 
+
+*Note using: plink v 2.0 through SCG
 
 
 
