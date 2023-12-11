@@ -208,3 +208,13 @@ vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --plink --chrom-m
 ```
 vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --plink --out myplink
 ```
+
+#### 25. Run plink
+Followed tutorial here:
+https://zzz.bwh.harvard.edu/plink/tutorial.shtml
+Note: running plink on SCG using default version
+
+```
+# Navigate to working directory with .map and .ped files (here, /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_VCF)
+plink --file myplink
+```
