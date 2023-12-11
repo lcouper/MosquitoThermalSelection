@@ -193,11 +193,18 @@ vcftools --vcf Filtered_VCF_All_sorted_0.98_bialleliconly.vcf --weir-fst-pop pop
 
 ##### 24. Create files for use in plink 
 Followed guidance from: https://www.biostars.org/p/109690/ 
+Another useful tutorial here: http://evomics.org/learning/population-and-speciation-genomics/2016-population-and-speciation-genomics/fileformats-vcftools-plink/
+
 As our genome involves many scaffolds, we first need to create our own chromosome mapping file. Do so, by running:
 ```
 bcftools view -H Filtered_VCF_All_sorted_0.995_bialleliconly.vcf | cut -f 1 | uniq | awk '{print $0"\t"$0}' > filename.chrom-map.txt
 ```
 Then, make mapping file by running:
 ```
-vcftools --vcf Filtered_VCF_All_sorted_0.98_bialleliconly.vcf --plink --chrom-map filename.chrom-map.txt --out myplink
+vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --plink --chrom-map filename.chrom-map.txt --out myplink
+```
+
+*Note: this did not actually work, so instead just ran: 
+```
+vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --plink --out myplink
 ```
