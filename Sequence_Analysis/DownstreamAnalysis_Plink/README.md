@@ -46,6 +46,6 @@ plink --file myplink --pheno treat.txt --allow-no-sex --assoc --adjust --out tre
 plink --allow-extra-chr --file myplink3 --pheno treat.txt --allow-no-sex --assoc --perm --out treat_assoc
 
 # Sort and output top 5000 SNPs
-sort --key=9 -nr treat_assoc.assoc.perm | head -5000 > Plink_Treatment_WithPermutation_Top5000.txt
+sort --key=3 -nr treat_assoc.assoc.perm | head -5000 > Plink_Treatment_WithPermutation_Top5000.txt
 ```
 
