@@ -12,13 +12,11 @@ bcftools view -H Filtered_VCF_All_sorted_0.995_bialleliconly.vcf | cut -f 1 | un
 ```
 Then, make mapping file by running:
 ```
-vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --plink --chrom-map filename.chrom-map.txt --out myplink
+module load vcftools/0.1.16-13-gd0c95c5
+# Note that earlier versions of vcftools on SCG do not have the --chrom-map option, so must load this version specifically
+vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --plink --chrom-map filename.chrom-map.txt --maf 0.05 --out myplink
 ```
 
-*Note: this did not actually work, so instead just ran: 
-```
-vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --plink --out myplink
-```
 
 #### Step 2. Run plink
 Followed tutorial here: https://zzz.bwh.harvard.edu/plink/tutorial.shtml
