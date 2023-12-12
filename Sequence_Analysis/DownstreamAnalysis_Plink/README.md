@@ -44,7 +44,7 @@ sort --key=9 -nr treat_assoc.assoc | head
 plink --file myplink --pheno treat.txt --allow-no-sex --assoc --adjust --out treat_ass_adj
 # As before, the FDR adjustments over-correct (given the ~4 million SNPs, so not using this output
 
-# Sort and output top 1000 SNPs?
-sort --key=9 -nr treat_assoc.assoc | head -1000 > output.txt
+# Sort and output top 5000 SNPs
+sort --key=9 -nr treat_assoc.assoc | head -5000 > Plink_Treatment_Top5000.txt
 ```
 
