@@ -39,5 +39,8 @@ Here, treat.phe.txt (uploaded here) is a 3 column file specificying the family I
 plink --file myplink --pheno treat.txt --allow-no-sex --assoc --out treat_assoc
 # Then sort results based on p-values (the 9th column of the .assoc file) and display the top 10
 sort --key=9 -nr treat_assoc.assoc | head
+
+# To adjust for multiple testing:
+plink --file myplink --pheno treat.txt --allow-no-sex --assoc --adjust --out treat_ass_adj
 ```
 
