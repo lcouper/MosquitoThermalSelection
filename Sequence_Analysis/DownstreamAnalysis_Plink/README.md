@@ -14,7 +14,7 @@ Then, make mapping file by running:
 ```
 module load vcftools/0.1.16-13-gd0c95c5
 # Note that earlier versions of vcftools on SCG do not have the --chrom-map option, so must load this version specifically
-vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --plink --chrom-map filename.chrom-map.txt --maf 0.05 --out myplink
+vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --plink --chrom-map filename.chrom-map.txt --maf 0.05 --out myplink3
 ```
 
 
@@ -25,10 +25,10 @@ Note: running plink v 1.9 on SCG
 ```
 # Navigate to working directory with .map and .ped files (here, /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_VCF)
 # to check that things are working:
-plink --file myplink
+plink --allow-extra-chr --file myplink3
 
 # to make binary PED file:
-plink --file myplink --make-bed --out myplink
+plink --allow-extra-chr --file myplink --make-bed --out myplink3
 
 ```
 **Conduct association analysis with treatment as phenotype**
