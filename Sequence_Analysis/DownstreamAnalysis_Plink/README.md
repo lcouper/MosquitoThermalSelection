@@ -38,11 +38,7 @@ plink --allow-extra-chr --file myplink3 --pheno treat.txt --allow-no-sex --assoc
 # Then sort results based on p-values (the 9th column of the .assoc file) and display the top 10
 sort --key=9 -nr treat_assoc.assoc | head
 
-# One way adjust for multiple testing:
-plink --file myplink --pheno treat.txt --allow-no-sex --assoc --adjust --out treat_ass_adj
-# As before, the FDR adjustments over-correct (given the ~4 million SNPs, so not using this output
-
-# Better way to adjust for multiple testing: permutation approach 
+# Repeat, but with permutations (as a means of obtaining corrected p-values)
 plink --allow-extra-chr --file myplink3 --pheno treat.txt --allow-no-sex --assoc --perm --out treat_assoc
 
 # Sort and output top 5000 SNPs
@@ -50,11 +46,9 @@ sort --key=3 -nr treat_assoc.assoc.perm | head -5000 > Plink_Treatment_WithPermu
 ```
 
 #### 2b. Conduct association analysis with knockdown time as phenotype 
-
-within-cluster permutation (to account for sex differenes)
+Here, KD.phe.txt (uploaded here) contains the individual knockdown times. As above, we use a permutation approach to obtain corrected significance values for each SNP. Here, we specify that permutatons should occur within-sex clusters. This is to account for known differences in body size (and potentially heat tolerance) between adult female and male mosquitoes. KD.sex.cluster.txt note the sex of all individuals, with 1 = F, 2 = M. 
+```
 plink --allow-extra-chr --file myplink3 --pheno KD.phe.txt --allow-no-sex --assoc --perm --within KD.sex.cluster.txt --out KD_assoc
 
-
-
-plink --file mydata --assoc --within mydata.clst --perm
-in cluster file: F = 1, M = 2
+# Sort and output top 5000 SNPs
+sort --key=3 -nr KD_assoc.qassoc.perm | head -5000 > Plink_KDtime_WithPermutation_Top5000.txt
