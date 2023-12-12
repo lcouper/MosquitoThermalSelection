@@ -42,5 +42,6 @@ sort --key=9 -nr treat_assoc.assoc | head
 
 # To adjust for multiple testing:
 plink --file myplink --pheno treat.txt --allow-no-sex --assoc --adjust --out treat_ass_adj
+# As before, the FDR adjustments over-correct (given the ~4 million SNPs, so not using this output
 ```
 
