@@ -37,7 +37,7 @@ plink --file myplink --make-bed --out myplink
 Here, treat.phe.txt (uploaded here) is a 3 column file specificying the family ID and individual ID (here the same thing) and the phenotype-- here '1' for control and '2' for heat-selected. Note that the --allow-no-sex flag is mandatory for this line to run
 ```
 plink --file myplink --pheno treat.txt --allow-no-sex --assoc --out treat_assoc
-# Then sort results based on p-values and display the top 10
-sort --key=7 -nr treat_assoc.assoc | head
+# Then sort results based on p-values (the 9th column of the .assoc file) and display the top 10
+sort --key=9 -nr treat_assoc.assoc | head
 ```
 
