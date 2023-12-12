@@ -51,5 +51,10 @@ sort --key=3 -nr treat_assoc.assoc.perm | head -5000 > Plink_Treatment_WithPermu
 
 #### 2b. Conduct association analysis with knockdown time as phenotype 
 
-### Adjust for sex clusters!!
+within-cluster permutation (to account for sex differenes)
+plink --allow-extra-chr --file myplink3 --pheno KD.phe.txt --allow-no-sex --assoc --perm --within KD.sex.cluster.txt --out KD_assoc
+
+
+
+plink --file mydata --assoc --within mydata.clst --perm
 in cluster file: F = 1, M = 2
