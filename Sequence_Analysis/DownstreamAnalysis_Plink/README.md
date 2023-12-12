@@ -50,3 +50,5 @@ sort --key=3 -nr treat_assoc.assoc.perm | head -5000 > Plink_Treatment_WithPermu
 ```
 
 #### 2b. Conduct association analysis with knockdown time as phenotype 
+
+### Adjust for sex clusters!!
