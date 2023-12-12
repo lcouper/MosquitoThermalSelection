@@ -38,14 +38,14 @@ plink --allow-extra-chr --file myplink3 --pheno treat.txt --allow-no-sex --assoc
 # Then sort results based on p-values (the 9th column of the .assoc file) and display the top 10
 sort --key=9 -nr treat_assoc.assoc | head
 
-# To adjust for multiple testing:
+# One way adjust for multiple testing:
 plink --file myplink --pheno treat.txt --allow-no-sex --assoc --adjust --out treat_ass_adj
 # As before, the FDR adjustments over-correct (given the ~4 million SNPs, so not using this output
 
-# Sort and output top 5000 SNPs
-sort --key=9 -nr treat_assoc.assoc | head -5000 > Plink_Treatment_Top5000.txt
-# Sort and output all SNPs
-sort --key=9 -nr treat_assoc.assoc > Plink_Treatment_All.txt
+# Better way to adjust for multiple testing: permutation approach 
+plink --allow-extra-chr --file myplink3 --pheno treat.txt --allow-no-sex --assoc --perm --out treat_assoc
 
+# Sort and output top 5000 SNPs
+sort --key=9 -nr treat_assoc.assoc.perm | head -5000 > Plink_Treatment_WithPermutation_Top5000.txt
 ```
 
