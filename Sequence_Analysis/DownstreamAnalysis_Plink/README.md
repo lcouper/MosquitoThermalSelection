@@ -31,7 +31,7 @@ plink --allow-extra-chr --file myplink3
 plink --allow-extra-chr --file myplink --make-bed --out myplink3
 
 ```
-**Conduct association analysis with treatment as phenotype**
+#### 2a. Conduct association analysis with treatment as phenotype 
 Here, treat.phe.txt (uploaded here) is a 3 column file specificying the family ID and individual ID (here the same thing) and the phenotype-- here '1' for control and '2' for heat-selected. Note that the --allow-no-sex flag is mandatory for this line to run
 ```
 plink --allow-extra-chr --file myplink3 --pheno treat.txt --allow-no-sex --assoc --out treat_assoc
@@ -49,3 +49,4 @@ plink --allow-extra-chr --file myplink3 --pheno treat.txt --allow-no-sex --assoc
 sort --key=3 -nr treat_assoc.assoc.perm | head -5000 > Plink_Treatment_WithPermutation_Top5000.txt
 ```
 
+#### 2b. Conduct association analysis with knockdown time as phenotype 
