@@ -28,17 +28,16 @@ Note: running plink v 1.9 on SCG
 plink --allow-extra-chr --file myplink3
 
 # to check for SNPs in LD based on VIF. Here, the parameters are: the window size in SNPs, the number of SNPs to shift the window at each step, and the VIF threshold
-```
 plink --allow-extra-chr --file myplink3 --indep 50 5 2
-```
 
 # to make binary PED file:
 plink --allow-extra-chr --file myplink --make-bed --out myplink3
-
 ```
+
 #### 2a. Conduct association analysis with treatment as phenotype 
 Here, treat.phe.txt (uploaded here) is a 3 column file specificying the family ID and individual ID (here the same thing) and the phenotype-- here '1' for control and '2' for heat-selected. Note that the --allow-no-sex flag is mandatory for this line to run.
 The max(T) permutation approach is discussed further here: https://zzz.bwh.harvard.edu/plink/perm.shtml
+
 ```
 # Conduct with max(T) permutation approach (as a means of obtaining corrected p-values)
 plink --allow-extra-chr --file myplink3 --pheno treat.txt --allow-no-sex --assoc --mperm 5000 --out treat_assoc
