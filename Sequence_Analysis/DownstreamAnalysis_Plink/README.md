@@ -32,23 +32,15 @@ plink --allow-extra-chr --file myplink --make-bed --out myplink3
 
 ```
 #### 2a. Conduct association analysis with treatment as phenotype 
-Here, treat.phe.txt (uploaded here) is a 3 column file specificying the family ID and individual ID (here the same thing) and the phenotype-- here '1' for control and '2' for heat-selected. Note that the --allow-no-sex flag is mandatory for this line to run
+Here, treat.phe.txt (uploaded here) is a 3 column file specificying the family ID and individual ID (here the same thing) and the phenotype-- here '1' for control and '2' for heat-selected. Note that the --allow-no-sex flag is mandatory for this line to run.
+The max(T) permutation approach is discussed further here: https://zzz.bwh.harvard.edu/plink/perm.shtml
 ```
-plink --allow-extra-chr --file myplink3 --pheno treat.txt --allow-no-sex --assoc --out treat_assoc
-# Then sort results based on p-values (the 9th column of the .assoc file) and display the top 10
-sort --key=9 -nr treat_assoc.assoc | head
-
-# Repeat, but with permutations (as a means of obtaining corrected p-values)
-plink --allow-extra-chr --file myplink3 --pheno treat.txt --allow-no-sex --assoc --perm --out treat_assoc
-
-# Sort and output top 5000 SNPs
-sort --key=3 -nr treat_assoc.assoc.perm | head -5000 > Plink_Treatment_WithPermutation_Top5000.txt
+# Conduct with max(T) permutation approach (as a means of obtaining corrected p-values)
+plink --allow-extra-chr --file myplink3 --pheno treat.txt --allow-no-sex --assoc --mperm 5000 --out treat_assoc
 ```
 
 #### 2b. Conduct association analysis with knockdown time as phenotype 
 Here, KD.phe.txt (uploaded here) contains the individual knockdown times. As above, we use a permutation approach to obtain corrected significance values for each SNP. Here, we specify that permutatons should occur within-sex clusters. This is to account for known differences in body size (and potentially heat tolerance) between adult female and male mosquitoes. KD.sex.cluster.txt note the sex of all individuals, with 1 = F, 2 = M. 
 ```
-plink --allow-extra-chr --file myplink3 --pheno KD.phe.txt --allow-no-sex --assoc --perm --within KD.sex.cluster.txt --out KD_assoc
-
-# Sort and output top 5000 SNPs
-sort --key=3 -nr KD_assoc.qassoc.perm | head -5000 > Plink_KDtime_WithPermutation_Top5000.txt
+plink --allow-extra-chr --file myplink3 --pheno KD.phe.txt --allow-no-sex --assoc --mperm 5000 --within KD.sex.cluster.txt --out KD_assoc
+```
