@@ -27,6 +27,11 @@ Note: running plink v 1.9 on SCG
 # to check that things are working:
 plink --allow-extra-chr --file myplink3
 
+# to check for SNPs in LD based on VIF. Here, the parameters are: the window size in SNPs, the number of SNPs to shift the window at each step, and the VIF threshold
+```
+plink --allow-extra-chr --file myplink3 --indep 50 5 2
+```
+
 # to make binary PED file:
 plink --allow-extra-chr --file myplink --make-bed --out myplink3
 
