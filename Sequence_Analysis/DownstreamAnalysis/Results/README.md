@@ -1,5 +1,8 @@
 # Downstream sequence analysis and results on full dataset
 
+
+# Note all results may change if using the LD pruned SNP list generated using plink
+
 ## 1. PCA showing overall genomic differences between treatment groups
 
 #### 1a. Scree plot 
