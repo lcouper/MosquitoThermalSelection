@@ -18,7 +18,7 @@ vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --plink --chrom-m
 ```
 
 
-#### Step 2. Run plink
+#### Step 2. Create LD-pruned data set in plink 
 Followed tutorial here: https://zzz.bwh.harvard.edu/plink/tutorial.shtml
 Note: running plink v 1.9 on SCG 
 
@@ -27,14 +27,14 @@ Note: running plink v 1.9 on SCG
 # to check that things are working:
 plink --allow-extra-chr --file myplink3
 
-# to check for SNPs in LD based on VIF. Here, the parameters are: the window size in SNPs, the number of SNPs to shift the window at each step, and the VIF threshold
+# Create LD-pruned dataset
 plink --allow-extra-chr --file myplink3 --indep 50 5 2
 
 # to make binary PED file:
 plink --allow-extra-chr --file myplink --make-bed --out myplink3
 ```
 
-#### 2a. Conduct association analysis with treatment as phenotype 
+#### Step 3. Conduct GWA with treatment as phenotype 
 Here, treat.phe.txt (uploaded here) is a 3 column file specificying the family ID and individual ID (here the same thing) and the phenotype-- here '1' for control and '2' for heat-selected. Note that the --allow-no-sex flag is mandatory for this line to run.
 The max(T) permutation approach is discussed further here: https://zzz.bwh.harvard.edu/plink/perm.shtml
 
@@ -43,7 +43,7 @@ The max(T) permutation approach is discussed further here: https://zzz.bwh.harva
 plink --allow-extra-chr --file myplink3 --pheno treat.txt --allow-no-sex --assoc --mperm 5000 --out treat_assoc
 ```
 
-#### 2b. Conduct association analysis with knockdown time as phenotype 
+#### Step 4. Conduct GWA with knockdown time as phenotype 
 Here, KD.phe.txt (uploaded here) contains the individual knockdown times. As above, we use a permutation approach to obtain corrected significance values for each SNP. Here, we specify that permutatons should occur within-sex clusters. This is to account for known differences in body size (and potentially heat tolerance) between adult female and male mosquitoes. KD.sex.cluster.txt note the sex of all individuals, with 1 = F, 2 = M. 
 ```
 plink --allow-extra-chr --file myplink3 --pheno KD.phe.txt --allow-no-sex --assoc --mperm 5000 --within KD.sex.cluster.txt --out KD_assoc
