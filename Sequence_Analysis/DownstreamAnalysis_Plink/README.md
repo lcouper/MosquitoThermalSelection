@@ -14,9 +14,8 @@ Then, make mapping file by running:
 ```
 module load vcftools/0.1.16-13-gd0c95c5
 # Note that earlier versions of vcftools on SCG do not have the --chrom-map option, so must load this version specifically
-vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --plink --chrom-map filename.chrom-map.txt --maf 0.05 --out myplink3
+vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --plink --chrom-map filename.chrom-map.txt --maf 0.05 --out myplink
 ```
-
 
 #### Step 2. Create LD-pruned data set in plink 
 Followed tutorial here: https://zzz.bwh.harvard.edu/plink/tutorial.shtml
@@ -25,13 +24,13 @@ Note: running plink v 1.9 on SCG
 ```
 # Navigate to working directory with .map and .ped files (here, /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_VCF)
 # to check that things are working:
-plink --allow-extra-chr --file myplink3
+plink --allow-extra-chr --file myplink
 
 # Create LD-pruned dataset
-plink --allow-extra-chr --file myplink3 --indep 50 5 2
+plink --allow-extra-chr --file myplink --indep 50 5 2
 
 # to make binary PED file:
-plink --allow-extra-chr --file myplink --make-bed --out myplink3
+plink --allow-extra-chr --file myplink --make-bed --out myplinkbed
 ```
 
 #### Step 3. Conduct GWA with treatment as phenotype 
