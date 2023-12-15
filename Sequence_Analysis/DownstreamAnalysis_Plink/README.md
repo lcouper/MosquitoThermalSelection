@@ -30,10 +30,8 @@ plink --allow-extra-chr --file myplink
 plink --allow-extra-chr --file myplink --indep 50 5 2
 
 # Make new, pruned file and create binary bed file
-plink --allow-extra-chr --file myplink --extract plink.prune.in --make-bed --out pruneddata
-
-# convert pruned output into VCF
-plink109 --bfile pruneddata --recode vcf --out vcf_pruned
+# note the --recode argument is necessary to generate the .map and .ped files needed for the association analysis
+plink --allow-extra-chr --file myplink --extract plink.prune.in --recode --make-bed --out pruneddata
 ```
 
 #### Step 3. Conduct GWA with treatment as phenotype 
@@ -42,7 +40,7 @@ The max(T) permutation approach is discussed further here: https://zzz.bwh.harva
 
 ```
 # Conduct with max(T) permutation approach (as a means of obtaining corrected p-values)
-plink --allow-extra-chr --file prunedata --pheno treat.txt --map myplink.map --allow-no-sex --assoc --model mperm=5000 --out treat_assoc
+plink --allow-extra-chr --file pruneddata --pheno treat.txt --allow-no-sex --assoc --mperm 5000 --out treat_assoc
 ```
 
 #### Step 4. Conduct GWA with knockdown time as phenotype 
