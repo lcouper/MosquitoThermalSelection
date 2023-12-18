@@ -175,7 +175,7 @@ Keep only bi-allelic sites for downstream analysis
 ```
 bcftools view -m2 -M2 -v snps Filtered_VCF_All_sorted_indexed.vcf > Filtered_VCF_All_sorted_0.995_bialleliconly.vcf
 ```
-*Number of biallelic sites: 3,940,578*
+*Number of biallelic sites: 3,691,363*
 
 #### 22. Generate genotype matrix using vcftools
 Note, this outputs 3 files: ‘.012’ contains the genotypes of each individual on a separate line (with 0, 1, 2 denoting the number of non-reference alleles at the site), ‘.ind’ lists the individuals included in the main file, ‘.pos’ details the site location included in the main file. 
