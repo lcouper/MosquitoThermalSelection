@@ -27,7 +27,7 @@ Note: running plink v 1.9 on SCG
 plink --allow-extra-chr --file myplink
 
 # Create LD-pruned dataset
-plink --allow-extra-chr --file myplink_maf1 --indep 50 5 1.5
+plink --allow-extra-chr --file myplink --indep 50 5 1.5
 # Note this retains 609,490 SNPs
 
 # to get list of linked and focal SNPs:
