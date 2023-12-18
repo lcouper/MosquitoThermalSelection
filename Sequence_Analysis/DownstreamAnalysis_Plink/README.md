@@ -27,7 +27,7 @@ Note: running plink v 1.9 on SCG
 plink --allow-extra-chr --file myplink
 
 # Create LD-pruned dataset
-plink --allow-extra-chr --file myplink --indep 50 5 1.5
+plink --allow-extra-chr --file myplink --indep 50 5 1.5 --show-tags all
 # Note this retains 583,889 SNPs
 
 # Make new, pruned file and create binary bed file
@@ -46,9 +46,9 @@ plink --allow-extra-chr --file pruneddata --pheno treat.txt --allow-no-sex --ass
 
 Conduct association, but clump results to account for LD
 ```
-plink --allow-extra-chr --file myplink--pheno treat.txt --allow-no-sex --clump pruned_treat.assoc
+plink --allow-extra-chr --file myplink --pheno treat.txt --allow-no-sex --clump pruned_treat.assoc
 # Note that the 'myplink' data file specified above is used to calculate LD between SNPs in the .assoc file
-# In our case, tt is equivalent to running: 
+# In our case, it is equivalent to running: 
 plink --allow-extra-chr --file pruneddata --pheno treat.txt --allow-no-sex --clump pruned_treat.assoc
 ```
 
