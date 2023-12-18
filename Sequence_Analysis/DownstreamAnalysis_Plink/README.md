@@ -14,7 +14,7 @@ Then, make mapping file by running:
 ```
 module load vcftools/0.1.16-13-gd0c95c5
 # Note that earlier versions of vcftools on SCG do not have the --chrom-map option, so must load this version specifically
-vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --plink --chrom-map filename.chrom-map.txt --maf 0.05 --out myplink
+vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --plink --chrom-map filename.chrom-map_maf01.txt --maf 0.1 --out myplink
 ```
 
 #### Step 2. Create LD-pruned data set in plink 
@@ -27,8 +27,12 @@ Note: running plink v 1.9 on SCG
 plink --allow-extra-chr --file myplink
 
 # Create LD-pruned dataset
-plink --allow-extra-chr --file myplink --indep 50 5 1.5 --show-tags all
-# Note this retains 583,889 SNPs
+plink --allow-extra-chr --file myplink_maf1 --indep 50 5 1.5
+# Note this retains 609,490 SNPs
+
+# to get list of linked and focal SNPs:
+plink --allow-extra-chr --file myplink_maf1 --indep 50 5 1.5 --show-tags plink.prune.in
+```
 
 # Make new, pruned file and create binary bed file
 # note the --recode argument is necessary to generate the .map and .ped files needed for the association analysis
