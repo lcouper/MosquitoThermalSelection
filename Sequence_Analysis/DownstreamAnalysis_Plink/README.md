@@ -27,7 +27,7 @@ Note: running plink v 1.9 on SCG
 plink --allow-extra-chr --file myplink
 
 # Create LD-pruned dataset
-plink --allow-extra-chr --file myplink --indep 50 5 2
+plink --allow-extra-chr --file myplink --indep 50 5 1.5
 
 # Make new, pruned file and create binary bed file
 # note the --recode argument is necessary to generate the .map and .ped files needed for the association analysis
