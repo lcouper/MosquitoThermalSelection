@@ -32,7 +32,6 @@ plink --allow-extra-chr --file myplink --indep 50 5 1.5
 
 # to get list of linked and focal SNPs:
 plink --allow-extra-chr --file myplink_maf1 --indep 50 5 1.5 --show-tags plink.prune.in
-```
 
 # Make new, pruned file and create binary bed file
 # note the --recode argument is necessary to generate the .map and .ped files needed for the association analysis
