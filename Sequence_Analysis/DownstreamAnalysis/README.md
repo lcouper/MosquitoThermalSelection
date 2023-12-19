@@ -7,4 +7,5 @@ The following downstream analyses were conducted on the sequence data, after LD-
 3. Detect candidate loci using GWA (conducted in plink) with treatment as the phenotype
 4. Detect candidate loci using GWA (conducted in plink) with knckdown time as the phenotype
 5. Examine allele frequency differences in candidate loci identified above
+6. Estimate Tajima's D across all loci 
 
