@@ -22,19 +22,27 @@ Shows the cumulative proportion of variance explained by PC axes
 #### 1c. By experimental round 1-3
 ![PCA_ExpRound](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/9cedeea1-8858-4683-b982-06a3ba0868b4)
 
-## 2. Detect outlier SNPs using various methods
-
-### Method 1: PCadapt
-*Note: not doing this approach since most variation not explained in first ~ 10 axes
-
-### Method 2: Detect outlier SNPs using Fst
+## 2. Detect candidate loci using Fst
 *Note: Fst estimates and outlier detection done using the OutFLANK R package**
 This method detected 351 outlier SNPs at q < 0.05 (and Fst >= 0.05).
 
-#### Manhattan plot showing SNP outliers based on Fst 
-*Note: outlier SNPs colored below in red*
-
+**Manhattan plot showing candidate loci (in bold) across the 3 chromosomes based on Fst**
 ![Fst_Manhattan](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/5c5f696b-056e-4c7a-858c-7566efaf4b98)
+
+## 3. Detect candidate loci using GWA with treatment as the phenotype
+*Note: analysis conducted in plink. Results were 'clumped' based on LD*
+
+**Manhattan plot showing candidate loci (in bold) across the 3 chromosomes based on Fst**
+![Rplot04_Treat](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/e0a2490a-6a0b-4b24-afa5-b6ed1066d07f)
+
+## 4. Detect candidate loci using GWA with knockdown time as the phenotype
+*Note: analysis conducted in plink. Results were 'clumped' based on LD*
+
+**Manhattan plot showing candidate loci (in bold) across the 3 chromosomes based on Fst**
+![KD](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/54280dd8-8c61-4be6-ab04-72365d458b4c)
+
+
+
 
 
 #### Examine allele frequency differences between control and heat-selected group
