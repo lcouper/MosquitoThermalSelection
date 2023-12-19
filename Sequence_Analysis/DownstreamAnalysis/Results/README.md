@@ -53,8 +53,8 @@ To generate matched controls:
 - Compare af differences between focal SNP and matched controls   
 
 **Difference in AF for focal SNPs relative to matched controls**
-*Note: here, candidate loci are those identified through methods 2 & 3 above*  
-*green = focal SNP, gray = matched controls 1-10*
+*Note: here, candidate loci are those identified through methods 2 & 3 above*     
+*green = focal SNP, gray = matched controls 1-10*   
 ![AF_shifts](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/33c21553-2e17-4fe3-bdd5-f8ae9343939a)
 
 K-S test indiciate the distribution of allele frequency differences in focal SNPs differs from that of matched controls.  
