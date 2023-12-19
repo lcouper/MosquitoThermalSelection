@@ -41,7 +41,6 @@ This method detected 351 outlier SNPs at q < 0.05 (and Fst >= 0.05).
 ![KD](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/54280dd8-8c61-4be6-ab04-72365d458b4c)
 
 ## 5. Examine allele frequency differences for candidate loci 
-Here: candidate loci = those identified through methods 2 & 3 above.   
 Methods:
 1. Calculate frequency of alternative allele for each SNP separately for control and heat-selected.  
 2. Calculate difference in allele frequency between these groups.   
@@ -53,8 +52,9 @@ To generate matched controls:
 - Caculate af differences (i.e. between control and heat-treated group) for these 10 SNPs
 - Compare af differences between focal SNP and matched controls   
 
-### Visualize difference in AF for focal SNPs relative to matched controls
-*Note: green = focal SNP, gray = matched controls 1-10   
+**Difference in AF for focal SNPs relative to matched controls**
+*Note: here, candidate loci are those identified through methods 2 & 3 above*  
+*green = focal SNP, gray = matched controls 1-10*
 ![AF_shifts](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/33c21553-2e17-4fe3-bdd5-f8ae9343939a)
 
 K-S test indiciate the distribution of allele frequency differences in focal SNPs differs from that of matched controls.  
