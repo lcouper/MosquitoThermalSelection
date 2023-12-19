@@ -40,11 +40,11 @@ plink --allow-extra-chr --file myplink --extract plink.prune.in --recode --make-
 
 #### Step 3. Conduct GWA with treatment as phenotype 
 Here, treat.phe.txt (uploaded here) is a 3 column file specificying the family ID and individual ID (here the same thing) and the phenotype-- here '1' for control and '2' for heat-selected. Note that the --allow-no-sex flag is mandatory for this line to run.
-The max(T) permutation approach is discussed further here: https://zzz.bwh.harvard.edu/plink/perm.shtml
+Following guidance here: https://zzz.bwh.harvard.edu/plink/perm.shtml
 
 ```
 # Conduct with max(T) permutation approach (as a means of obtaining corrected p-values)
-plink --allow-extra-chr --file pruneddata --pheno treat.txt --allow-no-sex --assoc --mperm 5000 --out treat_assoc
+plink --allow-extra-chr --file pruneddata --pheno treat.txt --allow-no-sex --assoc --out pruned_treat_assoc
 ```
 
 Conduct association, but clump results to account for LD
@@ -54,6 +54,8 @@ plink --allow-extra-chr --file myplink --pheno treat.txt --allow-no-sex --clump 
 # In our case, it is equivalent to running: 
 plink --allow-extra-chr --file pruneddata --pheno treat.txt --allow-no-sex --clump pruned_treat.assoc
 ```
+
+Pruning and clumping resulted in 113 SNPs retained as significant (at < 0.01 after FDR correction)
 
 #### Step 4. Conduct GWA with knockdown time as phenotype 
 Here, KD.phe.txt (uploaded here) contains the individual knockdown times. As above, we use a permutation approach to obtain corrected significance values for each SNP. Here, we specify that permutatons should occur within-sex clusters. This is to account for known differences in body size (and potentially heat tolerance) between adult female and male mosquitoes. KD.sex.cluster.txt note the sex of all individuals, with 1 = F, 2 = M. 
