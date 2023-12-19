@@ -57,6 +57,8 @@ To generate matched controls:
 *Note: green = focal SNP, gray = matched controls 1-10   
 ![AF_shifts](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/33c21553-2e17-4fe3-bdd5-f8ae9343939a)
 
+K-S test indiciate the distribution of allele frequency differences in focal SNPs differs from that of matched controls.  
+But distributions of all matched controls do not differ
 
 
 
