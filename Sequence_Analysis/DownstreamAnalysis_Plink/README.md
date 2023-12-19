@@ -47,12 +47,10 @@ Following guidance here: https://zzz.bwh.harvard.edu/plink/perm.shtml
 plink --allow-extra-chr --file pruneddata --pheno treat.txt --allow-no-sex --assoc --out pruned_treat_assoc
 ```
 
-Conduct association, but clump results to account for LD
+Clump results from GWA to account for LD
 ```
-plink --allow-extra-chr --file myplink --pheno treat.txt --allow-no-sex --clump pruned_treat.assoc
-# Note that the 'myplink' data file specified above is used to calculate LD between SNPs in the .assoc file
-# In our case, it is equivalent to running: 
 plink --allow-extra-chr --file pruneddata --pheno treat.txt --allow-no-sex --clump pruned_treat.assoc
+# Note that the 'pruneddata' data file specified above is used to calculate LD between SNPs in the .assoc file
 ```
 
 Pruning and clumping resulted in 113 SNPs retained as significant (at < 0.01 after FDR correction)
@@ -61,4 +59,9 @@ Pruning and clumping resulted in 113 SNPs retained as significant (at < 0.01 aft
 Here, KD.phe.txt (uploaded here) contains the individual knockdown times. As above, we use a permutation approach to obtain corrected significance values for each SNP. Here, we specify that permutatons should occur within-sex clusters. This is to account for known differences in body size (and potentially heat tolerance) between adult female and male mosquitoes. KD.sex.cluster.txt note the sex of all individuals, with 1 = F, 2 = M. 
 ```
 plink --allow-extra-chr --file myplink --pheno KD.phe.txt --allow-no-sex --assoc --within KD.sex.cluster.txt --out KD_assoc
+```
+
+Clump results from GWA to account for LD
+```
+plink --allow-extra-chr --file pruneddata --pheno KD.phe.txt --allow-no-sex --within KD.sex.cluster.txt --clump KD_assoc.qassoc
 ```
