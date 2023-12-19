@@ -60,5 +60,5 @@ Pruning and clumping resulted in 113 SNPs retained as significant (at < 0.01 aft
 #### Step 4. Conduct GWA with knockdown time as phenotype 
 Here, KD.phe.txt (uploaded here) contains the individual knockdown times. As above, we use a permutation approach to obtain corrected significance values for each SNP. Here, we specify that permutatons should occur within-sex clusters. This is to account for known differences in body size (and potentially heat tolerance) between adult female and male mosquitoes. KD.sex.cluster.txt note the sex of all individuals, with 1 = F, 2 = M. 
 ```
-plink --allow-extra-chr --file myplink3 --pheno KD.phe.txt --allow-no-sex --assoc --mperm 5000 --within KD.sex.cluster.txt --out KD_assoc
+plink --allow-extra-chr --file myplink --pheno KD.phe.txt --allow-no-sex --assoc --within KD.sex.cluster.txt --out KD_assoc
 ```
