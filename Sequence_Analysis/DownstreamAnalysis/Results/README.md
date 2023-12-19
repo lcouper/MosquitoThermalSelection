@@ -1,8 +1,5 @@
 # Downstream sequence analysis and results on full dataset
 
-
-# Note all results may change if using the LD pruned SNP list generated using plink
-
 ## 1. PCA showing overall genomic differences between treatment groups
 
 #### 1a. Scree plot 
@@ -45,24 +42,13 @@ Step 1: calculated frequency of alternative allele for each SNP separately for c
 Step 2: calculated difference in allele frequency between these groups.   
 Step 3: generated matched controls for each SNP:
 To generate matched controls: 
-- Identify SNPs within 1000 bp of focal SNP
+- Identify SNPs on same chromsome and at least 100k bp away from focal SNP
 - Keep those within 5% of starting (control) frequency as focal SNP
-- From this list, take random sample of 7 SNPs
-- Caculate af differences (i.e. between control and heat-treated group) for these 7 SNPs
+- From this list, take random sample of 10 SNPs
+- Caculate af differences (i.e. between control and heat-treated group) for these 10 SNPs
 - Compare af differences between focal SNP and matched controls   
 
-Step 4: Compare AF differences relative to matched controls
-
 #### Visualize difference in AF for focal SNPs relative to matched controls
-
-**Plot 1. Here, points indicate focal SNPs with larger (red) or smaller (blue) AF differences than their matched controls**
-![AFdifference_relativetoMatchedControls](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/405c2641-eebf-45d7-ab5d-4554c81e8b8a)
-
-**Plot 2. Density plot of AF shfits in focal SNPs vs their matched controls**
-![DensityPlotOfAFshift](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/0cd1aaaf-bd94-461c-8634-6358e89b06cb)
-
-**Plot 3. Visualize AF shifts in SNPs with largest (95th quantile) differences relative to their matched control**
-![AFdifferences_95thquartile](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/1830ad8d-6b6f-4dd9-b52b-8a01704a174d)
 
 
 ### Method 3: GLM using plink 
