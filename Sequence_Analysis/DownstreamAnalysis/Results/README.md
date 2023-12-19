@@ -2,25 +2,24 @@
 
 ## 1. PCA showing overall genomic differences between treatment groups
 
-#### 1a. Scree plot UPDATE WITH PRUNED LIST
+#### 1a. Scree plot 
 Shows the cumulative proportion of variance explained by PC axes   
 **Note the majority of variation is NOT explained in first 10 axes**
 
-![ScreePlot_Final](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/d5873555-3542-4799-93de-c0e27663c020)
+![ScreePlot](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/dd32a321-5cef-46e2-9157-514b2fd98d47)
 
-
-#### 1a. Control vs heat-selected group UPDATE WITH PRUNED LIST
+#### 1a. Control vs heat-selected group 
 ##### Principal components 1 & 2
-![PCA_ControlHeat](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/249a4008-684d-4bef-8d6b-00366d133ec5)
+![PCA_12](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/8b113734-0c96-49cb-8111-e5de4d15818f)
 
 ##### Principal components 3&4
-![PCA_3 4](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/3b2f71a5-4a5d-4349-a994-eb2944c2bd8b)
+![PCA_34](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/f6d5a685-2846-4904-9d04-02e4a46af17e)
 
 #### 1b. Female vs male mosquitoes
-![PCA_MF](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/c3592e83-4801-41f0-966b-7472ea8a1de4)
+![PCA_MF](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/53bf07c0-4626-4a25-8b93-44a4d35ca248)
 
 #### 1c. By experimental round 1-3
-![PCA_ExpRound](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/9cedeea1-8858-4683-b982-06a3ba0868b4)
+![PCA_ExpRound](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/4f0750a7-949a-4028-9f24-f543e943f5b2)
 
 ## 2. Detect candidate loci using Fst
 *Note: Fst estimates and outlier detection done using the OutFLANK R package**
