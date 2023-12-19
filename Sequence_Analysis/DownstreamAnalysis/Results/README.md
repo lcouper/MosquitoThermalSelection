@@ -39,6 +39,7 @@ This method detected 351 outlier SNPs at q < 0.05 (and Fst >= 0.05).
 
 ![Fst_Manhattan](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/5c5f696b-056e-4c7a-858c-7566efaf4b98)
 
+
 #### Examine allele frequency differences between control and heat-selected group
 Step 1: calculated frequency of alternative allele for each SNP separately for control and heat-selected.  
 Step 2: calculated difference in allele frequency between these groups.   
