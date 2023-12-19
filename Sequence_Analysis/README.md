@@ -184,3 +184,10 @@ Note, this outputs 3 files: ‘.012’ contains the genotypes of each individual
 vcftools --012 --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --out output_geno.vcf
 ```
 
+#### 23. Calculate Tajima's D in controls 
+Tajima's D is a statistic indicating whether a population is evolving neutrally vs under selection / some demographic process.
+Here, we calculated Tajima's D for control individuals only (as these reflect the baseline Aedes sierrensis population), using the LD pruned SNP list as input
+
+```
+vcftools --vcf pruneddata.vcf.format.vcf --keep KeepControl.txt --TajimaD 100000 --out TajimasD_10kb
+```
