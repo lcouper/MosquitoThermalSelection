@@ -60,6 +60,6 @@ To generate matched controls:
 K-S test indiciate the distribution of allele frequency differences in focal SNPs differs from that of matched controls.  
 But distributions of all matched controls do not differ
 
-## 6. Estimate Tajima's D across SNPs
+## 6. Estimate Tajima's D across loci
 ![TajimaD](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/50789688-81c9-4a91-84e7-38c1630cd577)
 
