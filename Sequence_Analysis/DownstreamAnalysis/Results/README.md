@@ -2,14 +2,14 @@
 
 ## 1. PCA showing overall genomic differences between treatment groups
 
-#### 1a. Scree plot 
+#### 1a. Scree plot UPDATE WITH PRUNED LIST
 Shows the cumulative proportion of variance explained by PC axes   
 **Note the majority of variation is NOT explained in first 10 axes**
 
 ![ScreePlot_Final](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/d5873555-3542-4799-93de-c0e27663c020)
 
 
-#### 1a. Control vs heat-selected group
+#### 1a. Control vs heat-selected group UPDATE WITH PRUNED LIST
 ##### Principal components 1 & 2
 ![PCA_ControlHeat](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/249a4008-684d-4bef-8d6b-00366d133ec5)
 
