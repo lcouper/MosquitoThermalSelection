@@ -53,7 +53,7 @@ To generate matched controls:
 - Compare af differences between focal SNP and matched controls   
 
 ### Visualize difference in AF for focal SNPs relative to matched controls
-*Note: green = focal SNP, gray = matched controls 1-10
+*Note: green = focal SNP, gray = matched controls 1-10   
 ![AF_shifts](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/33c21553-2e17-4fe3-bdd5-f8ae9343939a)
 
 
