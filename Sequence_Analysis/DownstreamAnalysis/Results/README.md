@@ -40,14 +40,11 @@ This method detected 351 outlier SNPs at q < 0.05 (and Fst >= 0.05).
 **Manhattan plot showing candidate loci (in bold) across the 3 chromosomes based on Fst**
 ![KD](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/54280dd8-8c61-4be6-ab04-72365d458b4c)
 
-
-
-
-
-#### Examine allele frequency differences between control and heat-selected group
-Step 1: calculated frequency of alternative allele for each SNP separately for control and heat-selected.  
-Step 2: calculated difference in allele frequency between these groups.   
-Step 3: generated matched controls for each SNP:
+## 5. Examine allele frequency differences for candidate loci 
+Methods:
+1. Calculate frequency of alternative allele for each SNP separately for control and heat-selected.  
+2. Calculate difference in allele frequency between these groups.   
+3. Generated matched controls for each SNP:
 To generate matched controls: 
 - Identify SNPs on same chromsome and at least 100k bp away from focal SNP
 - Keep those within 5% of starting (control) frequency as focal SNP
@@ -55,12 +52,9 @@ To generate matched controls:
 - Caculate af differences (i.e. between control and heat-treated group) for these 10 SNPs
 - Compare af differences between focal SNP and matched controls   
 
-#### Visualize difference in AF for focal SNPs relative to matched controls
+### Visualize difference in AF for focal SNPs relative to matched controls
+![AF_shift](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/4d92b26f-9fdb-4957-aac7-ce0e38d380e4)
 
-
-### Method 3: GLM using plink 
-
-*Note using: plink v 2.0 through SCG
 
 
 
