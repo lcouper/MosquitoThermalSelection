@@ -32,12 +32,12 @@ Shows the cumulative proportion of variance explained by PC axes
 
 ### Method 2: Detect outlier SNPs using Fst
 *Note: Fst estimates and outlier detection done using the OutFLANK R package**
-This method detected 11,446 outlier SNPs based on Fst, a q <0.05 threshold (and 1,850 with q < 0.01).
+This method detected 351 outlier SNPs at q < 0.05 (and Fst >= 0.05).
 
 #### Manhattan plot showing SNP outliers based on Fst 
-*Note: outlier SNPs colored below in red. Outlier threshold: q < 0.01*
+*Note: outlier SNPs colored below in red*
 
-![OutFLANK_Fst_Outliers_q0 05andFst0 05](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/745f9d15-8cb2-4a39-8745-94a91ac3a3e7)
+![Fst_Manhattan](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/5c5f696b-056e-4c7a-858c-7566efaf4b98)
 
 #### Examine allele frequency differences between control and heat-selected group
 Step 1: calculated frequency of alternative allele for each SNP separately for control and heat-selected.  
