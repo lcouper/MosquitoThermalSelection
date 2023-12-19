@@ -1,4 +1,4 @@
-# Downstream sequence analysis and results on full dataset
+![image](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/c7a285dc-3249-4c32-8a3c-22521a08fc6a)# Downstream sequence analysis and results on full dataset
 
 ## 1. PCA showing overall genomic differences between treatment groups
 
@@ -60,6 +60,6 @@ To generate matched controls:
 K-S test indiciate the distribution of allele frequency differences in focal SNPs differs from that of matched controls.  
 But distributions of all matched controls do not differ
 
-
-
+## 6. Estimate Tajima's D across SNPs
+![TajimaD](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/50789688-81c9-4a91-84e7-38c1630cd577)
 
