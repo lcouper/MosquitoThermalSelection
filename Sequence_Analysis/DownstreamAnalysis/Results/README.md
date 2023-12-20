@@ -64,3 +64,5 @@ But distributions of all matched controls do not differ
 Here, darker points within each chromosome denote the candidate loci identified through each of the 3 approaches used above  
 ![TajimaD](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/50789688-81c9-4a91-84e7-38c1630cd577)
 
+
+
