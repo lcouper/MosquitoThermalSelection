@@ -9,3 +9,4 @@ The following downstream analyses were conducted on the sequence data, after LD-
 5. Examine allele frequency differences in candidate loci identified above
 6. Estimate Tajima's D across all loci 
 
+These steps are conducted using the script: 'ThermalSelection_SeqAnalysis_LD_Pruned.R' and can be performed on a data subset ('
