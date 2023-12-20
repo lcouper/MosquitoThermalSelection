@@ -1,6 +1,6 @@
 # Downstream sequence analysis
 
-**The following downstream analyses were conducted on the sequence data, after LD-pruning**
+**The following downstream analyses were conducted in R on the sequence data, after LD-pruning**
 
 1. Visualize overall genomic differences between treatments (heat-selected vs control, male vs female, experimental round) using PCA
 2. Detect candidate loci using Fst (calculated in OutFlank) between control and heat-selected groups
