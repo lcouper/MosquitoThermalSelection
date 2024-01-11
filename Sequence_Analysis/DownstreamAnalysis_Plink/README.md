@@ -38,30 +38,34 @@ plink --allow-extra-chr --file myplink_maf1 --indep 50 5 1.5 --show-tags plink.p
 plink --allow-extra-chr --file myplink --extract plink.prune.in --recode --make-bed --out pruneddata
 ```
 
-#### Step 3. Conduct GWA with treatment as phenotype 
-Here, treat.phe.txt (uploaded here) is a 3 column file specificying the family ID and individual ID (here the same thing) and the phenotype-- here '1' for control and '2' for heat-selected. Note that the --allow-no-sex flag is mandatory for this line to run.
+#### Step 3. Conduct GWA with treatment as phenotype (sex as covariate)
+Here, treat.phe.txt (uploaded here) is a 3 column file specificying the family ID and individual ID (here the same thing) and the phenotype-- here '1' for control and '2' for heat-selected. Similarly, covars.txt is a 4 column file with 3rd column listing Sex
+Note that the --allow-no-sex flag is mandatory for this line to run.
 Following guidance here: https://zzz.bwh.harvard.edu/plink/perm.shtml
+Note: I'm using post-association clumping rather than the permutation approach to obtain significance values (two methods are not compatible)
 
 ```
-# Conduct with max(T) permutation approach (as a means of obtaining corrected p-values)
-plink --allow-extra-chr --file pruneddata --pheno treat.txt --allow-no-sex --assoc --out pruned_treat_assoc
+# Conduct association analysis using Sex as a covariate (the first covariate listed in covars.txt)
+plink --allow-extra-chr --file pruneddata --pheno treat.txt --allow-no-sex --covar covars.txt --covar-number 1 --assoc --out pruned_treat_assoc_SexCovar
 ```
 
 Clump results from GWA to account for LD
 ```
-plink --allow-extra-chr --file pruneddata --pheno treat.txt --allow-no-sex --clump pruned_treat.assoc
+plink --allow-extra-chr --file pruneddata --pheno treat.txt --allow-no-sex --clump pruned_treat_assoc_SexCovar.assoc
 # Note that the 'pruneddata' data file specified above is used to calculate LD between SNPs in the .assoc file
 ```
 
-Pruning and clumping resulted in 113 SNPs retained as significant (at < 0.01 after FDR correction)
+Pruning and clumping resulted in **112 SNPs** retained as significant (at < 0.01 after Benjamini-Hochberg FDR correction)
 
-#### Step 4. Conduct GWA with knockdown time as phenotype 
-Here, KD.phe.txt (uploaded here) contains the individual knockdown times. As above, we use a permutation approach to obtain corrected significance values for each SNP. Here, we specify that permutatons should occur within-sex clusters. This is to account for known differences in body size (and potentially heat tolerance) between adult female and male mosquitoes. KD.sex.cluster.txt note the sex of all individuals, with 1 = F, 2 = M. 
+#### Step 4. Conduct GWA with knockdown time as phenotype (sex and treatment as covariates)
+Here, KD.phe.txt (uploaded here) contains the individual knockdown times. covars.txt contains information on the covariates (here, sex and treatment).
+
 ```
-plink --allow-extra-chr --file myplink --pheno KD.phe.txt --allow-no-sex --assoc --within KD.sex.cluster.txt --out KD_assoc
+plink --allow-extra-chr --file pruneddata --pheno KD.phe.txt --allow-no-sex --covar covars.txt --covar-number 1,2 --assoc --out pruned_KD_assoc_SexCovar
+
 ```
 
 Clump results from GWA to account for LD
 ```
-plink --allow-extra-chr --file pruneddata --pheno KD.phe.txt --allow-no-sex --within KD.sex.cluster.txt --clump KD_assoc.qassoc
+plink --allow-extra-chr --file pruneddata --pheno KD.phe.txt --allow-no-sex --clump pruned_KD_assoc_SexCovar.qassoc
 ```
