@@ -69,3 +69,6 @@ Clump results from GWA to account for LD
 ```
 plink --allow-extra-chr --file pruneddata --pheno KD.phe.txt --allow-no-sex --clump pruned_KD_assoc_Covar.qassoc
 ```
+Pruning and clumping resulted in **123 SNPs** retained as significant (at < 0.01 after Benjamini-Hochberg FDR correction)
+
+
