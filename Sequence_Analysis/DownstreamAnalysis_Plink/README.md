@@ -61,11 +61,11 @@ Pruning and clumping resulted in **112 SNPs** retained as significant (at < 0.01
 Here, KD.phe.txt (uploaded here) contains the individual knockdown times. covars.txt contains information on the covariates (here, sex and treatment).
 
 ```
-plink --allow-extra-chr --file pruneddata --pheno KD.phe.txt --allow-no-sex --covar covars.txt --covar-number 1,2 --assoc --out pruned_KD_assoc_SexCovar
+plink --allow-extra-chr --file pruneddata --pheno KD.phe.txt --allow-no-sex --covar covars.txt --covar-number 1,2 --assoc --out pruned_KD_assoc_Covar
 
 ```
 
 Clump results from GWA to account for LD
 ```
-plink --allow-extra-chr --file pruneddata --pheno KD.phe.txt --allow-no-sex --clump pruned_KD_assoc_SexCovar.qassoc
+plink --allow-extra-chr --file pruneddata --pheno KD.phe.txt --allow-no-sex --clump pruned_KD_assoc_Covar.qassoc
 ```
