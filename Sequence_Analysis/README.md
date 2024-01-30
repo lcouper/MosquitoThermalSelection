@@ -190,7 +190,7 @@ Using NCBI as database for repeats
 ```
 module load repeatmodeler/2.0.1
 BuildDatabase -name sierrensis -engine ncbi asierrensis.scaffolded.fasta
-RepeatModeler -database sierrensis -pa 3 -LTRStruct &>run.out  # -pa option similar to 'threads' in later versions
+RepeatModeler -database sierrensis -pa 16 -LTRStruct &>run.out  # -pa option similar to 'threads' in later versions
 ```
 
 #### SCRAP #####
