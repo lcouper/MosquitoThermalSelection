@@ -187,6 +187,7 @@ vcftools --012 --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --out outpu
 #### 23. Identify and mask repeats in reference genome 
 Using RepeatModeleder v 2.0.1 on SCG  
 Using NCBI as database for repeats
+Note: takes several days to run (includes 6 runs of searching for repeats)
 ```
 module load repeatmodeler/2.0.1
 BuildDatabase -name sierrensis -engine ncbi asierrensis.scaffolded.fasta
