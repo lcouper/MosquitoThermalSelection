@@ -201,8 +201,12 @@ Sample stats from run shown here:
 
 <img width="553" alt="image" src="https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/a8c266d8-79ca-4be1-8902-03bee38c7799">
 
-
-
+**Step 2:** Mask repeats using RepeatMasker 
+Script: repeatmask.sbatch
+```
+module load repeatmodeler/2.0.1
+RepeatMasker -pa 36 -gff -lib sierrensis-families.fa -dir {dir_name} {genome_in_fasta}
+```
 
 
 #### SCRAP #####
