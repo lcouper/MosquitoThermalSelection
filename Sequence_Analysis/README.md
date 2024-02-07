@@ -185,14 +185,25 @@ vcftools --012 --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --out outpu
 ```
 
 #### 23. Identify and mask repeats in reference genome 
-Using RepeatModeleder v 2.0.1 on SCG  
-Using NCBI as database for repeats
-Note: takes several days to run (includes 6 runs of searching for repeats)
+**Step 1:** Identify repeats using RepeatModeleder v 2.0.1 on SCG  
+Using NCBI and Dfam as database for repeats
+Note: takes several days to run (includes 6 rounds of searching for repeats)  
+Script: repeatmod.sbatch
 ```
 module load repeatmodeler/2.0.1
+cd /labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome
 BuildDatabase -name sierrensis -engine ncbi asierrensis.scaffolded.fasta
-RepeatModeler -database sierrensis -pa 16 -LTRStruct &>run.out  # -pa option similar to 'threads' in later versions
+RepeatModeler -database sierrensis -pa 16 -LTRStruct &>run2.out  # -pa option similar to 'threads' in later versions
 ```
+Note: the above creates 3 files:
+sierrensis-families.fa (consensus sequences), sierensis-families.stk (seed alignments), and a log file
+Sample stats from run shown here:
+
+<img width="553" alt="image" src="https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/a8c266d8-79ca-4be1-8902-03bee38c7799">
+
+
+
+
 
 #### SCRAP #####
 #### 23. Calculate Tajima's D in controls 
