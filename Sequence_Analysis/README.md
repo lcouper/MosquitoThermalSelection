@@ -204,8 +204,9 @@ Sample stats from run shown here:
 **Step 2:** Mask repeats using RepeatMasker 
 Script: repeatmask.sbatch
 ```
-module load repeatmodeler/2.0.1
-RepeatMasker -pa 36 -gff -lib sierrensis-families.fa -dir {dir_name} {genome_in_fasta}
+module load repeatmasker/4.1.6
+cd /labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome
+RepeatMasker -pa 16 -gff -lib sierrensis-families.fa  sierrensis_norepeats.fasta
 ```
 
 
