@@ -40,8 +40,9 @@ RepeatMasker -pa 16 -gff -lib sierrensis-families.fa asierrensis.scaffolded.fast
 - Note: uses repeat masked fasta created in step 2
 - Can be run with RNA-Seq and protein data if available (N/A here)
 - On SCG, version: braker2/2.1.6
-- requires Augustus, On SCG, version: augustus/3.4.0
-- However, BRAKER requires the config file path to be writeable. To do this, had to install augustus into my SCG account (by installing on my local computer, then uploading)
+- Requirements:
+- Augustus, On SCG, version: augustus/3.4.0. However, BRAKER requires the config file path to be writeable. To do this, had to install augustus into my SCG account (by installing on my local computer, then uploading)
+- geneMark key in your home directory. Downloaded GeneMark-ES/ET/EP+ ver 4.72_lic  LINUX 64 kernel 2.6 - 4, 64 bit from here: http://exon.gatech.edu/GeneMark/license_download.cgi. Then uploaded to ref_genome folder as "gm_key"
 - following guidance here: https://github.com/Gaius-Augustus/BRAKER?tab=readme-ov-file#running-braker and here: https://bioinformaticsworkbook.org/dataAnalysis/GenomeAnnotation/Intro_to_Braker2.html#gsc.tab=0
 
 ```
