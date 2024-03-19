@@ -35,3 +35,7 @@ RepeatMasker -pa 16 -gff -lib sierrensis-families.fa asierrensis.scaffolded.fast
 - **“asierrensis.scaffolded.fasta.masked”**, a fasta file like the original one but in which all bases of the detected repeats are replaced (masked) with the “N” letter.
 - “asierrensis.scaffolded.fasta.tbl” that contains a brief of the detected repeats, providing details of the classified families and some statistics
 - “asierrensis.scaffolded.fasta.out.gff” that provides the start and end position of each detected repeat
+
+### Step 3. Run BRAKER for gene prediction 
+
+braker.pl --genome=genome.fa --esmode --threads N
