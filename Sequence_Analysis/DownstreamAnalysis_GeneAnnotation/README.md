@@ -45,4 +45,5 @@ RepeatMasker -pa 16 -gff -lib sierrensis-families.fa asierrensis.scaffolded.fast
 ```
 module load braker2/2.1.6
 cd /labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome
-braker.pl --genome=asierrensis.scaffolded.fasta.masked --esmode --threads 4
+braker.pl --genome=asierrensis.scaffolded.fasta.masked --esmode --threads 4 --AUGUSTUS_CONFIG_PATH=/your/path
+```
