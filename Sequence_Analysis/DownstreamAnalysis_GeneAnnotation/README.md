@@ -37,5 +37,11 @@ RepeatMasker -pa 16 -gff -lib sierrensis-families.fa asierrensis.scaffolded.fast
 - “asierrensis.scaffolded.fasta.out.gff” that provides the start and end position of each detected repeat
 
 ### Step 3. Run BRAKER for gene prediction 
+- Note: uses repeat masked fasta created in step 2
+- Can be run with RNA-Seq and protein data if available (N/A here)
+- On SCG, version: braker2/2.1.6
 
-braker.pl --genome=genome.fa --esmode --threads N
+```
+module load braker2/2.1.6
+cd /labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome
+braker.pl --genome=asierrensis.scaffolded.fasta.masked --esmode --threads 4
