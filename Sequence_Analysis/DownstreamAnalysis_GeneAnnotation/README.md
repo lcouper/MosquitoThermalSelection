@@ -41,7 +41,7 @@ RepeatMasker -pa 16 -gff -lib sierrensis-families.fa asierrensis.scaffolded.fast
 - Can be run with RNA-Seq and protein data if available (N/A here)
 - On SCG, version: braker2/2.1.6
 - requires Augustus, On SCG, version: augustus/3.4.0
-- However, BRAKER requires the config file path to be writeable. To do this, had to install augustus into my SCG account (git clone https://github.com/Gaius-Augustus/Augustus.git; cd Augustus; make augustus)
+- However, BRAKER requires the config file path to be writeable. To do this, had to install augustus into my SCG account (by installing on my local computer, then uploading)
 - following guidance here: https://github.com/Gaius-Augustus/BRAKER?tab=readme-ov-file#running-braker and here: https://bioinformaticsworkbook.org/dataAnalysis/GenomeAnnotation/Intro_to_Braker2.html#gsc.tab=0
 
 ```
