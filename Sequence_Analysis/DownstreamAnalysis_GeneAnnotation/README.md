@@ -44,6 +44,8 @@ RepeatMasker -pa 16 -gff -lib sierrensis-families.fa asierrensis.scaffolded.fast
 - Augustus, On SCG, version: augustus/3.4.0. However, BRAKER requires the config file path to be writeable. To do this, had to install augustus into my SCG account (by installing on my local computer, then uploading)
 - geneMark key in your home directory. Downloaded GeneMark-ES/ET/EP+ ver 4.72_lic  LINUX 64 kernel 2.6 - 4, 64 bit from here: http://exon.gatech.edu/GeneMark/license_download.cgi. Then uploaded to ref_genome folder as "gm_key"
 - following guidance here: https://github.com/Gaius-Augustus/BRAKER?tab=readme-ov-file#running-braker and here: https://bioinformaticsworkbook.org/dataAnalysis/GenomeAnnotation/Intro_to_Braker2.html#gsc.tab=0
+- For this to run, had to previously run (while in ref_genome/gmes_linux_64 directory):
+```perl change_path_in_perl_scripts.pl "/usr/bin/env perl"```
 
 ```
 module load braker2/2.1.6
