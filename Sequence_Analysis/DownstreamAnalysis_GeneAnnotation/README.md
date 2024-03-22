@@ -76,6 +76,6 @@ Unclear if tests worked...
 ```
 export AUGUSTUS_CONFIG_PATH=/labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/Augustus/config
 export AUGUSTUS_SCRIPTS_PATH=/labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/Augustus/scripts
-braker.pl --genome=asierrensis.scaffolded.fasta.masked --esmode --min_contig=10000
+braker.pl --genome=asierrensis.scaffolded.fasta.masked --esmode --min_contig=10000 --AUGUSTUS_CONFIG_PATH=/labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/Augustus/config --AUGUSTUS_SCRIPTS_PATH=/labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/Augustus/scripts --GENEMARK_PATH=/labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/gm_linux_64/gmes_petap/
 ```
 
