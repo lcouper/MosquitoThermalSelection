@@ -58,21 +58,7 @@ braker.pl --genome=asierrensis.scaffolded.fasta.masked --esmode --min_contig=100
 ```
 
 ### Alternative attempt at installing/running BRAKER: 
-- following steps here: https://github.com/Gaius-Augustus/BRAKER?tab=readme-ov-file#container
-- On SCG, in ref_genome folder:
-```
-singularity build braker3.sif docker://teambraker/braker3:latest
-singularity exec braker3.sif braker.pl
-singularity exec -B $PWD:$PWD braker3.sif cp /opt/BRAKER/example/singularity-tests/test1.sh .
-singularity exec -B $PWD:$PWD braker3.sif cp /opt/BRAKER/example/singularity-tests/test2.sh .
-singularity exec -B $PWD:$PWD braker3.sif cp /opt/BRAKER/example/singularity-tests/test3.sh .
-export BRAKER_SIF=/your/path/to/braker3.sif # may need to modify
-bash test1.sh
-bash test2.sh
-bash test3.sh
-```
-
-Unclear if tests worked...
+- setting up a container on my SCG account, with help from Tao Wang at SCG
 ```
 export AUGUSTUS_CONFIG_PATH=/labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/Augustus/config
 export AUGUSTUS_SCRIPTS_PATH=/labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/Augustus/scripts
