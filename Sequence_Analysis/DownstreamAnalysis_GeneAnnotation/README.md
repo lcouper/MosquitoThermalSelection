@@ -45,17 +45,17 @@ RepeatMasker -pa 16 -gff -lib sierrensis-families.fa asierrensis.scaffolded.fast
 - geneMark key in your home directory. Downloaded GeneMark-ES/ET/EP+ ver 4.72_lic  LINUX 64 kernel 2.6 - 4, 64 bit from here: http://exon.gatech.edu/GeneMark/license_download.cgi. Then uploaded to ref_genome folder as "gm_key"
 - following guidance here: https://github.com/Gaius-Augustus/BRAKER?tab=readme-ov-file#running-braker and here: https://bioinformaticsworkbook.org/dataAnalysis/GenomeAnnotation/Intro_to_Braker2.html#gsc.tab=0
 - For this to run, had to previously change the path to perl environment in the GeneMark-ES pipeline:
-- With: ref_genome/gmes_linux_64 as working directory:
-```perl change_path_in_perl_scripts.pl "/usr/bin/env perl"```
-
+- With: ref_genome as working directory:
+- note this required loading the .gm_key file in my home directory, in gmeus_linux_64 (and maybe some other places)
 ```
 module load braker2/2.1.6
 cd /labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome
-export AUGUSTUS_CONFIG_PATH=/labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/Augustus/config
-export AUGUSTUS_SCRIPTS_PATH=/labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/Augustus/scripts
-
-braker.pl --genome=asierrensis.scaffolded.fasta.masked --esmode --min_contig=10000 --GENEMARK_PATH=/labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/gm_linux_64/gmes_petap/
+braker.pl --genome=asierrensis.scaffolded.fasta.masked --esmode --min_contig=10000 --AUGUSTUS_CONFIG_PATH=/labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/Augustus/config --GENEMARK_PATH=/labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/gmes_linux_64
 ```
+
+
+
+
 
 ### Alternative attempt at installing/running BRAKER: 
 - setting up a container on my SCG account, with help from Tao Wang at SCG
