@@ -52,4 +52,6 @@ cd /labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome
 braker.pl --genome=asierrensis.scaffolded.fasta.masked --esmode --min_contig=10000 --AUGUSTUS_CONFIG_PATH=/labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/Augustus/config --GENEMARK_PATH=/labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/gmes_linux_64
 ```
 
-
+if you need to restart a termianted/failed run in which GeneMark finished but Augustus didn't:
+https://github.com/Gaius-Augustus/BRAKER?tab=readme-ov-file#example-data
+--gmetp_results_dir ${BRAKER_OLD}/GeneMark-ETP/
