@@ -52,6 +52,6 @@ cd /labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome
 braker.pl --genome=asierrensis.scaffolded.fasta.masked --esmode --min_contig=10000 --AUGUSTUS_CONFIG_PATH=/labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/Augustus/config --GENEMARK_PATH=/labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/gmes_linux_64
 ```
 
-if you need to restart a termianted/failed run in which GeneMark finished but Augustus didn't:
-https://github.com/Gaius-Augustus/BRAKER?tab=readme-ov-file#example-data
---gmetp_results_dir ${BRAKER_OLD}/GeneMark-ETP/
+### Resulting output ##
+The final output of the BRAKER gene annotation run is a file 'braker.gtf' which contains the final predicted gene set. (i.e., for each gene: start position, stop position, whether a start_codon, CDS, intron, gene, or mRNA)
+For our data set: 765,124 genes identified
