@@ -55,3 +55,5 @@ braker.pl --genome=asierrensis.scaffolded.fasta.masked --esmode --min_contig=100
 ### Resulting output ##
 The final output of the BRAKER gene annotation run is a file 'braker.gtf' which contains the final predicted gene set. (i.e., for each gene: start position, stop position, whether a start_codon, CDS, intron, gene, or mRNA)
 For our data set: 765,124 genes identified
+braker.gtf file saved here: https://drive.google.com/drive/u/1/folders/1WdF4YUSKHwXKFdPrXm_8ap6yZSsxM7hD
+
