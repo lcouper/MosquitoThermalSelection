@@ -72,4 +72,11 @@ plink --allow-extra-chr --file pruneddata --pheno KD.phe.txt --allow-no-sex --cl
 ```
 Pruning and clumping resulted in **123 SNPs** retained as significant (at < 0.01 after Benjamini-Hochberg FDR correction)
 
+#### Step 5. Estimating variance explained by all SNPs using GCTA 
+Note: First had to alter pruneddata.bim file to replace "1_RagTag" to "1" (same for 2_RagTag and 3_RagTag)
+Note: Below, autosome-num = # of lines (# of scaffolds) in pruneddata.bim file
+
+```
+gcta64 --bfile pruneddata --autosome --make-grm --out pruneddata --autosome-num 651492 --thread-num 12
+```
 
