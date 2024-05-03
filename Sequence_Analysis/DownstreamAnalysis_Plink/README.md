@@ -1,5 +1,6 @@
 # Downstream sequence analysis conducted in Plink
-*Pertains to analysis performed in plink  
+*Pertains to analysis performed in plink.
+Plink files stored in: ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_VCF/
 
 
 #### Step 1. Create files for use in plink 
