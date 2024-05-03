@@ -3,7 +3,7 @@
 Plink files stored in: ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_VCF/
 
 
-#### Step 1. Create files for use in plink 
+### Step 1. Create files for use in plink 
 Followed guidance from: https://www.biostars.org/p/109690/ 
 Another useful tutorial here: http://evomics.org/learning/population-and-speciation-genomics/2016-population-and-speciation-genomics/fileformats-vcftools-plink/
 
@@ -18,7 +18,7 @@ module load vcftools/0.1.16-13-gd0c95c5
 vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --plink --chrom-map filename.chrom-map_maf01.txt --maf 0.1 --out myplink
 ```
 
-#### Step 2. Create LD-pruned data set in plink 
+### Step 2. Create LD-pruned data set in plink 
 Followed tutorial here: https://zzz.bwh.harvard.edu/plink/tutorial.shtml
 Note: running plink v 1.9 on SCG 
 
@@ -39,7 +39,7 @@ plink --allow-extra-chr --file myplink_maf1 --indep 50 5 1.5 --show-tags plink.p
 plink --allow-extra-chr --file myplink --extract plink.prune.in --recode --make-bed --out pruneddata
 ```
 
-#### Step 3. Conduct GWA with treatment as phenotype (sex as covariate)
+### Step 3. Conduct GWA with treatment as phenotype (sex as covariate)
 Here, treat.phe.txt (uploaded here) is a 3 column file specificying the family ID and individual ID (here the same thing) and the phenotype-- here '1' for control and '2' for heat-selected. Similarly, covars.txt is a 4 column file with 3rd column listing Sex
 Note that the --allow-no-sex flag is mandatory for this line to run.
 Following guidance here: https://zzz.bwh.harvard.edu/plink/perm.shtml
@@ -58,7 +58,7 @@ plink --allow-extra-chr --file pruneddata --pheno treat.txt --allow-no-sex --clu
 
 Pruning and clumping resulted in **112 SNPs** retained as significant (at < 0.01 after Benjamini-Hochberg FDR correction)
 
-#### Step 4. Conduct GWA with knockdown time as phenotype (sex and treatment as covariates)
+### Step 4. Conduct GWA with knockdown time as phenotype (sex and treatment as covariates)
 Here, KD.phe.txt (uploaded here) contains the individual knockdown times. covars.txt contains information on the covariates (here, sex and treatment).
 
 ```
@@ -72,7 +72,7 @@ plink --allow-extra-chr --file pruneddata --pheno KD.phe.txt --allow-no-sex --cl
 ```
 Pruning and clumping resulted in **123 SNPs** retained as significant (at < 0.01 after Benjamini-Hochberg FDR correction)
 
-#### Step 5. Estimating variance explained by all SNPs using GCTA 
+### Step 5. Estimating variance explained by all SNPs using GCTA 
 
 Following tutorial here: https://yanglab.westlake.edu.cn/software/gcta/#Tutorial
 
