@@ -73,7 +73,7 @@ plink --allow-extra-chr --file pruneddata --pheno KD.phe.txt --allow-no-sex --cl
 Pruning and clumping resulted in **123 SNPs** retained as significant (at < 0.01 after Benjamini-Hochberg FDR correction)
 
 ### Step 5. Estimating variance explained by SNPs using GCTA
-### (*all* SNPs in Steps A & B, and *focal SNPS only* in Step C)
+### (*all* SNPs in Steps A & B, and *focal SNPS only* in Step D)
 
 Following tutorial here: https://yanglab.westlake.edu.cn/software/gcta/#Tutorial
 
