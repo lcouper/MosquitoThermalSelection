@@ -72,18 +72,19 @@ plink --allow-extra-chr --file pruneddata --pheno KD.phe.txt --allow-no-sex --cl
 ```
 Pruning and clumping resulted in **123 SNPs** retained as significant (at < 0.01 after Benjamini-Hochberg FDR correction)
 
-### Step 5. Estimating variance explained by all SNPs using GCTA 
+### Step 5. Estimating variance explained by SNPs using GCTA
+### (*all* SNPs in Steps A & B, and *focal SNPS only* in Step C)
 
 Following tutorial here: https://yanglab.westlake.edu.cn/software/gcta/#Tutorial
 
-**Step 1**: GCTA-GRM: calculating the genetic relationship matrix (GRM) from all the autosomal SNPs
+**Step A**: GCTA-GRM: calculating the genetic relationship matrix (GRM) from all the autosomal SNPs
 - Note: all SNPs here are likely autosomal, so use all identified SNPs  
 - Note: Given errors with reading "1_RagTag" as chromosome names, prior to running the commande below, I had to alter pruneddata.bim file to replace "1_RagTag" to "1" (same for 2_RagTag and 3_RagTag)
 ```
 gcta64 --bfile pruneddata --autosome --make-grm --out pruneddata --autosome-num 3 --thread-num 12
 ```
 
-**Step 2**: GCTA-GREML analysis: estimating the variance explained by the SNPs
+**Step B**: GCTA-GREML analysis: estimating the variance explained by the SNPs
 Note: the above command createa a genetic relationship matrix among the autosomal SNPs. This file is then used to estimate variance explained by the SNPs
 Note: since the phenotype here is treatment (i.e., being in the control vs heat-selected group), GCTA considers this a case-control analysis 
 ```
@@ -91,7 +92,7 @@ gcta64 --grm pruneddata --pheno treat.txt --reml --out pruneddata2 --thread-num 
 # here prevalence of 0.457 refers to baseline larval mortality (i.e, mortality rate in control), and covariates = sex
 ```
 
-**Step 3** Re-run using only focal SNPs
+**Step C** Re-run using only focal SNPs
 Here, focal SNPs = those identified through Fst & GWA based on treatment.  
 Plink files for this named 'pruneddata_subset'
 ```
