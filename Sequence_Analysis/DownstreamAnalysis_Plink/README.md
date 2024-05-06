@@ -79,6 +79,7 @@ Following tutorial here: https://yanglab.westlake.edu.cn/software/gcta/#Tutorial
 **Step 1**: GCTA-GRM: calculating the genetic relationship matrix (GRM) from all the autosomal SNPs
 Note: all SNPs here are likely autosomal, so use all identified SNPs
 Note: Given errors with reading "1_RagTag" as chromosome names, prior to running the commande below, I had to alter pruneddata.bim file to replace "1_RagTag" to "1" (same for 2_RagTag and 3_RagTag)
+Note: This step takes a long time. I had to run in chunks of ~, submitting each as separate jobs
 ```
 gcta64 --bfile pruneddata --autosome --make-grm --out pruneddata --autosome-num 651492 --thread-num 12
 # autosome-num = # of lines (# of scaffolds) in pruneddata.bim file
