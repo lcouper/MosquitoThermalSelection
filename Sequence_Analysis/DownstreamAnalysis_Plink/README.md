@@ -77,14 +77,17 @@ Pruning and clumping resulted in **123 SNPs** retained as significant (at < 0.01
 Following tutorial here: https://yanglab.westlake.edu.cn/software/gcta/#Tutorial
 
 **Step 1**: GCTA-GRM: calculating the genetic relationship matrix (GRM) from all the autosomal SNPs
-Note: all SNPs here are likely autosomal, so use all identified SNPs
-Note: Given errors with reading "1_RagTag" as chromosome names, prior to running the commande below, I had to alter pruneddata.bim file to replace "1_RagTag" to "1" (same for 2_RagTag and 3_RagTag)
-Note: This step takes a long time. I had to run in chunks of ~, submitting each as separate jobs
+- Note: all SNPs here are likely autosomal, so use all identified SNPs  
+- Note: Given errors with reading "1_RagTag" as chromosome names, prior to running the commande below, I had to alter pruneddata.bim file to replace "1_RagTag" to "1" (same for 2_RagTag and 3_RagTag)
 ```
-gcta64 --bfile pruneddata --autosome --make-grm --out pruneddata --autosome-num 651492 --thread-num 12
-# autosome-num = # of lines (# of scaffolds) in pruneddata.bim file
+gcta64 --bfile pruneddata --autosome --make-grm --out pruneddata --autosome-num 3--thread-num 12
 ```
 
 **Step 2**: GCTA-GREML analysis: estimating the variance explained by the SNPs
+Note: the above command createa a genetic relationship matrix among the autosomal SNPs. This file is then used to estimate variance explained by the SNPs
+Note: since the phenotype here is treatment (i.e., being in the control vs heat-selected group), GCTA considers this a case-control analysis 
+```
+gcta64 --grm pruneddata --pheno treat.txt --reml --out pruneddata --thread-num 12
+```
 
 
