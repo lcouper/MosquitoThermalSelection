@@ -92,7 +92,13 @@ gcta64 --grm pruneddata --pheno treat.txt --reml --out pruneddata2 --thread-num 
 # here prevalence of 0.457 refers to baseline larval mortality (i.e, mortality rate in control), and covariates = sex
 ```
 
-**Step C** Re-run using only focal SNPs
+**Step C** Repeating for adult thermal knockdown resistance:
+```
+gcta64 --grm pruneddata --pheno KD.phe.txt --reml --out pruneddata2 --thread-num 12 --prevalence 0.457 --covar covars.txt
+# covariates here are sex and treatment
+```
+
+**Step D** Re-run A-B using only focal SNPs
 Here, focal SNPs = those identified through Fst & GWA based on treatment.  
 Plink files for this named 'pruneddata_subset'
 ```
