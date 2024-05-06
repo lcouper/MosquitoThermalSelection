@@ -80,7 +80,12 @@ Following tutorial here: https://yanglab.westlake.edu.cn/software/gcta/#Tutorial
 - Note: all SNPs here are likely autosomal, so use all identified SNPs  
 - Note: Given errors with reading "1_RagTag" as chromosome names, prior to running the commande below, I had to alter pruneddata.bim file to replace "1_RagTag" to "1" (same for 2_RagTag and 3_RagTag)
 ```
-gcta64 --bfile pruneddata --autosome --make-grm --out pruneddata --autosome-num 3--thread-num 12
+gcta64 --bfile pruneddata --autosome --make-grm --out pruneddata --autosome-num 3 --thread-num 12
+```
+
+*Note* Also ran this using only the focal SNPs identified through Fst & GWA based on treatment. plink files for this named 'pruneddata_subset'
+```
+gcta64 --bfile pruneddata_subset --autosome --make-grm --out pruneddata --autosome-num 3 --thread-num 12
 ```
 
 **Step 2**: GCTA-GREML analysis: estimating the variance explained by the SNPs
