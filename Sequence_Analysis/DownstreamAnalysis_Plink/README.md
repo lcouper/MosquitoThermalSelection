@@ -87,12 +87,8 @@ gcta64 --bfile pruneddata --autosome --make-grm --out pruneddata --autosome-num 
 Note: the above command createa a genetic relationship matrix among the autosomal SNPs. This file is then used to estimate variance explained by the SNPs
 Note: since the phenotype here is treatment (i.e., being in the control vs heat-selected group), GCTA considers this a case-control analysis 
 ```
-gcta64 --grm pruneddata --pheno treat.txt --reml --out pruneddata --thread-num 12
-
-
-OR
-gcta64 --grm pruneddata --pheno treat.txt --extract test.snplist --reml --out pruneddata2 --thread-num 12 --prevalence 0.3
-# specificying prevalence of dying as larvae, in general (update this based on mortality rates observed in experiment)
+gcta64 --grm pruneddata --pheno treat.txt --extract test.snplist --reml --out pruneddata2 --thread-num 12 --prevalence 0.457 --covar covars_gcta.txt
+# here prevalence of 0.457 refers to baseline larval mortality (i.e, mortality rate in control), and covariates = sex
 ```
 
 
