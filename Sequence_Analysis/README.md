@@ -214,8 +214,19 @@ RepeatMasker -pa 16 -gff -lib sierrensis-families.fa  sierrensis_norepeats.fasta
 
 #### Estimating heterozygosity 
 ```
-vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --het --freqx --out output_het
+vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --het --out output_het
 ```
+Note: in R, calculated observed and expected heterozygosity as:
+```
+hetero$O.HET <- (hetero$N_SITES - hetero$O.HOM)/hetero$N_SITES
+hetero$E.HET <- (hetero$N_SITES - hetero$E.HOM)/hetero$N_SITES
+```
+
+#### Estimating nucleotide diversity 
+```
+vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --window-pi  10000 --out all_samples_pi
+```
+
 
 #### SCRAP #####
 #### 23. Calculate Tajima's D in controls 
