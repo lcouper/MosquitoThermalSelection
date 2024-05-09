@@ -203,13 +203,19 @@ Sample stats from run shown here:
 
 **Step 2:** Mask repeats using RepeatMasker 
 Script: repeatmask.sbatch
-# Note: Must use this older version of repeatmasker for this to run properly (issues accessing databases in newer versions)
+**Note: Must use this older version of repeatmasker for this to run properly (issues accessing databases in newer versions)**
 ```
 module load repeatmasker/4.1.0
 cd /labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome
 RepeatMasker -pa 16 -gff -lib sierrensis-families.fa  sierrensis_norepeats.fasta
 ```
 
+### Sample and population diversity metrics ##
+
+#### Estimating heterozygosity 
+```
+vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --het --freqx --out output_het
+```
 
 #### SCRAP #####
 #### 23. Calculate Tajima's D in controls 
