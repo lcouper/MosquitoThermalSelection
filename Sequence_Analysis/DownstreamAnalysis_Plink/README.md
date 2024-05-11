@@ -88,13 +88,13 @@ gcta64 --bfile pruneddata --autosome --make-grm --out pruneddata --autosome-num 
 Note: the above command createa a genetic relationship matrix among the autosomal SNPs. This file is then used to estimate variance explained by the SNPs
 Note: since the phenotype here is treatment (i.e., being in the control vs heat-selected group), GCTA considers this a case-control analysis 
 ```
-gcta64 --grm pruneddata --pheno treat.txt --reml --out pruneddata2 --thread-num 12 --prevalence 0.457 --covar covars_gcta.txt
-# here prevalence of 0.457 refers to baseline larval mortality (i.e, mortality rate in control), and covariates = sex
+gcta64 --grm pruneddata --pheno treat.txt --reml --out pruneddata2 --thread-num 12 --prevalence 0.46 --covar covars_gcta.txt
+# here prevalence of 0.46 refers to proportion of "cases" (i.e., heat-selected individuals) in sample, and covariates = sex
 ```
 
 **Step C** Repeating for adult thermal knockdown resistance:
 ```
-gcta64 --grm pruneddata --pheno KD.phe.txt --reml --out pruneddata2 --thread-num 12 --prevalence 0.457 --covar covars.txt
+gcta64 --grm pruneddata --pheno KD.phe.txt --reml --out pruneddata2 --thread-num 12 --prevalence 0.46 --covar covars.txt
 # covariates here are sex and treatment
 ```
 
@@ -103,7 +103,7 @@ Here, focal SNPs = those identified through Fst & GWA based on treatment.
 Plink files for this named 'pruneddata_subset'
 ```
 gcta64 --bfile pruneddata_subset --autosome --make-grm --out pruneddata --autosome-num 3 --thread-num 12
-gcta64 --grm pruneddata_subset --pheno treat.txt --reml --out pruneddata_subset --thread-num 12 --prevalence 0.457 --covar covars_gcta.txt
+gcta64 --grm pruneddata_subset --pheno treat.txt --reml --out pruneddata_subset --thread-num 12 --prevalence 0.46 --covar covars_gcta.txt
 ```
 
 
