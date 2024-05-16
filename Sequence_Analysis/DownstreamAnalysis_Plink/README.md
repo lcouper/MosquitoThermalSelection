@@ -73,7 +73,8 @@ plink --allow-extra-chr --file pruneddata --pheno KD.phe.txt --allow-no-sex --cl
 Pruning and clumping resulted in **123 SNPs** retained as significant (at < 0.01 after Benjamini-Hochberg FDR correction)
 
 ### Step 5. Estimating variance explained by SNPs using GCTA
-### (*all* SNPs in Steps A & B, and *focal SNPS only* in Step D)
+*Note: all SNPs are used, to avoid winners curse issue in GWA approaches*
+Note: steps below were conducted on both the LD pruned and unpruned dataset*
 
 Following tutorial here: https://yanglab.westlake.edu.cn/software/gcta/#Tutorial
 
@@ -82,30 +83,29 @@ Following tutorial here: https://yanglab.westlake.edu.cn/software/gcta/#Tutorial
 - Note: Given errors with reading "1_RagTag" as chromosome names, prior to running the commande below, I had to alter pruneddata.bim file to replace "1_RagTag" to "1" (same for 2_RagTag and 3_RagTag)
 ```
 gcta64 --bfile pruneddata --autosome --make-grm --out pruneddata --autosome-num 3 --thread-num 12
+gcta64 --bfile myplink --autosome --make-grm --out unpruneddata --autosome-num 3 --thread-num 12
 ```
 
 **Step B**: GCTA-GREML analysis: estimating the variance explained by the SNPs
 Note: the above command createa a genetic relationship matrix among the autosomal SNPs. This file is then used to estimate variance explained by the SNPs
 Note: since the phenotype here is treatment (i.e., being in the control vs heat-selected group), GCTA considers this a case-control analysis 
 ```
-gcta64 --grm pruneddata --pheno treat.txt --reml --out pruneddata2 --thread-num 12 --prevalence 0.46 --covar covars_gcta.txt
+gcta64 --grm pruneddata --pheno treat.txt --reml --out pruneddata --thread-num 12 --prevalence 0.46 --covar covars_gcta.txt
+gcta64 --grm unpruneddata --pheno treat.txt --reml --out unpruneddata --thread-num 12 --prevalence 0.46 --covar covars_gcta.txt
 # here prevalence of 0.46 refers to proportion of "cases" (i.e., heat-selected individuals) in sample, and covariates = sex
 ```
 
-**Step C** Repeating for adult thermal knockdown resistance:
+Results for LD-pruned dataset: 
+<img width="240" alt="image" src="https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/fdf6ac92-35d5-4ac2-8b0d-9c80d5aca4d9">
+
+Results for unpruned dataset:
+<img width="243" alt="image" src="https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/0b72fb93-8404-480f-95e7-6c0692fce5d6">
+
+
+**Step C** Out of curiousity: repeating for adult thermal knockdown resistance:
 ```
 gcta64 --grm pruneddata --pheno KD.phe.txt --reml --out pruneddata2 --thread-num 12 --prevalence 0.46 --covar covars.txt
 # covariates here are sex and treatment
 ```
-
-**Step D** Re-run A-B using only focal SNPs
-Here, focal SNPs = those identified through Fst & GWA based on treatment.  
-Plink files for this named 'pruneddata_subset'
-```
-gcta64 --bfile pruneddata_subset --autosome --make-grm --out pruneddata --autosome-num 3 --thread-num 12
-gcta64 --grm pruneddata_subset --pheno treat.txt --reml --out pruneddata_subset --thread-num 12 --prevalence 0.46 --covar covars_gcta.txt
-```
-
-
 
 
