@@ -179,7 +179,7 @@ bcftools view -m2 -M2 -v snps Filtered_VCF_All_sorted_indexed.vcf > Filtered_VCF
 *Number of SNPs retained: 3,691,363*
 
 #### 22. Generate genotype matrix 
-Note: this outputs 3 files: ‘.012’ contains the genotypes of each individual on a separate line (with 0, 1, 2 denoting the number of non-reference alleles at the site), ‘.ind’ lists the individuals included in the main file, ‘.pos’ details the site location included in the main file. 
+Note: this outputs 3 files: ‘.012’ contains the genotypes of each individual on a separate line (with 0, 1, 2 denoting the number of non-reference alleles at the site), ‘.ind’ lists the individuals included in the main file, ‘.pos’ details the site location included in the main file.   
 *Script:* genotype_matrix.sbatch
 ```
 vcftools --012 --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --out output_geno.vcf
@@ -206,7 +206,7 @@ vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --keep controls.t
 
 #### **Step 1:** Identify repeats 
 *Software used*: RepeatModeler v 2.0.1 (Flynn et al. 2020)
-Note: Using NCBI and Dfam as database for repeats. Takes several days to run (includes 6 rounds of searching for repeats)  
+Note: Using NCBI and Dfam as database for repeats. Takes several days to run (includes 6 rounds of searching for repeats)    
 *Script*: repeatmod.sbatch
 ```
 module load repeatmodeler/2.0.1
@@ -218,7 +218,7 @@ Note: the above creates 3 files:
 sierrensis-families.fa (consensus sequences), sierensis-families.stk (seed alignments), and a log file
 
 #### **Step 2:** Mask repeats 
-*Software used* RepeatMasker (Smit et al. 2021)  
+*Software used* RepeatMasker (Smit et al. 2021)    
 *Script:* repeatmask.sbatch  
 Note: Must use the older version of RepeatMasker for this to run properly (issues accessing databases in newer versions)**
 ```
