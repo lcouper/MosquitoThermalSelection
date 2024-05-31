@@ -66,7 +66,7 @@ samtools flagstat results/bam/E-014.aligned.sorted.bam > results/bam/E-014.align
 
 #### 9. Mark and remove duplicates 
 *Software used:* picard (Broad Institute)
-Note: picard.jar was downloaded from [the Broad Institute](https://broadinstitute.github.io/picard/)
+Note: picard.jar was downloaded from [the Broad Institute](https://broadinstitute.github.io/picard/)  
 *Script:* markdups.sbatch
 Code snippet for single sample:
 ```
