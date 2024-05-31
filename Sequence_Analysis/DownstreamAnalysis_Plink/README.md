@@ -19,8 +19,8 @@ vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --plink --chrom-m
 ```
 
 ### Step 2. Create LD-pruned data set in plink 
-Followed tutorial here: https://zzz.bwh.harvard.edu/plink/tutorial.shtml
-Note: running plink v 1.9 on SCG 
+*Software used:* plink v 1.9
+Help resources accessed: https://zzz.bwh.harvard.edu/plink/tutorial.shtml
 
 ```
 # Navigate to working directory with .map and .ped files (here, /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/filtered_VCF)
@@ -40,16 +40,15 @@ plink --allow-extra-chr --file myplink --extract plink.prune.in --recode --make-
 ```
 
 ### Step 3. Conduct GWA with treatment as phenotype (sex as covariate)
-Here, treat.phe.txt (uploaded here) is a 3 column file specificying the family ID and individual ID (here the same thing) and the phenotype-- here '1' for control and '2' for heat-selected. Similarly, covars.txt is a 4 column file with 3rd column listing Sex
-Note that the --allow-no-sex flag is mandatory for this line to run.
-Following guidance here: https://zzz.bwh.harvard.edu/plink/perm.shtml
-Note: I'm using post-association clumping rather than the permutation approach to obtain significance values (two methods are not compatible)
+Note: Here, treat.phe.txt (uploaded here) is a 3 column file specificying the family ID and individual ID (here the same thing) and the phenotype-- here '1' for control and '2' for heat-selected. Similarly, covars.txt is a 4 column file with 3rd column listing Sex.  
+Note: We used post-association clumping rather than the permutation approach to obtain significance values (two methods are not compatible)
+Help resources accessed:  https://zzz.bwh.harvard.edu/plink/perm.shtml
 
 ```
 # Conduct association analysis using Sex as a covariate (the first covariate listed in covars.txt)
 plink --allow-extra-chr --file pruneddata --pheno treat.txt --allow-no-sex --covar covars.txt --covar-number 1 --assoc --out pruned_treat_assoc_SexCovar
+# Note: The --allow-no-sex flag is mandatory for this line to run.
 ```
-
 Clump results from GWA to account for LD
 ```
 plink --allow-extra-chr --file pruneddata --pheno treat.txt --allow-no-sex --clump pruned_treat_assoc_SexCovar.assoc
@@ -59,11 +58,10 @@ plink --allow-extra-chr --file pruneddata --pheno treat.txt --allow-no-sex --clu
 Pruning and clumping resulted in **112 SNPs** retained as significant (at < 0.01 after Benjamini-Hochberg FDR correction)
 
 ### Step 4. Conduct GWA with knockdown time as phenotype (sex and treatment as covariates)
-Here, KD.phe.txt (uploaded here) contains the individual knockdown times. covars.txt contains information on the covariates (here, sex and treatment).
+Note: Here, KD.phe.txt (uploaded here) contains the individual knockdown times. covars.txt contains information on the covariates (here, sex and treatment).
 
 ```
 plink --allow-extra-chr --file pruneddata --pheno KD.phe.txt --allow-no-sex --covar covars.txt --covar-number 1,2 --assoc --out pruned_KD_assoc_Covar
-
 ```
 
 Clump results from GWA to account for LD
