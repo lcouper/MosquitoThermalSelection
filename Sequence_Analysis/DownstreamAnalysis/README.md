@@ -10,8 +10,4 @@
 6. Identify candidate genes located within 100K bp of candidate loci
 
 
-**These steps can be replicated on a subset of the data 'GenotypeMatrix_Pruned_Subset' (as the full pruned genotype matrix is too large to upload) using the script: 'ThermalSelection_SeqAnalysis_LD_Pruned.R'**
-
-## how to pull out sequence surrounding SNP
-samtools faidx asierrensis.scaffolded.fasta 1_RagTag:372060-374060
-<img width="1182" alt="Screenshot 2023-12-22 at 10 46 28 AM" src="https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/31b649fb-dd54-41b3-b44b-c89f7511a225">
+*Note: full pruned genotype matrix is too large to upload, but these steps can be replicated on a subset of the data 'GenotypeMatrix_Pruned_Subset' using the script: 'ThermalSelection_SeqAnalysis_LD_Pruned.R'*
