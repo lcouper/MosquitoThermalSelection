@@ -1,4 +1,6 @@
-# Steps to identify genes from reference genome sequence 
+# Steps to identify genes from reference genome sequence and assign SNPs to gene
+
+## Identifying genes from reference genome sequence 
 
 ### Step 1. Identify repeats
 - *Software used*: RepeatModeler2 2.0.1
@@ -51,8 +53,10 @@ cd /labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome
 braker.pl --genome=asierrensis.scaffolded.fasta.masked --esmode --min_contig=10000 --AUGUSTUS_CONFIG_PATH=/labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/Augustus/config --GENEMARK_PATH=/labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/gmes_linux_64
 ```
 
-### Resulting output ##
+#### Resulting output 
 The final output of the BRAKER gene annotation run is a file 'braker.gtf' which contains the final predicted gene set. (i.e., for each gene: start position, stop position, whether a start_codon, CDS, intron, gene, or mRNA)
 For our data set: 765,124 genes identified
 braker.gtf file saved here: https://drive.google.com/drive/u/1/folders/1WdF4YUSKHwXKFdPrXm_8ap6yZSsxM7hD
 
+## Assigning candidate SNPs to genes
+Note: this was conducted in R using the script ThermalSelectionExp_IdentifyingGenes.R uploaded here 
