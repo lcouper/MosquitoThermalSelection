@@ -5,4 +5,8 @@ That is, using the start and stop positions for each gene:
 ```
 samtools faidx asierrensis.scaffolded.fasta 1_RagTag:372060-374060
 ```
-where 1_RagTag denotes the chromosome, and the following numbers denote the genomic position
+where 1_RagTag denotes the chromosome, and the following numbers denote the genomic position.  
+
+
+We mapped these gene sequences to annotated transcriptomes of related *Aedes* species (*i.e.*, *Ae. albopictus*, NCBI accession: GCF_006496715.1 and *Ae.aegypti*, NCBI accession: GCF_002204515.2). In the case of multiple hits for a given sequence, we used the result with the lowest E-value and highest Max score. 
+
