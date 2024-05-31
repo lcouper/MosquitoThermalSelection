@@ -5,3 +5,4 @@ This repository contains the protocols, data, and scripts used to investigate mo
 
 
 
+![Ae. sierrensis male in flight](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/1048d579-bbf3-498d-b3ae-197aa018793d)
