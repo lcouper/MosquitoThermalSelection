@@ -132,7 +132,7 @@ tabix *.vcf
 ```
 
 #### 17. Merge vcf files generated from sample subsets
-Note: merging, rather than concatenating is appropriate here since the vcf subsets were from different samples, not different portions of the genome.
+Note: merging, rather than concatenating is appropriate here since the vcf subsets were from different samples, not different portions of the genome.  
 *Script:* bcfmergeAll.sbatch
 ```
 cd /labs/emordeca/ThermalSelectionExpSeqFiles/results/bam/deduped_bams/initialfilter_vcffiles/
