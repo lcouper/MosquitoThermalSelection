@@ -1,7 +1,12 @@
 # Sequence Analysis Workflow 
 
-The steps below outline the analysis performed on the sequence data, from raw reads to variant calling. It also includes the sample and population diversity metric calculation steps, as well as steps to identify and mask repeats in the reference genome. 
+The steps below outline the analysis performed on the sequence data including: 
+- processing raw reads through to variant calling
+- calculating sample and population diversity metrics
+- identifying and masking repeats in the reference genome
+- estimating variance explained by SNPs 
 
+## Processing raw reads through to variant calling
 
 #### 1. Obtained raw reads from Stanford Genomic Sequencing Center   
 Included 470 .fastq.gz files (1 forward, 1 reverse for each of 235 samples)
@@ -185,9 +190,9 @@ Note: this outputs 3 files: ‘.012’ contains the genotypes of each individual
 vcftools --012 --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --out output_geno.vcf
 ```
 
-## Sample and population diversity metrics 
+## Calculating sample and population diversity metrics
 
-#### Estimating heterozygosity 
+#### 1. Estimating heterozygosity 
 ```
 vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --keep controls.txt --het --out output_het
 ```
@@ -197,14 +202,14 @@ hetero$O.HET <- (hetero$N_SITES - hetero$O.HOM)/hetero$N_SITES
 hetero$E.HET <- (hetero$N_SITES - hetero$E.HOM)/hetero$N_SITES
 ```
 
-#### Estimating nucleotide diversity 
+#### 2. Estimating nucleotide diversity 
 ```
 vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --keep controls.txt --window-pi  10000 --out all_samples_pi
 ```
 
-## Identify and mask repeats in reference genome 
+## Identifying and masking repeats in the reference genome
 
-#### **Step 1:** Identify repeats 
+#### 1. Identify repeats 
 *Software used*: RepeatModeler v 2.0.1 (Flynn et al. 2020)
 Note: Using NCBI and Dfam as database for repeats. Takes several days to run (includes 6 rounds of searching for repeats)    
 *Script*: repeatmod.sbatch
@@ -217,7 +222,7 @@ RepeatModeler -database sierrensis -pa 16 -LTRStruct &>run2.out  # -pa option si
 Note: the above creates 3 files:
 sierrensis-families.fa (consensus sequences), sierensis-families.stk (seed alignments), and a log file
 
-#### **Step 2:** Mask repeats 
+#### 2. Mask repeats 
 *Software used* RepeatMasker (Smit et al. 2021)    
 *Script:* repeatmask.sbatch  
 Note: Must use the older version of RepeatMasker for this to run properly (issues accessing databases in newer versions)**
@@ -225,4 +230,43 @@ Note: Must use the older version of RepeatMasker for this to run properly (issue
 module load repeatmasker/4.1.0
 cd /labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome
 RepeatMasker -pa 16 -gff -lib sierrensis-families.fa  sierrensis_norepeats.fasta
+```
+
+## Estimating variance explained by SNPs 
+
+#### 1. Calculate the genetic relationship matrix (GRM) from all the autosomal SNPs
+*Software used:* GCTA (Yang et al. 2011)
+Note: all SNPs here are likely autosomal, so use all identified SNPs.  
+Note: Given errors with reading "1_RagTag" as chromosome names, prior to running the commande below, I had to alter pruneddata.bim file to replace "1_RagTag" to "1" (same for 2_RagTag and 3_RagTag).  
+Help resources accessed: https://yanglab.westlake.edu.cn/software/gcta/#Tutorial
+
+```
+gcta64 --bfile pruneddata --autosome --make-grm --out pruneddata --autosome-num 3 --thread-num 12
+gcta64 --bfile myplink --autosome --make-grm --out unpruneddata --autosome-num 3 --thread-num 12
+```
+
+
+#### 2. Estimate variance explained by the SNPs
+*Software used:* GCTA (Yang et al. 2011)
+Note: all SNPs are used, to avoid winners curse issue in GWA approaches.  
+Note: steps below were conducted on both the LD pruned and unpruned dataset.   
+Note: since the phenotype here is treatment (i.e., being in the control vs heat-selected group), GCTA considers this a case-control analysis 
+
+```
+gcta64 --grm pruneddata --pheno treat.txt --reml --out pruneddata --thread-num 12 --prevalence 0.46 --covar covars_gcta.txt
+gcta64 --grm unpruneddata --pheno treat.txt --reml --out unpruneddata --thread-num 12 --prevalence 0.46 --covar covars_gcta.txt
+# here prevalence of 0.46 refers to proportion of "cases" (i.e., heat-selected individuals) in sample, and covariates = sex
+```
+
+Results for LD-pruned dataset: 
+<img width="240" alt="image" src="https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/fdf6ac92-35d5-4ac2-8b0d-9c80d5aca4d9">
+
+Results for unpruned dataset:
+<img width="243" alt="image" src="https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/0b72fb93-8404-480f-95e7-6c0692fce5d6">
+
+
+#### 3. Repeat for adult thermal knockdown resistance [not included in manuscript]
+```
+gcta64 --grm pruneddata --pheno KD.phe.txt --reml --out pruneddata2 --thread-num 12 --prevalence 0.46 --covar covars.txt
+# covariates here are sex and treatment
 ```
