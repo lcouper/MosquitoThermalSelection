@@ -1,6 +1,6 @@
 # Sequence Analysis Workflow 
 
-The steps below outline the analysis performed on the sequence data, from raw reads to variant calling. It also includessample and population diversity metric calculation steps, as well as steps to identify and mask repeats in the reference genome. 
+The steps below outline the analysis performed on the sequence data, from raw reads to variant calling. It also includes the sample and population diversity metric calculation steps, as well as steps to identify and mask repeats in the reference genome. 
 
 
 #### 1. Obtained raw reads from Stanford Genomic Sequencing Center   
