@@ -1,14 +1,14 @@
 # Steps to identify genes from reference genome sequence 
 
 ### Step 1. Identify repeats
-- *Software used* RepeatModeler2 2.0.1
+- *Software used*: RepeatModeler2 2.0.1
 - Note: Use RepeatModeler2 to construct a species-specific repeat library 
 - RepeatModeler2 Can identify repeats de novo, But also requires an external database. Dfam is one that is free
 - Help pages accessed: https://darencard.net/blog/2022-10-13-install-repeat-modeler-masker/
 - https://github.com/Dfam-consortium/RepeatModeler
 - https://weatherby.genetics.utah.edu/MAKER/wiki/index.php/Repeat_Library_Construction-Basic
 - Interpret results from repeat modeler: https://github.com/Dfam-consortium/RepeatModeler
-- SCG script uesd: repeatmod.sbatch
+- *Script*: repeatmod.sbatch
 
 ```
 module load repeatmodeler/2.0.1
@@ -19,11 +19,11 @@ RepeatModeler -database sierrensis -pa 16 &>run2.out
 
 
 ### Step 2. Mask repeats
-- Use RepeatMasker to mask the repeats identified through RepeatModeler
-- On SCG, version: repeatmasker/4.1.6
-- Using example code from here: https://bioinformaticsworkbook.org/dataAnalysis/ComparativeGenomics/RepeatModeler_RepeatMasker.html#gsc.tab=0
-- and here https://www.biostars.org/p/9495313/ 
-- SCG script used: repeatmask.sbatch
+- *Software used: RepeatMasker 4.1.6
+- Note: Masks the repeats identified through RepeatModeler2
+- Help pages accessed: https://bioinformaticsworkbook.org/dataAnalysis/ComparativeGenomics/RepeatModeler_RepeatMasker.html#gsc.tab=0
+- https://www.biostars.org/p/9495313/ 
+- *Script*: repeatmask.sbatch
   
 ```
 module load repeatmasker/4.1.0
