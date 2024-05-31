@@ -216,9 +216,6 @@ RepeatModeler -database sierrensis -pa 16 -LTRStruct &>run2.out  # -pa option si
 ```
 Note: the above creates 3 files:
 sierrensis-families.fa (consensus sequences), sierensis-families.stk (seed alignments), and a log file
-Sample stats from run shown here:
-
-<img width="553" alt="image" src="https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/a8c266d8-79ca-4be1-8902-03bee38c7799">
 
 #### **Step 2:** Mask repeats 
 *Software used* RepeatMasker (Smit et al. 2021)
