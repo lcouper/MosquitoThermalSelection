@@ -4,5 +4,9 @@ This repository contains the protocols, data, and scripts used to investigate mo
 [Phenotypic and genomic evidence for climate adaptive potential in an Aedes spp. mosquito.](https://docs.google.com/document/d/1v0pxLAtF7rQ47DGCmAsfVIHS4XAA6qYL/edit?rtpof=true)
 
 
-
-![Ae. sierrensis male in flight](https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/1048d579-bbf3-498d-b3ae-197aa018793d)
+<p align="center">
+  <img width="600"
+    src="https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/1048d579-bbf3-498d-b3ae-197aa018793d">
+  </p>    
+<p align="center"> 
+*Ae. sierrensis male in flight*
