@@ -1,5 +1,8 @@
 # Sequence Analysis Workflow 
 
+The steps below outline the analysis performed on the sequence data, from raw reads to variant calling. It also includessample and population diversity metric calculation steps, as well as steps to identify and mask repeats in the reference genome. 
+
+
 #### 1. Obtained raw reads from Stanford Genomic Sequencing Center   
 Included 470 .fastq.gz files (1 forward, 1 reverse for each of 235 samples)
 
@@ -184,7 +187,24 @@ Note, this outputs 3 files: ‘.012’ contains the genotypes of each individual
 vcftools --012 --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --out output_geno.vcf
 ```
 
-#### 23. Identify and mask repeats in reference genome 
+## Sample and population diversity metrics 
+
+#### Estimating heterozygosity 
+```
+vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --keep controls.txt --het --out output_het
+```
+Note: in R, calculated observed and expected heterozygosity as:
+```
+hetero$O.HET <- (hetero$N_SITES - hetero$O.HOM)/hetero$N_SITES
+hetero$E.HET <- (hetero$N_SITES - hetero$E.HOM)/hetero$N_SITES
+```
+
+#### Estimating nucleotide diversity 
+```
+vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --keep controls.txt --window-pi  10000 --out all_samples_pi
+```
+
+## Identify and mask repeats in reference genome 
 **Step 1:** Identify repeats using RepeatModeleder v 2.0.1 on SCG  
 Using NCBI and Dfam as database for repeats
 Note: takes several days to run (includes 6 rounds of searching for repeats)  
@@ -208,31 +228,4 @@ Script: repeatmask.sbatch
 module load repeatmasker/4.1.0
 cd /labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome
 RepeatMasker -pa 16 -gff -lib sierrensis-families.fa  sierrensis_norepeats.fasta
-```
-
-### Sample and population diversity metrics ##
-
-#### Estimating heterozygosity 
-```
-vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --keep controls.txt --het --out output_het
-```
-Note: in R, calculated observed and expected heterozygosity as:
-```
-hetero$O.HET <- (hetero$N_SITES - hetero$O.HOM)/hetero$N_SITES
-hetero$E.HET <- (hetero$N_SITES - hetero$E.HOM)/hetero$N_SITES
-```
-
-#### Estimating nucleotide diversity 
-```
-vcftools --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --keep controls.txt --window-pi  10000 --out all_samples_pi
-```
-
-
-#### SCRAP #####
-#### 23. Calculate Tajima's D in controls 
-Tajima's D is a statistic indicating whether a population is evolving neutrally vs under selection / some demographic process.
-Here, we calculated Tajima's D for control individuals only (as these reflect the baseline Aedes sierrensis population), using the LD pruned SNP list as input
-
-```
-vcftools --vcf pruneddata.vcf.format.vcf --keep KeepControl.txt --TajimaD 100000 --out TajimasD_10kb
 ```
