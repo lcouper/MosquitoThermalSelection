@@ -101,7 +101,7 @@ bamtools stats -in results/bam/E-014.aligned.sorted.deduped.bam > results/bam/E-
 ```
 
 #### 13. Detect single nucleotide variants (SNVs) 
-Note: This process takes too long to perform on all .bam files at once. Therefore, this script was run on subsets of ~20 samples at a time. Then the resulting VCFFILEs were concatenated (see step 17)
+Note: This process takes too long to perform on all .bam files at once. Therefore, this script was run on subsets of ~20 samples at a time. Then the resulting VCFFILEs were concatenated (see step 17)  
 *Script:* callvariantsSx.sbatch
 ```
 bcftools mpileup --threads 12 -f /labs/emordeca/ThermalSelectionExpSeqFiles/ref_genome/asierrensis.scaffolded.fasta -q 20 -Q 20 *.bam \
