@@ -7,7 +7,7 @@ The steps below outline the analysis performed on the sequence data, from raw re
 Included 470 .fastq.gz files (1 forward, 1 reverse for each of 235 samples)
 
 #### 2. Filter adapter and trim low quality reads using trimmomatic
-Trimmomatic V 0.39 (Bolger et al. 2014)  
+*Software used:* Trimmomatic V 0.39 (Bolger et al. 2014)  
 *Script: trim.sbatch* 
 Relevant code snippet for single sample: 
 ```
