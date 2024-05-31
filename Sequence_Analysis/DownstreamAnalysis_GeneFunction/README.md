@@ -5,3 +5,4 @@ That is, using the start and stop positions for each gene:
 ```
 samtools faidx asierrensis.scaffolded.fasta 1_RagTag:372060-374060
 ```
+where 1_RagTag denotes the chromosome, and the following numbers denote the genomic position
