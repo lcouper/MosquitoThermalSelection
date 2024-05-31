@@ -10,7 +10,7 @@
 6. Identify candidate genes located within 100K bp of candidate loci
 
 
-**These steps can be replicated on a subset of the data 'GenotypeMatrix_Pruned_Subset' (as the full pruned genotype matrix is too large to upload) using the script: 'ThermalSelection_SeqAnalysis_LD_Pruned.R'**
+**These steps can be replicated on a subset of the data 'GenotypeMatrix_Pruned_Subset' (as the full pruned genotype matrix is too large to upload) using the script: 'ThermalSelection_SeqAnalysis_LD_Pruned_Subset.R'**
 
 ## how to pull out sequence surrounding SNP
 samtools faidx asierrensis.scaffolded.fasta 1_RagTag:372060-374060
