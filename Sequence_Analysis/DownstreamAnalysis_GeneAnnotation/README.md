@@ -1,12 +1,12 @@
 # Steps to identify genes from reference genome sequence 
 
 ### Step 1. Identify repeats
-- Use RepeatModeler2 to construct a species-specific repeat library and mask the genome with RepeatMasker
-- On SCG, version: repeatmodeler/2.0.1
-- Note: RepeatModeler2 Can identify repeats de novo, But also requires an external database. Dfam is one that is free
-- Potential help page: https://darencard.net/blog/2022-10-13-install-repeat-modeler-masker/
-- Example of how to run repeatmodeler2: https://github.com/Dfam-consortium/RepeatModeler
-- Some help from here: https://weatherby.genetics.utah.edu/MAKER/wiki/index.php/Repeat_Library_Construction-Basic
+- *Software used* RepeatModeler2 2.0.1
+- Note: Use RepeatModeler2 to construct a species-specific repeat library 
+- RepeatModeler2 Can identify repeats de novo, But also requires an external database. Dfam is one that is free
+- Help pages accessed: https://darencard.net/blog/2022-10-13-install-repeat-modeler-masker/
+- https://github.com/Dfam-consortium/RepeatModeler
+- https://weatherby.genetics.utah.edu/MAKER/wiki/index.php/Repeat_Library_Construction-Basic
 - Interpret results from repeat modeler: https://github.com/Dfam-consortium/RepeatModeler
 - SCG script uesd: repeatmod.sbatch
 
