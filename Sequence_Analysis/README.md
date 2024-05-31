@@ -218,8 +218,8 @@ Note: the above creates 3 files:
 sierrensis-families.fa (consensus sequences), sierensis-families.stk (seed alignments), and a log file
 
 #### **Step 2:** Mask repeats 
-*Software used* RepeatMasker (Smit et al. 2021)
-*Script:* repeatmask.sbatch
+*Software used* RepeatMasker (Smit et al. 2021)  
+*Script:* repeatmask.sbatch  
 Note: Must use the older version of RepeatMasker for this to run properly (issues accessing databases in newer versions)**
 ```
 module load repeatmasker/4.1.0
