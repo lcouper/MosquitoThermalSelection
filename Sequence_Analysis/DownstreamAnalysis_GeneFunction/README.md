@@ -1,6 +1,6 @@
 # Steps for gene function prediction 
-Gene function predictions were obtained through NCBI BLASTN search
-The start and stop positions of each gene were determined through braker (see DownstreamAnalysis_GeneAnnotation) and are listed in the file: GeneList_AllApproaches.csv
+Gene function predictions were obtained through NCBI BLASTN search.
+The start and stop positions of each gene were determined through braker (see *DownstreamAnalysis_GeneAnnotation*) and are listed in the file: *GeneList_AllApproaches.csv*
 
 To identify 
 samtools faidx asierrensis.scaffolded.fasta 1_RagTag:372060-374060
