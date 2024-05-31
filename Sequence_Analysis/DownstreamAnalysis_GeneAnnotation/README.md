@@ -1,4 +1,4 @@
-# Steps to identify genes from reference genome sequence and assign SNPs to gene
+# Steps to identify genes from reference genome sequence and assign SNPs to genes
 
 ## Identifying genes from reference genome sequence 
 
@@ -60,3 +60,10 @@ braker.gtf file saved here: https://drive.google.com/drive/u/1/folders/1WdF4YUSK
 
 ## Assigning candidate SNPs to genes
 Note: this was conducted in R using the script ThermalSelectionExp_IdentifyingGenes.R uploaded here 
+
+In brief, this script: 
+- pulls in the candidate SNP lists
+- defines a function that identifies the gene to which each SNP belongs based on genomic positions
+- outputs the resulting gene ID
+- calculates the overlap in genes identified through the 3 approaches (Fst on Treatment, GWA on Treatment, and GWA on Knockdown time)
+- calculates the expected overlap through permutation 
