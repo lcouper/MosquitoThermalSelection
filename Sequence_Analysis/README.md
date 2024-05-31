@@ -140,7 +140,7 @@ bcftools merge *.vcf.gz > Unfiltered_VCF_All.vcf
 ```
 
 #### 18. Create a dictionary for reference genome
-*Software used:* picard
+*Software used:* picard  
 *Script:* createdictionary.sbatch
 ```
 module load java
