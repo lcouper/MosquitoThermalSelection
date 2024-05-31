@@ -109,7 +109,7 @@ bcftools mpileup --threads 12 -f /labs/emordeca/ThermalSelectionExpSeqFiles/ref_
 ```
 
 #### 14. First pass filter SNVs
-Note: For each subset, discard all SNVs with QUAL < 30
+Note: For each subset, discard all SNVs with QUAL < 30  
 *Script:* filterSNPs.sbatch 
 ```
 vcftools --gzvcf VCFFILE --minQ 30 --recode --recode-INFO-all --out subset1.vcf
