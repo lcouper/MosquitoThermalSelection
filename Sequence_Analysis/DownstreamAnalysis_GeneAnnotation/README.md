@@ -59,7 +59,7 @@ For our data set: 765,124 genes identified
 braker.gtf file saved here: https://drive.google.com/drive/u/1/folders/1WdF4YUSKHwXKFdPrXm_8ap6yZSsxM7hD
 
 ## Assigning candidate SNPs to genes
-Note: this was conducted in R using the script ThermalSelectionExp_IdentifyingGenes.R uploaded here 
+Note: this was conducted in R using the script ThermalSelectionExp_IdentifyingGenesFromSNPs.R uploaded here 
 
 In brief, this script: 
 - pulls in the candidate SNP lists
