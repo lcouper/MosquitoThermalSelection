@@ -190,6 +190,16 @@ Note: this outputs 3 files: ‘.012’ contains the genotypes of each individual
 vcftools --012 --vcf Filtered_VCF_All_sorted_0.995_bialleliconly.vcf --out output_geno.vcf
 ```
 
+
+## Calculating size of each chromosome
+
+To obtain length in bp of each scaffold:
+```
+cat asierrensis.scaffolded.fasta | awk '$0 ~ ">" {if (NR > 1) {print c;} c=0;printf substr($0,2,100) "\t"; } $0 !~ ">" {c+=length($0);} END { print c; }'
+```
+<img width="190" alt="image" src="https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/46f27809-91e6-46f9-a0ea-1cb8221cc616">
+
+
 ## Calculating sample and population diversity metrics
 
 #### 1. Estimating heterozygosity 
