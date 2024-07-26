@@ -255,7 +255,6 @@ gcta64 --bfile pruneddata --autosome --make-grm --out pruneddata --autosome-num 
 gcta64 --bfile myplink --autosome --make-grm --out unpruneddata --autosome-num 3 --thread-num 12
 ```
 
-
 #### 2. Estimate variance explained by the SNPs
 *Software used:* GCTA (Yang et al. 2011)
 Note: all SNPs are used, to avoid winners curse issue in GWA approaches.  
@@ -275,8 +274,12 @@ Results for unpruned dataset:
 <img width="243" alt="image" src="https://github.com/lcouper/MosquitoThermalSelection/assets/10873177/0b72fb93-8404-480f-95e7-6c0692fce5d6">
 
 
-#### 3. Repeat for adult thermal knockdown resistance [not included in manuscript]
+#### 3. Repeat for adult thermal knockdown resistance, using only the significant SNPs
+
 ```
-gcta64 --grm pruneddata --pheno KD.phe.txt --reml --out pruneddata2 --thread-num 12 --prevalence 0.46 --covar covars.txt
+# keep only significant SNPs
+gcta64 --bfile pruneddata --autosome --make-grm --extract KD_snplist.txt --out pruneddata_subset2 --autosome-num 3 --thread-num 12
+
+gcta64 --grm pruneddata_subset2 --pheno KD.phe.txt --reml --out pruneddata_subset2 --thread-num 12 --covar covars.txt
 # covariates here are sex and treatment
 ```
