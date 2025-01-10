@@ -1,10 +1,11 @@
-# Sequence Analysis Workflow 
+# Sequence Analysis Workflow Tutorial 
 
-The steps below outline the analysis performed on the sequence data including: 
+The steps below outline how to repeat the analysis performed on the sequence data including: 
 - processing raw reads through to variant calling
 - calculating sample and population diversity metrics
 - identifying and masking repeats in the reference genome
-- estimating variance explained by SNPs 
+- estimating variance explained by SNPs
+
 
 ## Processing raw reads through to variant calling
 
